@@ -8,10 +8,12 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Preloader from './components/Preloader';
+import PageSkeleton from './components/PageSkeleton';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState('home');
   const [loading, setLoading] = useState(true);
+  const [pageTransitioning, setPageTransitioning] = useState(false);
 
   useEffect(() => {
     const pageData = {
@@ -35,7 +37,13 @@ function AppContent() {
   }, [currentPage]);
 
   const navigate = (page) => {
-    setCurrentPage(page);
+    if (page === currentPage) return;
+    setPageTransitioning(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.setTimeout(() => {
+      setCurrentPage(page);
+      setPageTransitioning(false);
+    }, 250);
   };
 
   const renderPage = () => {
@@ -55,7 +63,7 @@ function AppContent() {
       
       <Navbar currentPage={currentPage} onNavigate={navigate} />
       <main className="flex-1">
-        {renderPage()}
+        {pageTransitioning ? <PageSkeleton page={currentPage} /> : renderPage()}
       </main>
       <Footer onNavigate={navigate} />
     </div>
