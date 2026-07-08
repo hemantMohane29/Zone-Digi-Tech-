@@ -15,10 +15,10 @@ const contactDetails = [
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'hello@kirandigital.in',
+    value: 'hello@zonedigitech.in',
     sub: 'We reply within 2 hours',
     color: '#e07b00',
-    href: 'mailto:hello@kirandigital.in',
+    href: 'mailto:hello@zonedigitech.in',
   },
   {
     icon: Phone,

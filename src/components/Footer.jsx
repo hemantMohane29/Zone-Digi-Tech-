@@ -107,7 +107,7 @@ export default function Footer({ onNavigate }) {
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <Mail size={13} className="text-saffron-400" />
                 </div>
-                <span className="text-stone-400 text-sm">hello@kirandigital.in</span>
+                <span className="text-stone-400 text-sm">hello@zonedigitech.in</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"

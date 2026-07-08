@@ -1,8 +1,8 @@
-# 🧠 KiranDigital Creative Studio - Project Brain
+# 🧠 Zone Digi Tech - Project Brain
 
 ## 📋 Project Overview
 
-**Project Name:** KiranDigital - Creative Digital Studio  
+**Project Name:** Zone Digi Tech - Creative Digital Studio  
 **Type:** Modern Creative Agency Website (SPA)  
 **Purpose:** Showcase digital services and portfolio for an Indian creative digital agency  
 **Target Audience:** Indian startups and businesses looking for digital solutions  
@@ -167,7 +167,7 @@ App.jsx (Main Container)
 - Milestones Timeline (2021-2024 growth)
 
 **Team Members:**
-1. Arjun Sharma - Founder & Creative Director (8+ years)
+1. Hemant Sharma - Founder & Creative Director (8+ years)
 2. Priya Nair - Lead UI/UX Designer
 3. Rohan Mehta - Full Stack Developer
 4. Sneha Patel - Digital Marketing Lead
@@ -260,10 +260,10 @@ App.jsx (Main Container)
 **Features:**
 - Contact Form (Name, Email, Phone, Service Dropdown, Message)
 - Contact Details Cards (4):
-  1. Email: hello@kirandigital.in
+  1. Email: hello@zonedigitech.in
   2. Phone: +91 98765 43210
   3. WhatsApp: +91 98765 43210
-  4. Location: Indiranagar, Bangalore
+  4. Location: Bangalore, India
 - Service Dropdown (11 options)
 - Social Links (Instagram, Twitter, LinkedIn, YouTube)
 
@@ -366,10 +366,10 @@ App.jsx (Main Container)
 
 | Channel | Details |
 |---------|---------|
-| Email | hello@kirandigital.in |
+| Email | hello@zonedigitech.in |
 | Phone | +91 98765 43210 |
 | WhatsApp | +91 98765 43210 |
-| Location | Indiranagar, Bangalore, Karnataka, India - 560038 |
+| Location | Bangalore, India |
 | Hours | Mon–Sat, 9 AM – 7 PM IST |
 
 **Social Media:**
@@ -493,11 +493,11 @@ npm run preview     # Preview production build
 - Open Graph support (ready for implementation)
 
 ### Page Titles
-- Home: "KiranDigital — Creative Digital Studio"
-- About: "About Us — KiranDigital"
-- Services: "Services — KiranDigital"
-- Projects: "Projects — KiranDigital"
-- Contact: "Contact Us — KiranDigital"
+- Home: "Zone Digi Tech — Creative Digital Studio"
+- About: "About Us — Zone Digi Tech"
+- Services: "Services — Zone Digi Tech"
+- Projects: "Projects — Zone Digi Tech"
+- Contact: "Contact Us — Zone Digi Tech"
 
 ---
 
