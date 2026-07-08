@@ -141,7 +141,7 @@ export default function Home({ onNavigate }) {
               <span className="text-stone-400 dark:text-stone-500">That Convert</span>
             </h1>
             <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-8 max-w-lg">
-              From startups to enterprises — we design, develop, and launch digital products that look premium and perform exceptionally. Made in India, built for the world.
+              From startups to enterprises. we design, develop, and launch digital products that look premium and perform exceptionally. Made in India, built for the world.
             </p>
             <div className="flex flex-wrap gap-4">
               <button onClick={() => handleNav('services')} className="btn-primary px-7 py-3.5 text-sm font-semibold">
@@ -152,23 +152,6 @@ export default function Home({ onNavigate }) {
               <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold flex items-center gap-2">
                 <Play size={15} /> View Projects
               </button>
-            </div>
-
-            {/* Social proof */}
-            <div className="mt-10 flex items-center gap-5">
-              <div className="flex -space-x-2">
-                {['https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=80',
-                  'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=80',
-                  'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=80'].map((src, i) => (
-                  <img key={i} src={src} alt="Client" className="w-9 h-9 rounded-full border-2 border-white dark:border-stone-900 object-cover" />
-                ))}
-              </div>
-              <div>
-                <div className="flex items-center gap-1 mb-0.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} className="text-amber-400" fill="#fbbf24" />)}
-                </div>
-                <p className="text-stone-500 dark:text-stone-400 text-xs">Trusted by <strong className="text-stone-700 dark:text-stone-300">80+</strong> clients across India</p>
-              </div>
             </div>
           </div>
 

@@ -27,6 +27,8 @@ export default function Navbar({ currentPage, onNavigate }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const logoSrc = theme === 'dark' ? '/Zone digi tecch logo white.png' : '/Zone dii tech logo black.png';
+
   return (
     <>
       <nav
@@ -40,21 +42,14 @@ export default function Navbar({ currentPage, onNavigate }) {
           {/* Logo */}
           <button
             onClick={() => handleNav('home')}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center group shrink-0"
           >
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center relative overflow-hidden"
-              style={{ background: 'linear-gradient(135deg, #e07b00, #f9b84a)' }}>
-              <Zap size={18} className="text-white relative z-10" fill="white" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: 'linear-gradient(135deg, #f9b84a, #e07b00)' }} />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="font-display font-800 text-lg tracking-tight text-stone-900 dark:text-white">
-                Kiran<span className="gradient-text">Digital</span>
-              </span>
-              <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-stone-400 dark:text-stone-500">
-                Creative Studio
-              </span>
+            <div className="flex h-12 w-[180px] items-center justify-center md:h-14 md:w-[220px] xl:h-16 xl:w-[260px]">
+              <img
+                src={logoSrc}
+                alt="Zone Digi Tech logo"
+                className="h-full w-full object-contain object-left transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
           </button>
 

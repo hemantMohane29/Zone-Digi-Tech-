@@ -28,8 +28,9 @@
 | Light Background | #f5f3f0 | Light mode main bg (stone-50) |
 
 ### Brand Assets
-- **Logo:** "Kiran" regular + "Digital" with gradient text
-- **Logo Icon:** Zap icon with gradient background (#e07b00 to #f9b84a)
+- **Logo:** Zone Digi Tech Logo (PNG files for light and dark modes)
+  - Dark Mode: `Zone digi tecch logo white.png` (white logo)
+  - Light Mode: `Zone dii tech logo black.png` (black logo)
 - **Tagline:** Creative Digital Studio
 - **Font Family:** Poppins (sans and display)
 
@@ -143,18 +144,20 @@ App.jsx (Main Container)
 
 ### 1️⃣ **Home Page** (`src/pages/Home.jsx`)
 **Key Sections:**
-- Hero Section with CTA buttons
+- Hero Section with CTA buttons (Explore Services, View Projects)
 - Stats Section (150+ projects, 80+ clients, 5★ rating, 3 years exp)
 - Why Choose Us (8 feature cards with icons)
 - Services Grid (10 services with icons and descriptions)
 - Projects Showcase (4 featured projects)
 - FAQs Section (6 common questions)
 - Marquee Animation (service tags)
+- CTA Section (Start Today - Call to action)
 
 **Features:**
 - Mouse tracking effect (if implemented)
 - Scroll animations
 - Gradient elements
+- ~~Social Proof Section~~ (Removed: customer avatars and "Trusted by 80+ clients" reviews)
 
 ### 2️⃣ **About Page** (`src/pages/About.jsx`)
 **Key Sections:**
@@ -270,7 +273,7 @@ App.jsx (Main Container)
 
 ### Navbar (`src/components/Navbar.jsx`)
 **Features:**
-- Logo with Zap icon (gradient)
+- Logo (PNG image files: white for dark mode, black for light mode)
 - Navigation Links (Home, About, Services, Projects, Contact)
 - Responsive Design (hamburger menu for mobile)
 - Sticky Behavior:
@@ -279,10 +282,12 @@ App.jsx (Main Container)
 - Theme Toggle (Moon/Sun icon)
 - Active Link Indicator (orange dot)
 - Mobile Menu Toggle
+- Logo sizing: Fixed container height (h-12 mobile, h-14 tablet, h-16 desktop)
 
 **Responsive Breakpoints:**
-- Mobile: <768px (hamburger menu)
-- Desktop: ≥768px (horizontal nav)
+- Mobile: <768px (hamburger menu, h-12)
+- Tablet: 768px-1024px (h-14, w-220px)
+- Desktop: ≥1024px (h-16, w-260px)
 
 ### Footer (`src/components/Footer.jsx`)
 **Sections:**
