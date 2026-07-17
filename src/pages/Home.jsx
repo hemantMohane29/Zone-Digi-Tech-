@@ -74,7 +74,7 @@ const faqs = [
 ];
 
 const marqueeItems = [
-  'UI/UX Design', 'Web Development', 'E-Commerce', 'SEO', 'Social Media', 'Branding', 'Video Production', 'Photography', 'Digital Marketing', 'App Development',
+  'Video Production', 'Photography', 'Web Development', 'UI/UX Design', 'Graphic Designing', 'Social Media Management', 'Search Engine Optimization (SEO)', 'Digital Marketing', 'Branding', 'E-Commerce Development', 'Business Growth Consulting','Website Maintenance & Support','Technical Support  ',
 ];
 
 export default function Home({ onNavigate }) {
