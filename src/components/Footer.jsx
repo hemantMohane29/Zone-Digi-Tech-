@@ -27,19 +27,12 @@ export default function Footer({ onNavigate }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <button onClick={() => handleNav('home')} className="flex items-center gap-2.5 mb-5 group">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #e07b00, #f9b84a)' }}>
-                <Zap size={18} className="text-white" fill="white" />
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-display font-bold text-lg text-white">
-                  Kiran<span className="gradient-text">Digital</span>
-                </span>
-                <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-stone-500">
-                  Creative Studio
-                </span>
-              </div>
+            <button onClick={() => handleNav('home')} className="flex items-center gap-3 mb-5 group">
+              <img
+                src="/Zone digi tecch logo white.png"
+                alt="Zone Digi Tech logo"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
             </button>
             <p className="text-stone-400 text-sm leading-relaxed mb-6">
               A premium creative digital agency helping Indian startups and businesses build powerful digital presences.
