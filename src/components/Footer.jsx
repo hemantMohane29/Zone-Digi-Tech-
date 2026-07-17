@@ -100,21 +100,21 @@ export default function Footer({ onNavigate }) {
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <Mail size={13} className="text-saffron-400" />
                 </div>
-                <span className="text-stone-400 text-sm">hello@zonedigitech.in</span>
+                <a href="mailto:infozonedigitech@gmail.com" className="text-stone-400 text-sm hover:text-saffron-400 transition-colors">infozonedigitech@gmail.com</a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <Phone size={13} className="text-saffron-400" />
                 </div>
-                <span className="text-stone-400 text-sm">+91 98765 43210</span>
+                <a href="tel:+917974942457" className="text-stone-400 text-sm hover:text-saffron-400 transition-colors">+91 7974942457</a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <MapPin size={13} className="text-saffron-400" />
                 </div>
-                <span className="text-stone-400 text-sm">Bangalore, Karnataka<br />India - 560001</span>
+                <span className="text-stone-400 text-sm">Karond, Bhopal<br />Madhya Pradesh, India</span>
               </li>
             </ul>
 

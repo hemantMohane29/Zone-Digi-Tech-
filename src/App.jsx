@@ -17,15 +17,23 @@ function AppContent() {
 
   useEffect(() => {
     const pageData = {
-      home: { title: 'KiranDigital — Creative Digital Studio', desc: 'A premium creative digital agency helping Indian startups and businesses build powerful digital presences.' },
-      about: { title: 'About Us — KiranDigital', desc: 'Learn more about KiranDigital, our mission, values, and the creative team behind our digital solutions.' },
-      services: { title: 'Services — KiranDigital', desc: 'Explore our comprehensive digital services including UI/UX Design, Web Development, SEO, and Social Media.' },
-      projects: { title: 'Projects — KiranDigital', desc: 'View our portfolio of featured projects across web design, e-commerce, branding, and digital marketing.' },
-      contact: { title: 'Contact Us — KiranDigital', desc: 'Get in touch with KiranDigital to discuss your next big digital project. We would love to hear from you.' },
+      home: { title: 'Zone Digi Tech — One Stop Digital Solution', desc: 'A premium creative digital agency helping Indian startups and businesses build powerful digital presences.' },
+      about: { title: 'About Us — Zone Digi Tech', desc: 'Learn more about Zone Digi Tech, our mission, values, and the creative team behind our digital solutions.' },
+      services: { title: 'Services — Zone Digi Tech', desc: 'Explore our comprehensive digital services including UI/UX Design, Web Development, SEO, and Social Media.' },
+      projects: { title: 'Projects — Zone Digi Tech', desc: 'View our portfolio of featured projects across web design, e-commerce, branding, and digital marketing.' },
+      contact: { title: 'Contact Us — Zone Digi Tech', desc: 'Get in touch with Zone Digi Tech to discuss your next big digital project. We would love to hear from you.' },
     };
-    
+
     document.title = pageData[currentPage].title;
-    
+
+    let metaTitle = document.querySelector('meta[name="title"]');
+    if (!metaTitle) {
+      metaTitle = document.createElement('meta');
+      metaTitle.setAttribute('name', 'title');
+      document.head.appendChild(metaTitle);
+    }
+    metaTitle.setAttribute('content', pageData[currentPage].title);
+
     // Update meta description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
@@ -60,7 +68,7 @@ function AppContent() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-[#0a0a0f] transition-colors duration-300">
       {loading && <Preloader onLoadingComplete={() => setLoading(false)} />}
-      
+
       <Navbar currentPage={currentPage} onNavigate={navigate} />
       <main className="flex-1">
         {pageTransitioning ? <PageSkeleton page={currentPage} /> : renderPage()}
