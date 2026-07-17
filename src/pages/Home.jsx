@@ -3,10 +3,10 @@ import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Zap, Palette, G
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 
 const stats = [
-  { value: '150+', label: 'Projects Delivered', icon: Briefcase },
-  { value: '80+', label: 'Happy Clients', icon: Users },
-  { value: '5★', label: 'Average Rating', icon: Star },
-  { value: '3 Yrs', label: 'Experience', icon: Award },
+  { value: '5+', label: 'Projects Delivered', icon: Briefcase },
+  { value: '4', label: 'Happy Clients', icon: Users },
+  { value: '4.3+ ★', label: 'Average Rating', icon: Star },
+  { value: '1.5 Yrs', label: 'Experience', icon: Award },
 ];
 
 const whyUs = [
@@ -188,15 +188,23 @@ export default function Home({ onNavigate }) {
 
               {/* Floating stat cards */}
               <div className="absolute -left-4 top-1/4 glass dark:glass-dark rounded-2xl p-3.5 border border-white/20 dark:border-white/5 shadow-xl animate-float">
-                <p className="text-2xl font-bold text-stone-900 dark:text-white">150+</p>
+                <p className="text-2xl font-bold text-stone-900 dark:text-white">5+</p>
                 <p className="text-stone-500 text-xs">Projects Done</p>
               </div>
 
               <div className="absolute -right-4 top-1/3 glass dark:glass-dark rounded-2xl p-3.5 border border-white/20 dark:border-white/5 shadow-xl animate-float-delayed">
-                <div className="flex items-center gap-2 mb-1">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={9} className="text-amber-400" fill="#fbbf24" />)}
+                <div className="flex items-center gap-1.5 mb-1">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} size={9} className="text-amber-400" fill="#fbbf24" />
+                  ))}
+                  <span className="relative inline-flex items-center justify-center" style={{ width: '9px', height: '9px' }}>
+                    <Star size={9} className="text-stone-300 dark:text-stone-700" fill="none" stroke="#fbbf24" strokeWidth={1.5} />
+                    <span className="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
+                      <Star size={9} className="text-amber-400" fill="#fbbf24" />
+                    </span>
+                  </span>
                 </div>
-                <p className="text-stone-700 dark:text-stone-300 text-xs font-semibold">5.0 Rating</p>
+                <p className="text-stone-700 dark:text-stone-300 text-xs font-semibold">4.3+ Rating</p>
               </div>
 
               <div className="absolute -bottom-2 right-8 glass dark:glass-dark rounded-2xl px-4 py-3 border border-white/20 dark:border-white/5 shadow-xl">
@@ -272,8 +280,8 @@ export default function Home({ onNavigate }) {
                   <Award size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-bold text-stone-900 dark:text-white text-sm">Top Rated Agency</p>
-                  <p className="text-stone-400 text-xs">India 2024</p>
+                  <p className="font-bold text-stone-900 dark:text-white text-sm">One Partner, Endless Solutions</p>
+                  <p className="text-stone-400 text-xs">India 2026</p>
                 </div>
               </div>
             </div>
@@ -282,14 +290,14 @@ export default function Home({ onNavigate }) {
           <div className="animate-on-scroll-right">
             <div className="tag mb-5">About Us</div>
             <h2 className="section-title text-stone-900 dark:text-white mb-5">
-              We Turn Ideas Into<br />
-              <span className="gradient-text">Digital Realities</span>
+              Built for Visionaries<br />
+              <span className="gradient-text">Designed for Growth</span>
             </h2>
             <p className="section-subtitle mb-4">
-              Founded in Bangalore, KiranDigital is a full-service creative agency blending modern design sensibility with India's rich visual heritage.
+              Founded in Bhopal, Zone Digi Tech is a full-service digital agency helping businesses build, grow, and succeed online.
             </p>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">
-              We are a passionate team of designers, developers, and digital strategists who believe great design isn't just about aesthetics — it's about creating experiences that solve real problems and drive real results.
+              We are a passionate team of designers, developers, and digital strategists who believe great design isn't just about aesthetics, it's about creating experiences that solve real problems and drive real results.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
               {[
@@ -317,8 +325,8 @@ export default function Home({ onNavigate }) {
           <div className="text-center mb-16">
             <div className="tag mx-auto mb-5">Why Choose Us</div>
             <h2 className="section-title text-stone-900 dark:text-white mb-4">
-              Why 80+ Businesses Trust<br />
-              <span className="gradient-text">KiranDigital</span>
+              Why 10+ Businesses Trust<br />
+              <span className="gradient-text">Zone Digi Tech</span>
             </h2>
             <p className="section-subtitle max-w-xl mx-auto">
               We don't just build websites. We craft digital experiences that convert visitors into customers and customers into brand advocates.
