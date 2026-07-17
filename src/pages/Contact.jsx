@@ -15,34 +15,34 @@ const contactDetails = [
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'hello@zonedigitech.in',
-    sub: 'We reply within 2 hours',
+    value: 'infozonedigitech@gmail.com',
+    sub: 'We respond within 2 hours.',
     color: '#e07b00',
-    href: 'mailto:hello@zonedigitech.in',
+    href: 'mailto:infozonedigitech@gmail.com',
   },
   {
     icon: Phone,
     label: 'Call Us',
-    value: '+91 98765 43210',
+    value: '+91 7974942457',
     sub: 'Mon–Sat, 9 AM – 7 PM IST',
     color: '#10b981',
-    href: 'tel:+919876543210',
+    href: 'tel:+917974942457',
   },
   {
     icon: MessageCircle,
     label: 'WhatsApp',
-    value: '+91 98765 43210',
+    value: '+91 7974942457',
     sub: 'Quick responses guaranteed',
     color: '#25D366',
-    href: 'https://wa.me/919876543210',
+    href: 'https://wa.me/917974942457',
   },
   {
     icon: MapPin,
     label: 'Visit Us',
-    value: 'Indiranagar, Bangalore',
-    sub: 'Karnataka, India - 560038',
+    value: 'Karond, Bhopal',
+    sub: 'Madhya Pradesh, India',
     color: '#0ea5e9',
-    href: 'https://maps.google.com/?q=Indiranagar,+Bangalore,+Karnataka,+India+-+560038',
+    href: 'https://maps.google.com/?q=Karond,+Bhopal,+Madhya+Pradesh,+India',
   },
 ];
 
@@ -66,6 +66,7 @@ export default function Contact() {
     const e = {};
     if (!form.name.trim()) e.name = 'Name is required';
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Valid email is required';
+    if (!form.phone.trim()) e.phone = 'Phone number is required';
     if (!form.service) e.service = 'Please select a service';
     if (!form.message.trim() || form.message.length < 20) e.message = 'Message must be at least 20 characters';
     return e;
@@ -104,7 +105,7 @@ export default function Contact() {
               <span className="gradient-text">Something Great</span>
             </h1>
             <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
-              Ready to start your project? Have a question? Or just want to say hello? We'd love to hear from you. Fill out the form or reach us directly.
+              Let's turn your vision into reality. Whether you're launching a new project, growing your business, or looking for a trusted digital partner, we're ready to help. Get in touch through the form below or reach out directly.
             </p>
           </div>
         </div>
@@ -186,7 +187,7 @@ export default function Contact() {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/919876543210?text=Hi%20KiranDigital!%20I%27d%20like%20to%20discuss%20a%20project."
+                href="https://wa.me/917974942457?text=Hi%20Zone%20Digi%20Tech!%20I%27d%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group animate-on-scroll flex items-center gap-3 p-4 rounded-2xl text-white font-semibold hover:bg-white hover:text-emerald-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
@@ -245,10 +246,9 @@ export default function Contact() {
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="Rahul Sharma"
-                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${
-                          errors.name ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
-                        }`}
+                        placeholder="Your name"
+                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${errors.name ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
+                          }`}
                       />
                       {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                     </div>
@@ -263,10 +263,9 @@ export default function Contact() {
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        placeholder="rahul@company.com"
-                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${
-                          errors.email ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
-                        }`}
+                        placeholder="your@gmail.com"
+                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${errors.email ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
+                          }`}
                       />
                       {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                     </div>
@@ -274,16 +273,18 @@ export default function Contact() {
                     {/* Phone */}
                     <div>
                       <label className="block text-sm font-semibold text-stone-700 dark:text-stone-300 mb-1.5">
-                        Phone Number
+                        Phone Number <span className="text-red-400">*</span>
                       </label>
                       <input
                         type="tel"
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400"
+                        placeholder="+91 7974942457"
+                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${errors.phone ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
+                          }`}
                       />
+                      {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
                     </div>
 
                     {/* Service */}
@@ -295,9 +296,8 @@ export default function Contact() {
                         name="service"
                         value={form.service}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${
-                          errors.service ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
-                        } ${!form.service ? 'text-stone-400' : ''}`}
+                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${errors.service ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
+                          } ${!form.service ? 'text-stone-400' : ''}`}
                       >
                         <option value="" disabled>Select a service</option>
                         {services.map(s => <option key={s} value={s}>{s}</option>)}
@@ -316,10 +316,9 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       rows={5}
-                      placeholder="Tell us about your project — what you need, your timeline, and any specific requirements..."
-                      className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 resize-none ${
-                        errors.message ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
-                      }`}
+                      placeholder="Tell us about your project, what you need, your timeline, and any specific requirements..."
+                      className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 resize-none ${errors.message ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
+                        }`}
                     />
                     {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                     <p className="text-stone-400 text-xs mt-1 text-right">{form.message.length} characters</p>

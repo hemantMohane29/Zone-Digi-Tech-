@@ -259,7 +259,7 @@ export default function Services({ onNavigate }) {
               <span className="flex items-center gap-2">Book Free Consultation <ArrowRight size={16} /></span>
             </button>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/917974942457"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-white hover:text-emerald-600 transition-all duration-300"

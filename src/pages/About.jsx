@@ -111,7 +111,7 @@ export default function About({ onNavigate }) {
               KiranDigital started in 2021 with a simple belief: every Indian business deserves a world-class digital presence. Our founder Arjun Sharma, fresh from working with global design studios, came back to India with a mission to bring that level of quality to local businesses.
             </p>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-6">
-              Starting from a small co-working space in Indiranagar, Bangalore, we've grown into a full-service creative studio with a team of 12 passionate professionals serving clients across India, the UAE, and the UK.
+              Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 12 passionate professionals serving clients across India, the UAE, and the UK.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="p-4 rounded-2xl border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40">
