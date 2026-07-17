@@ -189,10 +189,10 @@ export default function Contact() {
                 href="https://wa.me/919876543210?text=Hi%20KiranDigital!%20I%27d%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="animate-on-scroll flex items-center gap-3 p-4 rounded-2xl text-white font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                className="group animate-on-scroll flex items-center gap-3 p-4 rounded-2xl text-white font-semibold hover:bg-white hover:text-emerald-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                 style={{ background: 'linear-gradient(135deg, #128C7E, #25D366)' }}
               >
-                <MessageCircle size={22} />
+                <MessageCircle size={22} className="transition-colors duration-300 group-hover:text-emerald-600" />
                 <div>
                   <p className="font-bold text-sm">Chat on WhatsApp</p>
                   <p className="text-white/70 text-xs">We're online now</p>

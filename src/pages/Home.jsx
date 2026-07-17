@@ -507,9 +507,9 @@ export default function Home({ onNavigate }) {
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-white hover:text-emerald-600 transition-all duration-300"
               >
-                <MessageCircle size={16} /> WhatsApp Us
+                <MessageCircle size={16} className="transition-colors duration-300 group-hover:text-emerald-600" /> WhatsApp Us
               </a>
             </div>
             <p className="mt-6 text-stone-400 dark:text-stone-500 text-xs">
