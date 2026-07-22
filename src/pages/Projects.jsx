@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, ExternalLink, MessageCircle } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
+import { useNavigate } from 'react-router-dom';
 
 const categories = ['All', 'Web Design', 'E-Commerce', 'Branding', 'Mobile App', 'SEO & Marketing'];
 
@@ -92,7 +93,7 @@ const testimonials = [
     name: 'Vikram Reddy',
     company: 'TechNova SaaS',
     image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
-    text: 'KiranDigital transformed our product design from something functional to something truly world-class. Their attention to detail and understanding of our users was exceptional.',
+    text: 'Zone Digi Tech transformed our product design from something functional to something truly world-class. Their attention to detail and understanding of our users was exceptional.',
     rating: 5,
   },
   {
@@ -111,14 +112,14 @@ const testimonials = [
   },
 ];
 
-export default function Projects({ onNavigate }) {
+export default function Projects() {
   useScrollAnimation();
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('All');
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const handleNav = (page) => {
-    onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(page === 'home' ? '/' : `/${page}`);
   };
 
   const filtered = activeCategory === 'All'
@@ -154,11 +155,10 @@ export default function Projects({ onNavigate }) {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  activeCategory === cat
+                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${activeCategory === cat
                     ? 'text-white shadow-md'
                     : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700'
-                }`}
+                  }`}
                 style={activeCategory === cat ? { background: 'linear-gradient(135deg, #e07b00, #f9b84a)' } : {}}
               >
                 {cat}
@@ -175,10 +175,8 @@ export default function Projects({ onNavigate }) {
             {filtered.map((project, i) => (
               <div
                 key={i}
-                className={`animate-on-scroll group rounded-3xl overflow-hidden bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
-                  project.featured ? 'ring-1 ring-saffron-300 dark:ring-saffron-700' : ''
-                }`}
-                style={{ transitionDelay: `${i * 60}ms` }}
+                className={`animate-on-scroll group rounded-3xl overflow-hidden bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${project.featured ? 'ring-1 ring-saffron-300 dark:ring-saffron-700' : ''
+                  }`}
               >
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-video">
@@ -257,7 +255,6 @@ export default function Projects({ onNavigate }) {
               <div
                 key={i}
                 className="animate-on-scroll p-6 rounded-3xl bg-stone-50 dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="flex items-center gap-0.5 mb-4">
                   {[...Array(t.rating)].map((_, j) => (
