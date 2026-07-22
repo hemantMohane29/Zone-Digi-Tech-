@@ -115,90 +115,93 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10">
             {/* Sidebar */}
-            <div className="lg:col-span-2 space-y-5">
-              {/* Contact Cards */}
-              {contactDetails.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                  className="animate-on-scroll flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group"
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-                    style={{ background: `${item.color}18` }}>
-                    <item.icon size={20} style={{ color: item.color }} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-0.5">{item.label}</p>
-                    <p className="font-bold text-stone-900 dark:text-white text-sm">{item.value}</p>
-                    <p className="text-stone-400 text-xs mt-0.5">{item.sub}</p>
-                  </div>
-                </a>
-              ))}
+            <div className="lg:col-span-2 flex flex-col gap-5">
+              <div className="space-y-5 lg:flex-1">
+                {/* Contact Cards */}
+                {contactDetails.map((item, i) => (
+                  <a
+                    key={i}
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className="animate-on-scroll flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group"
+                    style={{ transitionDelay: `${i * 60}ms` }}
+                  >
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
+                      style={{ background: `${item.color}18` }}>
+                      <item.icon size={20} style={{ color: item.color }} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-0.5">{item.label}</p>
+                      <p className="font-bold text-stone-900 dark:text-white text-sm">{item.value}</p>
+                      <p className="text-stone-400 text-xs mt-0.5">{item.sub}</p>
+                    </div>
+                  </a>
+                ))}
 
-              {/* Hours */}
-              <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
-                <div className="flex items-center gap-2 mb-3">
-                  <Clock size={16} className="text-saffron-600 dark:text-saffron-400" />
-                  <h4 className="font-bold text-stone-900 dark:text-white text-sm">Business Hours</h4>
-                </div>
-                <div className="space-y-1.5 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-stone-500">Monday – Friday</span>
-                    <span className="font-medium text-stone-700 dark:text-stone-300">9 AM – 7 PM</span>
+                {/* Hours */}
+                <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Clock size={16} className="text-saffron-600 dark:text-saffron-400" />
+                    <h4 className="font-bold text-stone-900 dark:text-white text-sm">Business Hours</h4>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-stone-500">Saturday</span>
-                    <span className="font-medium text-stone-700 dark:text-stone-300">10 AM – 5 PM</span>
+                  <div className="space-y-1.5 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-stone-500">Monday – Friday</span>
+                      <span className="font-medium text-stone-700 dark:text-stone-300">9 AM – 7 PM</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-stone-500">Saturday</span>
+                      <span className="font-medium text-stone-700 dark:text-stone-300">10 AM – 5 PM</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-stone-500">Sunday</span>
+                      <span className="font-medium text-stone-400">Closed</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-stone-500">Sunday</span>
-                    <span className="font-medium text-stone-400">Closed</span>
+                  <div className="mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
+                    <p className="text-xs text-stone-400">All times are IST (India Standard Time)</p>
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
-                  <p className="text-xs text-stone-400">All times are IST (India Standard Time)</p>
-                </div>
-              </div>
 
-              {/* Social */}
-              <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
-                <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h4>
-                <div className="grid grid-cols-4 gap-2">
-                  {socials.map(({ icon: Icon, label, href, color }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl hover:scale-105 transition-transform duration-200 group"
-                      style={{ background: `${color}12` }}
-                    >
-                      <Icon size={18} style={{ color }} />
-                      <span className="text-[10px] text-stone-500 dark:text-stone-400">{label}</span>
-                    </a>
-                  ))}
+                {/* Social */}
+                <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
+                  <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h4>
+                  <div className="grid grid-cols-4 gap-2">
+                    {socials.map(({ icon: Icon, label, href, color }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="flex flex-col items-center gap-1.5 p-2.5 rounded-xl hover:scale-105 transition-transform duration-200 group"
+                        style={{ background: `${color}12` }}
+                      >
+                        <Icon size={18} style={{ color }} />
+                        <span className="text-[10px] text-stone-500 dark:text-stone-400">{label}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* WhatsApp CTA */}
-              <a
-                href="https://wa.me/919876543210?text=Hi%20KiranDigital!%20I%27d%20like%20to%20discuss%20a%20project."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group animate-on-scroll flex items-center gap-3 p-4 rounded-2xl text-white font-semibold hover:bg-white hover:text-emerald-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, #128C7E, #25D366)' }}
-              >
-                <MessageCircle size={22} className="transition-colors duration-300 group-hover:text-emerald-600" />
-                <div>
-                  <p className="font-bold text-sm">Chat on WhatsApp</p>
-                  <p className="text-white/70 text-xs">We're online now</p>
-                </div>
-                <div className="ml-auto w-2 h-2 rounded-full bg-green-200 animate-pulse" />
-              </a>
+              <div className="flex lg:mt-auto">
+                <a
+                  href="https://wa.me/919876543210?text=Hi%20KiranDigital!%20I%27d%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group animate-on-scroll inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-white hover:text-emerald-600 transition-all duration-300 w-full justify-center"
+                >
+                  <MessageCircle size={16} className="transition-colors duration-300 group-hover:text-emerald-600" />
+                  <div>
+                    <p className="font-bold text-sm">Chat on WhatsApp</p>
+                    <p className="text-stone-500 dark:text-stone-400 text-xs">We're online now</p>
+                  </div>
+                  <div className="ml-auto w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                </a>
+              </div>
             </div>
 
             {/* Form */}
