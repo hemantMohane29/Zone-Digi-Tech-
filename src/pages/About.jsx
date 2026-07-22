@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { ArrowRight, Target, Eye, Heart, Users, Award, Globe, Coffee, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
+import { useNavigate } from 'react-router-dom';
 
 const team = [
   {
@@ -45,12 +46,12 @@ const milestones = [
   { year: '2024', title: '80+ Happy Clients', desc: 'Grew to a 12-member team, serving clients across 5 countries.' },
 ];
 
-export default function About({ onNavigate }) {
+export default function About() {
   useScrollAnimation();
+  const navigate = useNavigate();
 
   const handleNav = (page) => {
-    onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(page === 'home' ? '/' : `/${page}`);
   };
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -70,7 +71,7 @@ export default function About({ onNavigate }) {
               <span className="gradient-text">Driven by Purpose</span>
             </h1>
             <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
-              We are KiranDigital — a creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
+              We are Zone Digi Tech — a creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
             </p>
           </div>
         </div>
@@ -108,7 +109,7 @@ export default function About({ onNavigate }) {
               Our <span className="gradient-text">Story</span>
             </h2>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-4">
-              KiranDigital started in 2021 with a simple belief: every Indian business deserves a world-class digital presence. Our founder Arjun Sharma, fresh from working with global design studios, came back to India with a mission to bring that level of quality to local businesses.
+              Zone Digi Tech started in 2021 with a simple belief: every Indian business deserves a world-class digital presence. Our founder Arjun Sharma, fresh from working with global design studios, came back to India with a mission to bring that level of quality to local businesses.
             </p>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-6">
               Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 12 passionate professionals serving clients across India, the UAE, and the UK.
@@ -146,7 +147,6 @@ export default function About({ onNavigate }) {
               <div
                 key={i}
                 className="animate-on-scroll group p-6 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
                   style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.12), rgba(249,184,74,0.08))' }}>
@@ -174,7 +174,7 @@ export default function About({ onNavigate }) {
             <div className="absolute left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-saffron-400 to-transparent" />
             <div className="space-y-10">
               {milestones.map((m, i) => (
-                <div key={i} className="animate-on-scroll flex gap-8 items-start" style={{ transitionDelay: `${i * 100}ms` }}>
+                <div key={i} className="animate-on-scroll flex gap-8 items-start">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 border-2 border-saffron-400 bg-white dark:bg-stone-900"
                     style={{ boxShadow: '0 0 0 4px rgba(224,123,0,0.1)' }}>
                     <span className="font-display font-bold text-saffron-600 dark:text-saffron-400 text-xs">{m.year}</span>
@@ -196,7 +196,7 @@ export default function About({ onNavigate }) {
           <div className="text-center mb-14">
             <div className="tag mx-auto mb-5">Our Team</div>
             <h2 className="section-title text-stone-900 dark:text-white mb-4">
-              Meet the <span className="gradient-text">Minds Behind</span><br />KiranDigital
+              Meet the <span className="gradient-text">Minds Behind</span><br />Zone Digi Tech
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -204,7 +204,6 @@ export default function About({ onNavigate }) {
               <div
                 key={i}
                 className="animate-on-scroll group text-center"
-                style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-stone-800 shadow-xl transition-transform duration-300 group-hover:scale-105">

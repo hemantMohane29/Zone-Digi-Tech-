@@ -4,11 +4,12 @@ import {
   Instagram, Twitter, Linkedin, Youtube
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
+import { useTheme } from '../context/ThemeContext';
 
 const services = [
-  'UI/UX Design', 'Static Website', 'Dynamic Website', 'E-Commerce',
-  'Social Media', 'SEO Optimization', 'Video Editing', 'Photo Editing',
-  'Video Shoot', 'Photography', 'Other',
+  'Video Editing', 'Photo Editing', 'Photo Shoot', 'Video Shoot',
+  'Social Media', 'UI/UX Design', 'Static Websites', 'Dynamic Websites',
+  'SEO Optimization', 'Business Growth Consulting', 'Other',
 ];
 
 const contactDetails = [
@@ -55,6 +56,9 @@ const socials = [
 
 export default function Contact() {
   useScrollAnimation();
+  const { theme } = useTheme();
+  const logoSrc = theme === 'dark' ? '/Zone digi tecch logo white.png' : '/Zone dii tech logo black.png';
+
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' });
@@ -98,15 +102,26 @@ export default function Contact() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-8"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-2xl">
-            <div className="tag mb-5">Contact Us</div>
-            <h1 className="section-title text-stone-900 dark:text-white mb-5">
-              Let's Build<br />
-              <span className="gradient-text">Something Great</span>
-            </h1>
-            <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
-              Let's turn your vision into reality. Whether you're launching a new project, growing your business, or looking for a trusted digital partner, we're ready to help. Get in touch through the form below or reach out directly.
-            </p>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 max-w-2xl animate-on-scroll">
+              <div className="tag mb-5">Contact Us</div>
+              <h1 className="section-title text-stone-900 dark:text-white mb-5">
+                Let's Build<br />
+                <span className="gradient-text">Something Great</span>
+              </h1>
+              <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
+                Let's turn your vision into reality. Whether you're launching a new project, growing your business, or looking for a trusted digital partner, we're ready to help. Get in touch through the form below or reach out directly.
+              </p>
+            </div>
+
+            {/* Top Right Support Team Image */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <img
+                src="/contact_page_avatar.png"
+                alt="Zone Digi Tech Support"
+                className="w-full max-w-[400px] h-auto object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -125,7 +140,6 @@ export default function Contact() {
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
                   className="animate-on-scroll flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group"
-                  style={{ transitionDelay: `${i * 60}ms` }}
                 >
                   <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
                     style={{ background: `${item.color}18` }}>
@@ -203,7 +217,7 @@ export default function Contact() {
             </div>
 
             {/* Form */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 flex flex-col gap-6">
               {submitted ? (
                 <div className="h-full flex items-center justify-center bg-white dark:bg-stone-900/60 rounded-3xl border border-stone-100 dark:border-stone-800 p-10 text-center">
                   <div>
@@ -351,6 +365,28 @@ export default function Contact() {
                   </p>
                 </form>
               )}
+
+              {/* Brand Tagline Card with Logo */}
+              <div className="animate-on-scroll p-6 md:p-8 pl-5 md:pl-6 rounded-3xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 relative overflow-hidden group flex flex-col justify-between min-h-[220px] flex-1">
+                <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-12 bg-saffron-500 pointer-events-none" />
+                <div className="relative z-10 flex flex-col h-full justify-between gap-4 flex-1">
+                  <div className="flex h-14 md:h-16 w-[220px] md:w-[260px] items-center -ml-3 md:-ml-4">
+                    <img
+                      src={logoSrc}
+                      alt="Zone Digi Tech logo"
+                      className="h-full w-full object-contain object-left"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-2xl md:text-3xl text-stone-900 dark:text-white mb-3">
+                      One Stop Digital Solution
+                    </h4>
+                    <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed max-w-xl">
+                      From web development and UI/UX design to social media and SEO, we deliver cohesive digital solutions tailored for your business growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

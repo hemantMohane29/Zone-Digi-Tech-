@@ -516,6 +516,60 @@ npm run preview     # Preview production build
 
 ---
 
+## 🔍 Critical Developer Notes (Codebase Audits & Discrepancies)
+
+> [!IMPORTANT]
+> A complete audit of the codebase has revealed several discrepancies between the original project requirements/documentation and the actual implementation. Developer awareness of these findings is highly recommended to avoid confusion or regression.
+
+### 1. Branding & Name Inconsistencies
+* **Two Brand Names:** The codebase uses a mix of **Zone Digi Tech** and **KiranDigital**.
+  * `App.jsx`, `Preloader.jsx`, and metadata titles use `Zone Digi Tech`.
+  * `About.jsx` (lines 73, 111, 199), `Projects.jsx` (line 95), and `Footer.jsx` (line 133 copyright) use `KiranDigital`.
+  * *Onboarding Tip:* Confirm with the product owner which brand name is preferred for production release.
+
+### 2. Founder & Team Identity Mismatches
+* **Founder Name:**
+  * Original documentation lists the founder as **Hemant Sharma**.
+  * The actual implementation in `src/pages/About.jsx` (line 7) uses **Arjun Sharma** as the Founder & Creative Director.
+* **Origin/Location Narrative:**
+  * Documentation lists the company location as **Bangalore, India**.
+  * `About.jsx` states it was founded in Bangalore but mentions "Starting from a small co-working space in Karond, Bhopal".
+  * `Home.jsx` (line 297) states "Founded in Bhopal, Zone Digi Tech...".
+  * `Contact.jsx` lists the visit address as **Karond, Bhopal** and points to Bhopal Google Maps.
+
+### 3. Contact & Business Details Discrepancies
+* **Contact Info Mismatch:**
+  * **Email:** Docs say `hello@zonedigitech.in` | Code (`Contact.jsx` line 18) uses `infozonedigitech@gmail.com`.
+  * **Phone/WhatsApp:** Docs say `+91 98765 43210` | Code (`Contact.jsx` line 26) uses `+91 7974942457`.
+  * **Business Hours:** 
+    * Docs say `Mon–Sat, 9 AM – 7 PM IST`.
+    * Code (`Contact.jsx` line 147) displays: Mon–Fri: 9 AM – 7 PM, Sat: 10 AM – 5 PM, Sun: Closed.
+
+### 4. Metrics & Statistics Mismatches
+* **Home vs. About Pages:**
+  * `src/pages/Home.jsx` displays starter stats: **5+** Projects, **4** Happy Clients, **4.3+ ★** Rating, **1.5 Yrs** Experience.
+  * `src/pages/About.jsx` (and this document) displays marketing stats: **150+** Projects, **80+** Happy Clients, **12** Team Members, **3 Yrs** Experience.
+  * *Onboarding Tip:* Align these numbers so that visitors receive consistent social proof across all pages.
+
+### 5. Service Titles
+* **Shoot vs. Production/Photography:**
+  * Services 9 & 10 are described as `Video Shoot` and `Photo Shoot` in general specifications.
+  * In the codebase (`Services.jsx`), they are implemented as `Video Production` (From ₹25,000 | 1–3 weeks) and `Photography` (From ₹15,000 | 1–3 day shoot + 1 week editing).
+
+### 6. Asset Filename Spelling Mistakes (Typos)
+* The logos loaded in `Navbar.jsx` and stored in `/public` contain spelling errors that must be matched exactly for images to load:
+  * Dark mode logo: `/Zone digi tecch logo white.png` (note the double `c` in `tecch`).
+  * Light mode logo: `/Zone dii tech logo black.png` (note `dii` instead of `digi`).
+  * Preloader logo: `/URL_LOGO.png`.
+
+### 7. Google Fonts Loading Mismatches
+* **Fonts Configured:** `index.html` loads `Poppins` via Google Fonts. `tailwind.config.js` configures `sans` and `display` fonts to use `Poppins`.
+* **Fonts Rendered:** `src/index.css` overrides the `html` element's font family with `'Inter', system-ui, sans-serif`, and header (`h1-h6` / `.font-display`) tags with `'Syne', 'Inter', sans-serif`.
+* **The Catch:** Neither `Inter` nor `Syne` is imported in `index.html`, meaning the browser falls back to the system's default sans-serif font (e.g. Segoe UI, Arial) instead of Poppins or Inter/Syne.
+* *Onboarding Tip:* Add `<link>` tags for `Inter` and `Syne` in `index.html` or change `index.css` to use `Poppins`.
+
+---
+
 ## 🐛 Development Notes
 
 ### Known Implementation Details

@@ -1,17 +1,16 @@
-import { Zap, Mail, Phone, MapPin, ArrowRight, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const services = ['UI/UX Design', 'Web Development', 'E-Commerce', 'SEO Optimization', 'Social Media', 'Video Editing'];
-const quickLinks = ['Home', 'About', 'Services', 'Projects', 'Contact'];
-const pageMap = {
-  Home: 'home', About: 'about', Services: 'services', Projects: 'projects', Contact: 'contact',
-};
+const services = ['Video Editing', 'Photo Editing', 'Photo Shoot', 'Video Shoot', 'Social Media', 'UI/UX Design'];
+const quickLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Contact', path: '/contact' },
+];
 
-export default function Footer({ onNavigate }) {
-  const handleNav = (page) => {
-    onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
+export default function Footer() {
   return (
     <footer className="relative bg-stone-950 dark:bg-[#060609] text-stone-300 overflow-hidden">
       {/* Decorative top border */}
@@ -27,13 +26,13 @@ export default function Footer({ onNavigate }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <button onClick={() => handleNav('home')} className="flex items-center gap-3 mb-5 group">
+            <Link to="/" className="inline-block mb-5 group">
               <img
                 src="/Zone digi tecch logo white.png"
                 alt="Zone Digi Tech logo"
                 className="h-16 md:h-20 w-auto object-contain"
               />
-            </button>
+            </Link>
             <p className="text-stone-400 text-sm leading-relaxed mb-6">
               A premium creative digital agency helping Indian startups and businesses build powerful digital presences.
             </p>
@@ -61,13 +60,13 @@ export default function Footer({ onNavigate }) {
             <ul className="space-y-2.5">
               {services.map((s) => (
                 <li key={s}>
-                  <button
-                    onClick={() => handleNav('services')}
+                  <Link
+                    to="/services"
                     className="text-stone-400 hover:text-saffron-400 text-sm transition-colors duration-200 flex items-center gap-1.5 group"
                   >
                     <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
                     {s}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -78,14 +77,14 @@ export default function Footer({ onNavigate }) {
             <h4 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Quick Links</h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
-                <li key={link}>
-                  <button
-                    onClick={() => handleNav(pageMap[link])}
+                <li key={link.label}>
+                  <Link
+                    to={link.path}
                     className="text-stone-400 hover:text-saffron-400 text-sm transition-colors duration-200 flex items-center gap-1.5 group"
                   >
                     <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0 duration-200" />
-                    {link}
-                  </button>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -118,19 +117,19 @@ export default function Footer({ onNavigate }) {
               </li>
             </ul>
 
-            <button
-              onClick={() => handleNav('contact')}
-              className="mt-5 w-full btn-primary justify-center text-sm py-2.5"
+            <Link
+              to="/contact"
+              className="mt-5 w-full btn-primary justify-center text-sm py-2.5 inline-flex items-center"
             >
               <span>Start a Project</span>
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-stone-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-stone-500 text-sm">
-            &copy; {new Date().getFullYear()} KiranDigital Creative Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} Zone Digi Tech. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-stone-500 text-sm">
             <button className="hover:text-stone-300 transition-colors">Privacy Policy</button>
