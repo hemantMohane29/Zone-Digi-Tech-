@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Zap, Palette, Globe, ShoppingCart, Share2, Search, Video, Camera, Image as ImageIcon, Monitor, CheckCircle, Clock, TrendingUp, HeartHandshake, DollarSign, Layers, ChevronDown as ChevronDownIcon, MessageCircle, Play, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
+import { useNavigate } from 'react-router-dom';
 
 const stats = [
   { value: '5+', label: 'Projects Delivered', icon: Briefcase },
   { value: '4', label: 'Happy Clients', icon: Users },
-  { value: '4.3+ ★', label: 'Average Rating', icon: Star },
+  { value: '4.3+ ', label: 'Average Rating', icon: Star },
   { value: '1.5 Yrs', label: 'Experience', icon: Award },
 ];
 
 const whyUs = [
-  { icon: Zap, title: 'Fast Delivery', desc: 'We deliver projects on time, every time. Your deadline is our commitment.' },
+  { icon: Share2, title: 'Social Media', desc: 'Grow your brand presence across all social platforms with targeted campaigns.' },
+  { icon: Video, title: 'Photo & Video Editing', desc: 'Professional edits that make your visual content look premium and polished.' },
   { icon: Palette, title: 'Modern UI/UX', desc: 'Pixel-perfect designs inspired by global trends and Indian aesthetics.' },
+  { icon: Globe, title: 'Static & dynamic Websites', desc: 'Lightning-fast, search-optimized websites built for security and scale.' },
   { icon: Search, title: 'SEO Friendly', desc: 'Every website we build is optimized for search engines from the ground up.' },
   { icon: HeartHandshake, title: 'Dedicated Support', desc: '24/7 support team ready to help you with any issues or questions.' },
   { icon: Sparkles, title: 'Creative Team', desc: 'A passionate team of designers, developers, and strategists.' },
@@ -21,16 +24,16 @@ const whyUs = [
 ];
 
 const services = [
+  { icon: Video, title: 'Video Editing', desc: 'Professional video editing for ads, reels, YouTube, and brand films.', color: '#06b6d4' },
+  { icon: ImageIcon, title: 'Photo Editing', desc: 'Stunning photo retouching, compositing, and brand-ready visuals.', color: '#ec4899' },
+  { icon: Camera, title: 'Photo Shoot', desc: 'Professional photography for products, teams, events, and campaigns.', color: '#f97316' },
+  { icon: Camera, title: 'Video Shoot', desc: 'On-location video production for products, brands, and testimonials.', color: '#84cc16' },
+  { icon: Share2, title: 'Social Media', desc: 'End-to-end social media management, content, and growth strategies.', color: '#8b5cf6' },
   { icon: Palette, title: 'UI/UX Design', desc: 'Intuitive, beautiful interfaces that delight users and drive conversions.', color: '#e07b00' },
   { icon: Monitor, title: 'Static Websites', desc: 'Fast, secure, and beautifully designed static sites for any business.', color: '#0ea5e9' },
   { icon: Globe, title: 'Dynamic Websites', desc: 'Feature-rich dynamic web apps with CMS, dashboards, and more.', color: '#10b981' },
-  { icon: ShoppingCart, title: 'E-Commerce', desc: 'Complete online stores with payment gateway, inventory, and analytics.', color: '#f59e0b' },
-  { icon: Share2, title: 'Social Media', desc: 'End-to-end social media management, content, and growth strategies.', color: '#8b5cf6' },
   { icon: Search, title: 'SEO Optimization', desc: 'Data-driven SEO to rank higher and drive organic traffic consistently.', color: '#ef4444' },
-  { icon: Video, title: 'Video Editing', desc: 'Professional video editing for ads, reels, YouTube, and brand films.', color: '#06b6d4' },
-  { icon: ImageIcon, title: 'Photo Editing', desc: 'Stunning photo retouching, compositing, and brand-ready visuals.', color: '#ec4899' },
-  { icon: Camera, title: 'Video Shoot', desc: 'On-location video production for products, brands, and testimonials.', color: '#84cc16' },
-  { icon: Camera, title: 'Photo Shoot', desc: 'Professional photography for products, teams, events, and campaigns.', color: '#f97316' },
+  { icon: TrendingUp, title: 'Business Growth Consulting', desc: 'Custom frameworks and strategic consulting to scale your business revenue.', color: '#f59e0b' },
 ];
 
 const projects = [
@@ -74,11 +77,12 @@ const faqs = [
 ];
 
 const marqueeItems = [
-  'UI/UX Design', 'Web Development', 'E-Commerce', 'SEO', 'Social Media', 'Branding', 'Video Production', 'Photography', 'Digital Marketing', 'App Development',
+  'Video Production', 'Photography', 'Web Development', 'UI/UX Design', 'Graphic Designing', 'Social Media Management', 'Search Engine Optimization (SEO)', 'Digital Marketing', 'Branding', 'E-Commerce Development', 'Business Growth Consulting', 'Website Maintenance & Support', 'Technical Support  ',
 ];
 
-export default function Home({ onNavigate }) {
+export default function Home() {
   useScrollAnimation();
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
@@ -96,8 +100,7 @@ export default function Home({ onNavigate }) {
   }, []);
 
   const handleNav = (page) => {
-    onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(page === 'home' ? '/' : `/${page}`);
   };
 
   return (
@@ -332,19 +335,18 @@ export default function Home({ onNavigate }) {
               We don't just build websites. We craft digital experiences that convert visitors into customers and customers into brand advocates.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {whyUs.map((item, i) => (
               <div
                 key={i}
-                className="animate-on-scroll group p-6 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                style={{ transitionDelay: `${i * 50}ms` }}
+                className="animate-on-scroll group p-6 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg h-full flex flex-col min-h-[170px]"
               >
-                <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 flex-shrink-0"
                   style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.12), rgba(249,184,74,0.08))' }}>
                   <item.icon size={20} className="text-saffron-600 dark:text-saffron-400 transition-colors" />
                 </div>
                 <h3 className="font-display font-bold text-stone-900 dark:text-white mb-2 text-sm">{item.title}</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">{item.desc}</p>
+                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed min-h-[2.5rem]">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -368,16 +370,15 @@ export default function Home({ onNavigate }) {
             {services.map((service, i) => (
               <div
                 key={i}
-                className="animate-on-scroll group p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-                style={{ transitionDelay: `${i * 40}ms` }}
+                className="animate-on-scroll group p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col min-h-[220px]"
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110"
                   style={{ background: `${service.color}18` }}>
                   <service.icon size={18} style={{ color: service.color }} />
                 </div>
                 <h3 className="font-display font-bold text-stone-900 dark:text-white text-sm mb-1.5">{service.title}</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3">{service.desc}</p>
-                <button onClick={() => handleNav('services')} className="text-xs font-semibold flex items-center gap-1 transition-colors duration-200 group-hover:gap-2"
+                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3 min-h-[3rem]">{service.desc}</p>
+                <button onClick={() => handleNav('services')} className="mt-auto text-xs font-semibold flex items-center gap-1 transition-colors duration-200 group-hover:gap-2 self-start"
                   style={{ color: service.color }}>
                   Learn More <ArrowRight size={11} />
                 </button>
@@ -412,7 +413,6 @@ export default function Home({ onNavigate }) {
               <div
                 key={i}
                 className="animate-on-scroll group rounded-2xl overflow-hidden bg-stone-50 dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -504,7 +504,7 @@ export default function Home({ onNavigate }) {
                 <span className="flex items-center gap-2">Get Free Consultation <ArrowRight size={16} /></span>
               </button>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/917974942457"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-white hover:text-emerald-600 transition-all duration-300"

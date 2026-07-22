@@ -1,8 +1,64 @@
 import { useEffect } from 'react';
-import { Palette, Monitor, Globe, ShoppingCart, Share2, Search, Video, Image as ImageIcon, Camera, ArrowRight, CheckCircle, MessageCircle } from 'lucide-react';
+import { Palette, Monitor, Globe, Share2, Search, Video, Image as ImageIcon, Camera, ArrowRight, CheckCircle, MessageCircle, TrendingUp } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
+import { useNavigate } from 'react-router-dom';
 
 const services = [
+  {
+    icon: Video,
+    title: 'Video Editing',
+    color: '#06b6d4',
+    tagline: 'Stories that move people',
+    desc: 'Professional video editing for ads, YouTube, reels, brand films, and corporate videos. We transform raw footage into compelling visual stories.',
+    features: ['Color Grading', 'Motion Graphics', 'Sound Design', 'Subtitles & Captions', 'Thumbnail Design', 'YouTube SEO'],
+    deliverables: 'Master file + social cuts',
+    timeline: '3–7 days per video',
+    price: 'From ₹3,999/video',
+  },
+  {
+    icon: ImageIcon,
+    title: 'Photo Editing',
+    color: '#ec4899',
+    tagline: 'Visuals that tell your story',
+    desc: 'Professional photo retouching, background removal, composite creation, and brand-ready image processing for all your marketing needs.',
+    features: ['Color Correction', 'Background Removal', 'Product Photography Edit', 'Composite Designs', 'Batch Processing', 'Social Media Sized Exports'],
+    deliverables: 'High-res edited files, web-optimized versions',
+    timeline: '1–3 days per batch',
+    price: 'From ₹999/batch',
+  },
+  {
+    icon: Camera,
+    title: 'Photo Shoot',
+    color: '#f97316',
+    tagline: 'Images that speak volumes',
+    desc: 'Professional photography for products, corporate headshots, events, and brand campaigns. Capturing your brand\'s essence in every frame.',
+    features: ['Product Photography', 'Corporate Headshots', 'Event Coverage', 'Brand Lifestyle Shoots', 'Studio & Location', 'Same-day Previews'],
+    deliverables: 'Edited high-res photos, web versions',
+    timeline: '1–3 day shoot + 1 week editing',
+    price: 'From ₹15,000',
+  },
+  {
+    icon: Camera,
+    title: 'Video Shoot',
+    color: '#84cc16',
+    tagline: 'Cinematic quality, real-world results',
+    desc: 'On-location video shoots for product demos, brand documentaries, testimonials, and corporate films. Full production from pre to post.',
+    features: ['Concept & Scripting', 'Location Scouting', 'Professional Equipment', 'Direction', 'Voiceover', 'Full Post Production'],
+    deliverables: 'Edited video, social cuts, raw footage',
+    timeline: '1–3 week project',
+    price: 'From ₹25,000',
+  },
+  {
+    icon: Share2,
+    title: 'Social Media',
+    color: '#8b5cf6',
+    tagline: 'Your brand, amplified',
+    desc: 'End-to-end social media management including strategy, content creation, scheduling, community management, and monthly performance reports.',
+    features: ['Content Strategy', 'Post Design & Copy', 'Scheduling & Publishing', 'Community Management', 'Analytics Reporting', 'Influencer Outreach'],
+    deliverables: 'Monthly content calendar, reports',
+    timeline: 'Monthly retainer',
+    price: 'From ₹7,999/mo',
+  },
   {
     icon: Palette,
     title: 'UI/UX Design',
@@ -37,28 +93,6 @@ const services = [
     price: 'From ₹24,999',
   },
   {
-    icon: ShoppingCart,
-    title: 'E-Commerce Websites',
-    color: '#f59e0b',
-    tagline: 'Sell more, grow faster',
-    desc: 'Complete online stores with product management, payment gateways, inventory tracking, and analytics. Turn your products into a revenue machine.',
-    features: ['Product Catalog', 'Cart & Checkout', 'Payment Gateway', 'Inventory Management', 'Order Tracking', 'Customer Accounts'],
-    deliverables: 'Fully functional store, training, support',
-    timeline: '4–8 weeks',
-    price: 'From ₹49,999',
-  },
-  {
-    icon: Share2,
-    title: 'Social Media Handling',
-    color: '#8b5cf6',
-    tagline: 'Your brand, amplified',
-    desc: 'End-to-end social media management including strategy, content creation, scheduling, community management, and monthly performance reports.',
-    features: ['Content Strategy', 'Post Design & Copy', 'Scheduling & Publishing', 'Community Management', 'Analytics Reporting', 'Influencer Outreach'],
-    deliverables: 'Monthly content calendar, reports',
-    timeline: 'Monthly retainer',
-    price: 'From ₹7,999/mo',
-  },
-  {
     icon: Search,
     title: 'SEO Optimization',
     color: '#ef4444',
@@ -70,48 +104,15 @@ const services = [
     price: 'From ₹9,999/mo',
   },
   {
-    icon: Video,
-    title: 'Video Editing',
-    color: '#06b6d4',
-    tagline: 'Stories that move people',
-    desc: 'Professional video editing for ads, YouTube, reels, brand films, and corporate videos. We transform raw footage into compelling visual stories.',
-    features: ['Color Grading', 'Motion Graphics', 'Sound Design', 'Subtitles & Captions', 'Thumbnail Design', 'YouTube SEO'],
-    deliverables: 'Master file + social cuts',
-    timeline: '3–7 days per video',
-    price: 'From ₹3,999/video',
-  },
-  {
-    icon: ImageIcon,
-    title: 'Photo Editing',
-    color: '#ec4899',
-    tagline: 'Visuals that tell your story',
-    desc: 'Professional photo retouching, background removal, composite creation, and brand-ready image processing for all your marketing needs.',
-    features: ['Color Correction', 'Background Removal', 'Product Photography Edit', 'Composite Designs', 'Batch Processing', 'Social Media Sized Exports'],
-    deliverables: 'High-res edited files, web-optimized versions',
-    timeline: '1–3 days per batch',
-    price: 'From ₹999/batch',
-  },
-  {
-    icon: Camera,
-    title: 'Video Production',
-    color: '#84cc16',
-    tagline: 'Cinematic quality, real-world results',
-    desc: 'On-location video shoots for product demos, brand documentaries, testimonials, and corporate films. Full production from pre to post.',
-    features: ['Concept & Scripting', 'Location Scouting', 'Professional Equipment', 'Direction', 'Voiceover', 'Full Post Production'],
-    deliverables: 'Edited video, social cuts, raw footage',
-    timeline: '1–3 week project',
-    price: 'From ₹25,000',
-  },
-  {
-    icon: Camera,
-    title: 'Photography',
-    color: '#f97316',
-    tagline: 'Images that speak volumes',
-    desc: 'Professional photography for products, corporate headshots, events, and brand campaigns. Capturing your brand\'s essence in every frame.',
-    features: ['Product Photography', 'Corporate Headshots', 'Event Coverage', 'Brand Lifestyle Shoots', 'Studio & Location', 'Same-day Previews'],
-    deliverables: 'Edited high-res photos, web versions',
-    timeline: '1–3 day shoot + 1 week editing',
-    price: 'From ₹15,000',
+    icon: TrendingUp,
+    title: 'Business Growth Consulting',
+    color: '#f59e0b',
+    tagline: 'Strategies to scale your business',
+    desc: 'We help startups and businesses design growth frameworks, optimize conversions, and leverage digital tools to scale revenue and market share.',
+    features: ['Growth Audits & Strategy', 'Digital Transformation', 'Conversion Rate Optimization (CRO)', 'Funnel Building & Optimization', 'Competitive Analysis', 'Scaling Consultation'],
+    deliverables: 'Strategy roadmap, performance dashboards, audit reports',
+    timeline: '2–4 weeks',
+    price: 'From ₹19,999',
   },
 ];
 
@@ -123,13 +124,13 @@ const process = [
   { step: '05', title: 'Launch & Support', desc: 'We launch your project and provide post-launch support and training.' },
 ];
 
-export default function Services({ onNavigate }) {
+export default function Services() {
   useScrollAnimation();
+  const navigate = useNavigate();
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const handleNav = (page) => {
-    onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(page === 'home' ? '/' : `/${page}`);
   };
 
   return (
@@ -161,7 +162,6 @@ export default function Services({ onNavigate }) {
               <div
                 key={i}
                 className="animate-on-scroll group bg-white dark:bg-stone-900/60 rounded-3xl border border-stone-100 dark:border-stone-800 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                style={{ transitionDelay: `${i * 40}ms` }}
               >
                 <div className="flex gap-5">
                   <div
@@ -227,7 +227,6 @@ export default function Services({ onNavigate }) {
               <div
                 key={i}
                 className="animate-on-scroll text-center group"
-                style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="relative w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-saffron-300 dark:border-saffron-700 group-hover:border-saffron-500 transition-colors"
                   style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.08), rgba(249,184,74,0.05))' }}>
@@ -259,7 +258,7 @@ export default function Services({ onNavigate }) {
               <span className="flex items-center gap-2">Book Free Consultation <ArrowRight size={16} /></span>
             </button>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/917974942457"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-white hover:text-emerald-600 transition-all duration-300"
