@@ -8,6 +8,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
+import Policies from './pages/Policies';
 import Preloader from './components/Preloader';
 import PageSkeleton from './components/PageSkeleton';
 
@@ -20,6 +21,9 @@ function AppLayout({ loading, setLoading }) {
   const getPageKey = (pathname) => {
     if (pathname === '/' || pathname === '/home') return 'home';
     const key = pathname.replace(/^\//, '');
+    if (['policies', 'privacy-policy', 'terms-and-conditions', 'refund-policy', 'service-delivery-policy'].includes(key)) {
+      return key;
+    }
     return ['about', 'services', 'projects', 'contact'].includes(key) ? key : 'home';
   };
 
@@ -33,6 +37,11 @@ function AppLayout({ loading, setLoading }) {
       services: { title: 'Services — Zone Digi Tech', desc: 'Explore our comprehensive digital services including UI/UX Design, Web Development, SEO, and Social Media.' },
       projects: { title: 'Projects — Zone Digi Tech', desc: 'View our portfolio of featured projects across web design, e-commerce, branding, and digital marketing.' },
       contact: { title: 'Contact Us — Zone Digi Tech', desc: 'Get in touch with Zone Digi Tech to discuss your next big digital project. We would love to hear from you.' },
+      policies: { title: 'Policies & Terms — Zone Digi Tech', desc: 'Review official policies, privacy guidelines, refund rules, and terms of service of Zone Digi Tech.' },
+      'privacy-policy': { title: 'Privacy Policy — Zone Digi Tech', desc: 'Learn how Zone Digi Tech collects, uses, and safeguards client and visitor personal data.' },
+      'terms-and-conditions': { title: 'Terms & Conditions — Zone Digi Tech', desc: 'Official terms, project scope, client responsibilities, and licensing agreements at Zone Digi Tech.' },
+      'refund-policy': { title: 'Cancellation & Refund Policy — Zone Digi Tech', desc: 'Cancellation criteria, refund terms, and support guidelines for Zone Digi Tech services.' },
+      'service-delivery-policy': { title: 'Service Delivery Policy — Zone Digi Tech', desc: 'Delivery procedures for on-location services, digital deliverables, and timelines at Zone Digi Tech.' },
     };
 
     const currentPageData = pageData[currentPage] || pageData.home;
@@ -99,6 +108,11 @@ export default function App() {
             <Route path="services" element={<Services />} />
             <Route path="projects" element={<Projects />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="policies" element={<Policies />} />
+            <Route path="privacy-policy" element={<Policies />} />
+            <Route path="terms-and-conditions" element={<Policies />} />
+            <Route path="refund-policy" element={<Policies />} />
+            <Route path="service-delivery-policy" element={<Policies />} />
             {/* Fallback to Home page if route is unmatched */}
             <Route path="*" element={<Home />} />
           </Route>

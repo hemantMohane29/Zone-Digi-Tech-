@@ -248,15 +248,22 @@ export default function Contact() {
                 href="https://wa.me/917974942457?text=Hi%20Zone%20Digi%20Tech!%20I%27d%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group animate-on-scroll flex items-center gap-3 p-4 rounded-2xl text-white font-semibold hover:bg-white hover:text-emerald-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, #128C7E, #25D366)' }}
+                className="group animate-on-scroll flex items-center gap-3.5 p-4 rounded-2xl text-white font-semibold bg-gradient-to-r from-[#075E54] via-[#128C7E] to-[#25D366] hover:from-[#096b60] hover:to-[#22c55e] shadow-lg shadow-emerald-600/20 hover:shadow-emerald-500/35 hover:-translate-y-1 transition-all duration-300 border border-emerald-400/20"
               >
-                <MessageCircle size={22} className="transition-colors duration-300 group-hover:text-emerald-600" />
-                <div>
-                  <p className="font-bold text-sm">Chat on WhatsApp</p>
-                  <p className="text-white/70 text-xs">We're online now</p>
+                <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <MessageCircle size={22} className="text-white" />
                 </div>
-                <div className="ml-auto w-2 h-2 rounded-full bg-green-200 animate-pulse" />
+                <div className="flex flex-col">
+                  <span className="font-bold text-sm text-white tracking-wide">Chat on WhatsApp</span>
+                  <span className="text-emerald-100 text-xs font-medium">We're online now</span>
+                </div>
+                <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/20 border border-white/20">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                  </span>
+                  <span className="text-[10px] font-semibold text-emerald-100 uppercase tracking-wider">Online</span>
+                </div>
               </a>
 >>>>>>> 7d8151f5d69b91a992be6483b55cbcca44cfef6b
             </div>

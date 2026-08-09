@@ -8,6 +8,14 @@ const quickLinks = [
   { label: 'Services', path: '/services' },
   { label: 'Projects', path: '/projects' },
   { label: 'Contact', path: '/contact' },
+  { label: 'Policies & Terms', path: '/policies' },
+];
+
+const legalLinks = [
+  { label: 'Privacy Policy', path: '/privacy-policy' },
+  { label: 'Terms & Conditions', path: '/terms-and-conditions' },
+  { label: 'Refund Policy', path: '/refund-policy' },
+  { label: 'Delivery Policy', path: '/service-delivery-policy' },
 ];
 
 export default function Footer() {
@@ -72,9 +80,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links & Policies */}
           <div>
-            <h4 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Quick Links</h4>
+            <h4 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Navigation & Legal</h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -127,14 +135,19 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-6 border-t border-stone-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-stone-500 text-sm">
+        <div className="mt-12 pt-6 border-t border-stone-800/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-stone-500 text-xs sm:text-sm text-center sm:text-left">
             &copy; {new Date().getFullYear()} Zone Digi Tech. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-stone-500 text-sm">
-            <button className="hover:text-stone-300 transition-colors">Privacy Policy</button>
-            <span className="w-1 h-1 rounded-full bg-stone-600" />
-            <button className="hover:text-stone-300 transition-colors">Terms of Service</button>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-stone-500 text-xs sm:text-sm">
+            {legalLinks.map((item, idx) => (
+              <div key={item.label} className="flex items-center gap-3 sm:gap-4">
+                <Link to={item.path} className="hover:text-saffron-400 transition-colors">
+                  {item.label}
+                </Link>
+                {idx < legalLinks.length - 1 && <span className="w-1 h-1 rounded-full bg-stone-600" />}
+              </div>
+            ))}
           </div>
         </div>
       </div>

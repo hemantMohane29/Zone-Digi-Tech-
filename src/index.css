@@ -98,7 +98,7 @@
   }
 
   .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-300;
+    @apply relative overflow-hidden inline-flex items-center justify-center whitespace-nowrap gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-300;
     background: linear-gradient(135deg, #e07b00, #f9b84a);
   }
 

@@ -129,20 +129,30 @@ export default function Projects() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-40 dark:opacity-10 pointer-events-none" />
         <div className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-2xl">
-            <div className="tag mb-5">Our Portfolio</div>
-            <h1 className="section-title text-stone-900 dark:text-white mb-5">
-              Work That<br />
-              <span className="gradient-text">Speaks for Itself</span>
-            </h1>
-            <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
-              Explore real projects, real clients, and real results. Every case study here represents a challenge we solved with creativity, strategy, and craft.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <div className="tag mb-5">Our Portfolio</div>
+              <h1 className="section-title text-stone-900 dark:text-white mb-5">
+                Work That<br />
+                <span className="gradient-text">Speaks for Itself</span>
+              </h1>
+              <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
+                Explore real projects, real clients, and real results. Every case study here represents a challenge we solved with creativity, strategy, and craft.
+              </p>
+            </div>
+
+            <div>
+              <img
+                src="/Project_Selection.png"
+                alt="Our Projects Showcase"
+                className="w-full h-auto max-h-[420px] object-contain rounded-2xl mx-auto mix-blend-multiply dark:mix-blend-normal"
+              />
+            </div>
           </div>
         </div>
       </section>
