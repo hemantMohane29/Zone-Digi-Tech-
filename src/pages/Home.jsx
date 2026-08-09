@@ -68,12 +68,136 @@ const projects = [
 ];
 
 const faqs = [
-  { q: 'What is the cost of a website?', a: 'Our website packages start from ₹8,999 for a basic static site, ₹24,999 for dynamic websites, and ₹49,999+ for full e-commerce solutions. All packages are customizable based on your requirements.' },
-  { q: 'How long does it take to build a website?', a: 'A static website is delivered in 5–7 working days. Dynamic websites take 2–4 weeks, and full e-commerce projects take 4–8 weeks. Complex projects have custom timelines.' },
-  { q: 'How many revisions do I get?', a: 'We offer unlimited minor revisions during the project. After delivery, you get 2 free rounds of major revisions within 30 days. We want you to be 100% satisfied.' },
-  { q: 'Do you offer SEO services?', a: 'Yes! We offer on-page SEO, technical SEO, keyword research, and monthly SEO management packages. SEO is also built into every website we develop.' },
-  { q: 'Do you provide website hosting and maintenance?', a: 'Yes, we offer managed hosting plans starting at ₹1,499/month and maintenance packages that include updates, backups, uptime monitoring, and security patches.' },
-  { q: 'What payment methods do you accept?', a: 'We accept UPI, bank transfer, credit/debit cards, and international payments via PayPal or Wise. We typically work on a 50% advance, 50% on delivery basis.' },
+  {
+    category: 'Video & Photo',
+    q: 'What types of videos do you edit?',
+    a: 'We edit ads, reels, YouTube videos, brand films, testimonials, and promotional content — including cuts, color grading, transitions, and sound design.',
+  },
+  {
+    category: 'Video & Photo',
+    q: 'Can you edit raw footage I already shot myself?',
+    a: "Yes, send us your raw footage and we'll handle editing, color correction, and sound to turn it into a polished final video.",
+  },
+  {
+    category: 'Video & Photo',
+    q: 'Do you retouch product photos for e-commerce?',
+    a: 'Yes, we specialize in product retouching, background cleanup, and compositing to make your listings look professional and consistent.',
+  },
+  {
+    category: 'Video & Photo',
+    q: 'Can you fix lighting or color issues in existing photos?',
+    a: 'Absolutely, we can correct exposure, color balance, and other imperfections to make your existing photos brand-ready.',
+  },
+  {
+    category: 'Shoots',
+    q: 'Do you shoot on location or only in-studio?',
+    a: 'We offer both. We can shoot at your business location, an event, or in a studio setting depending on what suits your project.',
+  },
+  {
+    category: 'Shoots',
+    q: "What's included in a product photo shoot?",
+    a: 'A typical shoot includes styling, lighting setup, multiple angles/variations per product, and post-shoot editing of the final selects.',
+  },
+  {
+    category: 'Shoots',
+    q: 'Do you provide video shoots for customer testimonials?',
+    a: 'Yes, we handle on-location testimonial shoots, including setup, direction, and filming to capture authentic customer stories.',
+  },
+  {
+    category: 'Shoots',
+    q: 'Can you shoot promotional videos for a product launch?',
+    a: 'Yes, we produce on-location video content for product launches, brand campaigns, and marketing materials.',
+  },
+  {
+    category: 'Social Media',
+    q: 'Do you create the content or just post it?',
+    a: 'We do both full content creation plus scheduling, posting, and ongoing growth strategy for your social channels.',
+  },
+  {
+    category: 'Social Media',
+    q: 'Which social media platforms do you manage?',
+    a: 'We manage major platforms like Instagram, Facebook, LinkedIn, and others based on where your audience is most active.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'Do you design mobile apps as well as websites?',
+    a: 'Yes, our UI/UX design covers both web and mobile interfaces, focused on usability and conversion-driven design.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'Will I get wireframes and prototypes before the final design?',
+    a: 'Yes, we typically start with wireframes and clickable prototypes so you can review the flow before final visual design begins.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: "What's the difference between a static and dynamic website?",
+    a: 'A static website has fixed content and pages, ideal for portfolios or simple business sites, while a dynamic website has interactive, database-driven features like dashboards or user accounts.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'Is a static website good enough for a small business?',
+    a: 'For most small businesses showcasing services or information, yes — static sites are fast, secure, and cost-effective.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'Can you build a website with a CMS so I can update content myself?',
+    a: 'Yes, we build dynamic websites with CMS integration so you can easily manage and update your own content.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'Do you build custom dashboards or admin panels?',
+    a: 'Yes, we develop custom dashboards and admin panels as part of our dynamic website solutions.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'What is the cost of a website?',
+    a: 'Our website packages start from ₹8,999 for a basic static site, ₹24,999 for dynamic websites, and ₹49,999+ for full e-commerce solutions. All packages are customizable based on your requirements.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'How long does it take to build a website?',
+    a: 'A static website is delivered in 5–7 working days. Dynamic websites take 2–4 weeks, and full e-commerce projects take 4–8 weeks. Complex projects have custom timelines.',
+  },
+  {
+    category: 'Web & UI/UX',
+    q: 'Do you provide website hosting and maintenance?',
+    a: 'Yes, we offer managed hosting plans starting at ₹1,499/month and maintenance packages that include updates, backups, uptime monitoring, and security patches.',
+  },
+  {
+    category: 'SEO & Growth',
+    q: 'How long does it take to see SEO results?',
+    a: 'SEO is a gradual process most clients start seeing measurable improvements in rankings and traffic within 3–6 months, depending on competition.',
+  },
+  {
+    category: 'SEO & Growth',
+    q: 'Do you offer one-time SEO or ongoing optimization?',
+    a: 'We offer both — a one-time SEO audit and setup, or ongoing monthly optimization for consistent, long-term growth.',
+  },
+  {
+    category: 'SEO & Growth',
+    q: 'Do you offer SEO services?',
+    a: 'Yes! We offer on-page SEO, technical SEO, keyword research, and monthly SEO management packages. SEO is also built into every website we develop.',
+  },
+  {
+    category: 'SEO & Growth',
+    q: 'What does business growth consulting actually involve?',
+    a: 'We analyze your current business model and create custom strategic frameworks covering marketing, operations, or revenue tailored to your growth goals.',
+  },
+  {
+    category: 'SEO & Growth',
+    q: 'Is this consulting only for online businesses?',
+    a: 'No, our consulting applies to both online and offline businesses looking to scale revenue and improve operations.',
+  },
+  {
+    category: 'General',
+    q: 'What payment methods do you accept?',
+    a: 'We accept UPI, bank transfer, credit/debit cards, and international payments via PayPal or Wise. We typically work on a 50% advance, 50% on delivery basis.',
+  },
+  {
+    category: 'General',
+    q: 'How many revisions do I get?',
+    a: 'We offer unlimited minor revisions during the project. After delivery, you get 2 free rounds of major revisions within 30 days. We want you to be 100% satisfied.',
+  },
 ];
 
 const marqueeItems = [
@@ -84,6 +208,8 @@ export default function Home() {
   useScrollAnimation();
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(null);
+  const [activeFaqCategory, setActiveFaqCategory] = useState('General');
+  const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
 
@@ -164,9 +290,9 @@ export default function Home() {
               {/* Main card */}
               <div className="absolute inset-8 rounded-3xl glass dark:glass-dark shadow-2xl overflow-hidden border border-white/20 dark:border-white/5">
                 <img
-                  src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Team working"
-                  className="w-full h-full object-cover opacity-80"
+                  src="/Hero_selection.PNG"
+                  alt="Zone Digi Tech Team"
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -227,10 +353,15 @@ export default function Home() {
         </div>
 
         {/* Scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-400">
-          <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
+        <button
+          type="button"
+          onClick={() => window.scrollBy({ top: 500, behavior: 'smooth' })}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors cursor-pointer focus:outline-none z-20 group"
+          aria-label="Scroll down"
+        >
+          <span className="text-xs font-medium tracking-widest uppercase group-hover:translate-y-0.5 transition-transform">Scroll</span>
           <ChevronDown size={16} className="animate-bounce" />
-        </div>
+        </button>
       </section>
 
       {/* ── MARQUEE ── */}
@@ -269,12 +400,13 @@ export default function Home() {
           <div className="animate-on-scroll-left relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/Home02.avif"
                 alt="Our team"
                 className="w-full aspect-[4/3] object-cover"
               />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.15), transparent)' }} />
             </div>
+
             {/* Floating badge */}
             <div className="absolute -bottom-4 -right-4 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-xl border border-stone-100 dark:border-stone-800">
               <div className="flex items-center gap-3">
@@ -447,38 +579,119 @@ export default function Home() {
 
       {/* ── FAQ ── */}
       <section className="py-24 bg-stone-50 dark:bg-[#0a0a0f]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
             <div className="tag mx-auto mb-5">FAQ</div>
             <h2 className="section-title text-stone-900 dark:text-white mb-4">
-              Common Questions<br />
-              <span className="gradient-text">Answered</span>
+              Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
             <p className="section-subtitle">
-              Everything you need to know before starting your project with us.
+              Everything you need to know about our services, process, shoots, and pricing.
             </p>
           </div>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <div
-                key={i}
-                className="animate-on-scroll rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 overflow-hidden"
-              >
+
+          {/* Search & Category Filter Controls */}
+          <div className="mb-8 space-y-4">
+            {/* Search Input */}
+            <div className="relative max-w-md mx-auto">
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
+              <input
+                type="text"
+                placeholder="Search FAQs..."
+                value={faqSearchQuery}
+                onChange={(e) => {
+                  setFaqSearchQuery(e.target.value);
+                  setOpenFaq(null);
+                }}
+                className="w-full pl-11 pr-4 py-3 rounded-full bg-white dark:bg-stone-900/80 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white text-sm placeholder-stone-400 focus:outline-none focus:border-saffron-500 transition-colors shadow-sm"
+              />
+              {faqSearchQuery && (
                 <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left"
+                  onClick={() => setFaqSearchQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
                 >
-                  <span className="font-semibold text-stone-900 dark:text-white text-sm pr-4">{faq.q}</span>
-                  <ChevronDownIcon
-                    size={18}
-                    className={`flex-shrink-0 text-saffron-600 dark:text-saffron-400 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
-                  />
+                  Clear
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-48' : 'max-h-0'}`}>
-                  <p className="px-5 pb-5 text-stone-500 dark:text-stone-400 text-sm leading-relaxed">{faq.a}</p>
+              )}
+            </div>
+
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {['All', 'Video & Photo', 'Shoots', 'Social Media', 'Web & UI/UX', 'SEO & Growth', 'General'].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveFaqCategory(cat);
+                    setOpenFaq(null);
+                  }}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${activeFaqCategory === cat
+                    ? 'bg-saffron-500 text-white shadow-md shadow-saffron-500/20'
+                    : 'bg-white dark:bg-stone-900/60 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700'
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* FAQs List */}
+          <div className="space-y-3">
+            {faqs
+              .filter((faq) => {
+                const matchesCategory = activeFaqCategory === 'All' || faq.category === activeFaqCategory;
+                const matchesSearch =
+                  faq.q.toLowerCase().includes(faqSearchQuery.toLowerCase()) ||
+                  faq.a.toLowerCase().includes(faqSearchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+              })
+              .map((faq, i) => (
+                <div
+                  key={i}
+                  className="animate-on-scroll rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 overflow-hidden hover:border-stone-300 dark:hover:border-stone-700 transition-all duration-200"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left gap-4"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 w-fit">
+                        {faq.category}
+                      </span>
+                      <span className="font-semibold text-stone-900 dark:text-white text-sm">{faq.q}</span>
+                    </div>
+                    <ChevronDownIcon
+                      size={18}
+                      className={`flex-shrink-0 text-saffron-600 dark:text-saffron-400 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''
+                        }`}
+                    />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-96' : 'max-h-0'}`}>
+                    <p className="px-5 pb-5 text-stone-500 dark:text-stone-400 text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/50 pt-3">{faq.a}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+
+            {faqs.filter((faq) => {
+              const matchesCategory = activeFaqCategory === 'All' || faq.category === activeFaqCategory;
+              const matchesSearch =
+                faq.q.toLowerCase().includes(faqSearchQuery.toLowerCase()) ||
+                faq.a.toLowerCase().includes(faqSearchQuery.toLowerCase());
+              return matchesCategory && matchesSearch;
+            }).length === 0 && (
+                <div className="text-center py-12 bg-white dark:bg-stone-900/40 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <p className="text-stone-500 dark:text-stone-400 text-sm mb-2">No questions found matching your search.</p>
+                  <button
+                    onClick={() => {
+                      setFaqSearchQuery('');
+                      setActiveFaqCategory('All');
+                    }}
+                    className="text-xs font-semibold text-saffron-500 hover:underline"
+                  >
+                    Clear filters & search
+                  </button>
+                </div>
+              )}
           </div>
         </div>
       </section>

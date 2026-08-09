@@ -38,13 +38,13 @@ export default function Navbar({ currentPage }) {
             : 'py-5 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           {/* Logo */}
           <Link
             to="/"
             className="flex items-center group shrink-0"
           >
-            <div className="flex h-12 w-[180px] items-center justify-center md:h-14 md:w-[220px] xl:h-16 xl:w-[260px]">
+            <div className="flex h-10 w-[130px] xs:w-[155px] sm:h-12 sm:w-[190px] md:h-14 md:w-[220px] xl:h-16 xl:w-[260px]">
               <img
                 src={logoSrc}
                 alt="Zone Digi Tech logo"
@@ -80,25 +80,25 @@ export default function Navbar({ currentPage }) {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200"
+              className="h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 shrink-0"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <Link
               to="/contact"
-              className="hidden md:flex btn-primary text-sm px-5 py-2.5"
+              className="btn-primary h-10 sm:h-11 md:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0 flex items-center justify-center"
             >
               <span>Get Started</span>
             </Link>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-9 h-9 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200"
+              className="md:hidden h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 shrink-0"
             >
-              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>

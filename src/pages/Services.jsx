@@ -136,20 +136,30 @@ export default function Services() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-8"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-2xl">
-            <div className="tag mb-5">Our Services</div>
-            <h1 className="section-title text-stone-900 dark:text-white mb-5">
-              Full-Service Digital<br />
-              <span className="gradient-text">Creative Agency</span>
-            </h1>
-            <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
-              From a single landing page to a full digital transformation — we offer everything your brand needs to dominate online. Explore our services and find the perfect fit.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <div className="tag mb-5">Our Services</div>
+              <h1 className="section-title text-stone-900 dark:text-white mb-5">
+                Full-Service Digital<br />
+                <span className="gradient-text">Creative Agency</span>
+              </h1>
+              <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed">
+                From a single landing page to a full digital transformation — we offer everything your brand needs to dominate online. Explore our services and find the perfect fit.
+              </p>
+            </div>
+
+            <div>
+              <img
+                src="/services_selection.png"
+                alt="Services Overview"
+                className="w-full h-auto max-h-[420px] object-contain rounded-2xl mx-auto mix-blend-multiply dark:mix-blend-normal"
+              />
+            </div>
           </div>
         </div>
       </section>

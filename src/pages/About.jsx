@@ -1,32 +1,54 @@
 import { useEffect } from 'react';
-import { ArrowRight, Target, Eye, Heart, Users, Award, Globe, Coffee, Sparkles } from 'lucide-react';
+import { ArrowRight, Target, Eye, Heart, Users, Award, Globe, Coffee, Sparkles, Linkedin, Mail } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
 
-const team = [
+const founder = {
+  name: 'Hemant Mohane',
+  role: 'Founder & CEO',
+  image: '/Hemant.png',
+  objectPos: 'center 15%',
+  desc: 'Visionary leader driving strategy, innovation, and creative direction at Zone Digi Tech.',
+  linkedin: 'https://linkedin.com/in/hemant-mohane',
+  email: 'mailto:hemant@zonedigitech.com',
+};
+
+const teamMembers = [
   {
-    name: 'Arjun Sharma',
-    role: 'Founder & Creative Director',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-    desc: '8+ years in digital design and brand strategy.',
-  },
-  {
-    name: 'Priya Nair',
-    role: 'Lead UI/UX Designer',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
-    desc: 'Crafting intuitive experiences for global brands.',
-  },
-  {
-    name: 'Rohan Mehta',
-    role: 'Full Stack Developer',
-    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400',
-    desc: 'Building robust, scalable web applications.',
-  },
-  {
-    name: 'Sneha Patel',
+    name: 'Rahul Pawole',
     role: 'Digital Marketing Lead',
-    image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400',
-    desc: 'SEO, content & growth strategist.',
+    image: '/Rahul.jpeg',
+    objectPos: 'center 15%',
+    desc: 'Growth strategist driving digital marketing, SEO, and performance campaigns.',
+    linkedin: 'https://linkedin.com/in/rahul-pawole',
+    email: 'mailto:rahul@zonedigitech.com',
+  },
+  {
+    name: 'Bhojraj Mahajan',
+    role: 'Full Stack Developer',
+    image: '/bunty.png',
+    objectPos: 'center 20%',
+    desc: 'Architecting robust, scalable web applications and high-performance digital solutions.',
+    linkedin: 'https://linkedin.com/in/bhojraj-mahajan',
+    email: 'mailto:bhojraj@zonedigitech.com',
+  },
+  {
+    name: 'Vikram Kumar',
+    role: 'Operation Lead',
+    image: '/vikram.PNG',
+    objectPos: 'center 15%',
+    desc: 'Streamlining operational execution, workflow management, and team productivity.',
+    linkedin: 'https://linkedin.com/in/vikram-kumar',
+    email: 'mailto:vikram@zonedigitech.com',
+  },
+  {
+    name: 'Avdhesh Pal',
+    role: 'Finance Manager',
+    image: '/Avdhesh.png',
+    objectPos: 'center 27%',
+    desc: 'Managing financial planning, budgeting, reporting, and operational fiscal health.',
+    linkedin: 'https://linkedin.com/in/avdhesh-pal',
+    email: 'mailto:avdhesh@zonedigitech.com',
   },
 ];
 
@@ -59,20 +81,30 @@ export default function About() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
         <div className="absolute top-10 right-0 w-96 h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="tag mb-5">Our Story</div>
-            <h1 className="section-title text-stone-900 dark:text-white mb-6">
-              Built With Passion,<br />
-              <span className="gradient-text">Driven by Purpose</span>
-            </h1>
-            <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
-              We are Zone Digi Tech — a creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <div className="tag mb-5">Our Story</div>
+              <h1 className="section-title text-stone-900 dark:text-white mb-6">
+                Built With Passion,<br />
+                <span className="gradient-text">Driven by Purpose</span>
+              </h1>
+              <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
+                We are Zone Digi Tech — a creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
+              </p>
+            </div>
+
+            <div>
+              <img
+                src="/About_selection.png"
+                alt="About Zone Digi Tech"
+                className="w-full h-auto max-h-[420px] object-contain rounded-2xl mx-auto mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 hover:scale-[1.02]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -81,11 +113,11 @@ export default function About() {
       <section className="py-16 bg-white dark:bg-stone-900/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-on-scroll-left relative">
-            <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+            <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] max-h-[420px] group border border-stone-200/50 dark:border-stone-800/50">
               <img
-                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Our office"
-                className="w-full h-full object-cover"
+                src="/About_selection02.png"
+                alt="Zone Digi Tech Team"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white dark:bg-stone-900 rounded-2xl p-5 shadow-xl border border-stone-100 dark:border-stone-800 hidden md:block">
@@ -193,27 +225,113 @@ export default function About() {
       {/* ── TEAM ── */}
       <section className="py-24 bg-stone-50 dark:bg-[#0a0a0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <div className="tag mx-auto mb-5">Our Team</div>
             <h2 className="section-title text-stone-900 dark:text-white mb-4">
               Meet the <span className="gradient-text">Minds Behind</span><br />Zone Digi Tech
             </h2>
+            <p className="text-stone-500 dark:text-stone-400 text-sm max-w-xl mx-auto">
+              The passionate leaders, developers, and strategists dedicated to transforming ideas into digital success.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
+
+          {/* Founder & CEO — Centered Middle Card */}
+          <div className="max-w-md mx-auto mb-16 animate-on-scroll">
+            <div className="group text-center p-8 rounded-3xl bg-white dark:bg-stone-900/80 border border-saffron-300/40 dark:border-saffron-700/40 shadow-2xl hover:shadow-saffron-500/10 transition-all duration-300 relative overflow-hidden flex flex-col items-center">
+              <div className="absolute top-0 right-0 px-4 py-1 bg-gradient-to-r from-saffron-500 to-amber-500 text-white text-[10px] font-bold uppercase tracking-wider rounded-bl-xl shadow-sm">
+                Founder & CEO
+              </div>
+
+              <div className="relative w-36 h-36 mx-auto mb-5 group/avatar cursor-pointer">
+                <div className="w-full h-full rounded-full overflow-hidden p-1.5 bg-gradient-to-tr from-saffron-500 via-amber-400 to-emerald-400 shadow-xl group-hover/avatar:scale-105 transition-all duration-500">
+                  <img
+                    src={founder.image}
+                    alt={founder.name}
+                    style={{ objectPosition: founder.objectPos || 'center 15%' }}
+                    className="w-full h-full object-cover rounded-full bg-stone-100 dark:bg-stone-800 group-hover/avatar:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
+              <h3 className="font-display font-bold text-xl text-stone-900 dark:text-white mb-1">
+                {founder.name}
+              </h3>
+              <p className="text-saffron-600 dark:text-saffron-400 text-sm font-semibold mb-3">
+                {founder.role}
+              </p>
+              <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-6 max-w-xs">
+                {founder.desc}
+              </p>
+
+              {/* Social links with animations */}
+              <div className="flex items-center gap-4 pt-4 border-t border-stone-100 dark:border-stone-800 w-full justify-center">
+                <a
+                  href={founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/icon relative w-11 h-11 rounded-full flex items-center justify-center bg-[#0a66c2]/10 dark:bg-[#0a66c2]/20 text-[#0a66c2] dark:text-[#38bdf8] hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#0a66c2]/40 active:scale-90 active:rotate-12"
+                  title="LinkedIn Profile"
+                >
+                  <Linkedin size={19} className="group-hover/icon:scale-125 group-hover/icon:rotate-12 transition-all duration-300 ease-out" />
+                </a>
+                <a
+                  href={founder.email}
+                  className="group/icon relative w-11 h-11 rounded-full flex items-center justify-center bg-[#ea4335]/10 dark:bg-[#ea4335]/20 text-[#ea4335] dark:text-[#f87171] hover:bg-[#ea4335] hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#ea4335]/40 active:scale-90 active:-rotate-12"
+                  title="Send Email"
+                >
+                  <Mail size={19} className="group-hover/icon:scale-125 group-hover/icon:-rotate-12 transition-all duration-300 ease-out" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Core Team Members — 4 Column Grid Below */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {teamMembers.map((member, i) => (
               <div
                 key={i}
-                className="animate-on-scroll group text-center"
+                className="animate-on-scroll group text-center p-6 rounded-3xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
               >
-                <div className="relative w-32 h-32 mx-auto mb-4">
-                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-stone-800 shadow-xl transition-transform duration-300 group-hover:scale-105">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                <div>
+                  <div className="relative w-32 h-32 mx-auto mb-4 group/avatar cursor-pointer">
+                    <div className="w-full h-full rounded-full overflow-hidden p-1 bg-stone-200/80 dark:bg-stone-800 group-hover/avatar:bg-gradient-to-tr group-hover/avatar:from-saffron-500 group-hover/avatar:to-amber-400 transition-all duration-500 shadow-md group-hover/avatar:shadow-xl group-hover/avatar:scale-105">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        style={{ objectPosition: member.objectPos || 'center top' }}
+                        className="w-full h-full object-cover rounded-full bg-white dark:bg-stone-900 group-hover/avatar:scale-110 transition-transform duration-500"
+                      />
+                    </div>
                   </div>
-                  <div className="absolute inset-0 rounded-full border-2 border-saffron-400/30 group-hover:border-saffron-400 transition-colors duration-300 scale-110" />
+                  <h3 className="font-display font-bold text-stone-900 dark:text-white text-base mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-saffron-600 dark:text-saffron-400 text-xs font-semibold mb-2">
+                    {member.role}
+                  </p>
+                  <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-5">
+                    {member.desc}
+                  </p>
                 </div>
-                <h3 className="font-display font-bold text-stone-900 dark:text-white mb-0.5">{member.name}</h3>
-                <p className="text-saffron-600 dark:text-saffron-400 text-xs font-semibold mb-2">{member.role}</p>
-                <p className="text-stone-500 dark:text-stone-400 text-xs">{member.desc}</p>
+
+                <div className="flex items-center justify-center gap-3 pt-4 border-t border-stone-100 dark:border-stone-800/80 w-full">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/icon w-10 h-10 rounded-full flex items-center justify-center bg-[#0a66c2]/10 dark:bg-[#0a66c2]/20 text-[#0a66c2] dark:text-[#38bdf8] hover:bg-[#0a66c2] hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-[#0a66c2]/40 active:scale-90 active:rotate-12"
+                    title="LinkedIn Profile"
+                  >
+                    <Linkedin size={17} className="group-hover/icon:scale-125 group-hover/icon:rotate-12 transition-all duration-300 ease-out" />
+                  </a>
+                  <a
+                    href={member.email}
+                    className="group/icon w-10 h-10 rounded-full flex items-center justify-center bg-[#ea4335]/10 dark:bg-[#ea4335]/20 text-[#ea4335] dark:text-[#f87171] hover:bg-[#ea4335] hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-[#ea4335]/40 active:scale-90 active:-rotate-12"
+                    title="Send Email"
+                  >
+                    <Mail size={17} className="group-hover/icon:scale-125 group-hover/icon:-rotate-12 transition-all duration-300 ease-out" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
