@@ -125,7 +125,7 @@ export default function About() {
                 {[
                   { value: '5+', label: 'Projects' },
                   { value: '4+', label: 'Clients' },
-                  { value: '05', label: 'Team' },
+                  { value: '5', label: 'Team' },
                   { value: '1.5 Yrs', label: 'Experience' },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
