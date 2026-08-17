@@ -94,7 +94,7 @@ export default function About() {
                 <span className="gradient-text">Driven by Purpose</span>
               </h1>
               <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
-                We are Zone Digi Tech — a creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
+                We are Zone Digi Tech, A creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
               </p>
             </div>
 
@@ -141,21 +141,21 @@ export default function About() {
               Our <span className="gradient-text">Story</span>
             </h2>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-4">
-              Zone Digi Tech started in 2021 with a simple belief: every Indian business deserves a world-class digital presence. Our founder Arjun Sharma, fresh from working with global design studios, came back to India with a mission to bring that level of quality to local businesses.
+              Zone Digi Tech started in 2026 with a simple belief: every Indian business deserves a world-class digital presence. Our founder Hemant Mohane, came back to India with a mission to bring that level of quality to local businesses.
             </p>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-6">
-              Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 12 passionate professionals serving clients across India, the UAE, and the UK.
+              Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 12 passionate professionals serving clients across India.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="p-4 rounded-2xl border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40">
                 <Target size={20} className="text-saffron-600 dark:text-saffron-400 mb-2" />
                 <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-1">Our Mission</h4>
-                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">Empower every Indian business with premium digital tools and presence.</p>
+                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">Empower every Indian business with premium digital presence.</p>
               </div>
               <div className="p-4 rounded-2xl border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40">
                 <Eye size={20} className="text-saffron-600 dark:text-saffron-400 mb-2" />
                 <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-1">Our Vision</h4>
-                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">To be India's most trusted creative technology partner by 2026.</p>
+                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">To be India's most trusted digital partner for small and medium businesses.</p>
               </div>
             </div>
             <button onClick={() => handleNav('contact')} className="btn-primary inline-flex items-center gap-2 text-sm">
