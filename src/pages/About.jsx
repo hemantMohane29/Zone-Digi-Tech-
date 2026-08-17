@@ -94,7 +94,7 @@ export default function About() {
                 <span className="gradient-text">Driven by Purpose</span>
               </h1>
               <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
-                We are Zone Digi Tech, A creative digital studio born in the heart of Bangalore. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
+                We are Zone Digi Tech, A creative digital studio born in the heart of Bhopal. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
               </p>
             </div>
 
@@ -123,10 +123,10 @@ export default function About() {
             <div className="absolute -bottom-6 -right-6 bg-white dark:bg-stone-900 rounded-2xl p-5 shadow-xl border border-stone-100 dark:border-stone-800 hidden md:block">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { value: '150+', label: 'Projects' },
-                  { value: '80+', label: 'Clients' },
-                  { value: '12', label: 'Team' },
-                  { value: '3 Yrs', label: 'Experience' },
+                  { value: '5+', label: 'Projects' },
+                  { value: '4+', label: 'Clients' },
+                  { value: '05', label: 'Team' },
+                  { value: '1.5 Yrs', label: 'Experience' },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
                     <div className="font-display font-bold text-xl text-stone-900 dark:text-white gradient-text">{s.value}</div>
@@ -144,7 +144,7 @@ export default function About() {
               Zone Digi Tech started in 2026 with a simple belief: every Indian business deserves a world-class digital presence. Our founder Hemant Mohane, came back to India with a mission to bring that level of quality to local businesses.
             </p>
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-6">
-              Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 12 passionate professionals serving clients across India.
+              Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 5+ passionate professionals serving clients across India.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="p-4 rounded-2xl border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40">
