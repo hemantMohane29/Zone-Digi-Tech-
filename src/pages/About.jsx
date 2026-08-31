@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowRight, Target, Eye, Heart, Users, Award, Globe, Coffee, Sparkles, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Target, Eye, Heart, Users, Globe, Coffee, Sparkles, Linkedin, Mail } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,10 +62,9 @@ const values = [
 ];
 
 const milestones = [
-  { year: '2021', title: 'Studio Founded', desc: 'Started with a team of 3 in a Bangalore co-working space.' },
-  { year: '2022', title: 'First 20 Clients', desc: 'Expanded services and built our core design system.' },
-  { year: '2023', title: 'Awards & Recognition', desc: 'Named among India\'s Top 10 Digital Agencies by StartupIndia.' },
-  { year: '2024', title: '80+ Happy Clients', desc: 'Grew to a 12-member team, serving clients across 5 countries.' },
+  { year: '2025', title: 'Studio Founded', desc: 'Started with a dedicated team in Bhopal.' },
+  { year: '2025', title: 'First 04 Clients', desc: 'Expanded services and onboarded our initial set of clients.' },
+  { year: '2026', title: '10+ Happy Clients', desc: 'Grew our portfolio, delivering high-impact digital solutions.' },
 ];
 
 export default function About() {
@@ -338,32 +337,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── AWARDS ── */}
-      <section className="py-16 bg-white dark:bg-stone-900/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl font-bold text-stone-900 dark:text-white mb-2">Recognition & Awards</h2>
-            <p className="text-stone-500 dark:text-stone-400 text-sm">Honoured by industry peers and publications</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {[
-              { icon: Award, title: 'StartupIndia Top 10', year: '2023' },
-              { icon: Globe, title: 'Best Design Studio', year: '2024' },
-              { icon: Users, title: 'Client Choice Award', year: '2023–24' },
-              { icon: Sparkles, title: 'Innovation in Tech', year: '2024' },
-            ].map((a, i) => (
-              <div key={i} className="animate-on-scroll text-center p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
-                <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.15), rgba(249,184,74,0.15))' }}>
-                  <a.icon size={18} className="text-saffron-600 dark:text-saffron-400" />
-                </div>
-                <div className="font-display font-bold text-stone-900 dark:text-white text-sm mb-0.5">{a.title}</div>
-                <div className="text-stone-400 text-xs">{a.year}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── CTA ── */}
       <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a00, #2d1a00)' }}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Mail, Phone, MapPin, MessageCircle, Clock, Send, CheckCircle,
   Instagram, Twitter, Linkedin, Youtube
@@ -7,9 +8,9 @@ import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useTheme } from '../context/ThemeContext';
 
 const services = [
-  'Video Editing', 'Photo Editing', 'Photo Shoot', 'Video Shoot',
-  'Social Media', 'UI/UX Design', 'Static Websites', 'Dynamic Websites',
-  'SEO Optimization', 'Business Growth Consulting', 'Other',
+  'Videos + Photos', 'Social Media Handling', 'Website Design',
+  'UI & UX Design', 'Graphics Designing', 'SEO (Search Engine Optimization)',
+  'Business Growth Consulting', 'Video Editing', 'Photo Editing', 'Other',
 ];
 
 const contactDetails = [
@@ -57,14 +58,24 @@ const socials = [
 export default function Contact() {
   useScrollAnimation();
   const { theme } = useTheme();
+  const location = useLocation();
   const logoSrc = theme === 'dark' ? '/Zone digi tecch logo white.png' : '/Zone dii tech logo black.png';
-
-  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (location.state?.service) {
+      setForm(prev => ({
+        ...prev,
+        service: location.state.service,
+        message: location.state.prefilledMessage || prev.message
+      }));
+    }
+  }, [location]);
 
   const validate = () => {
     const e = {};
