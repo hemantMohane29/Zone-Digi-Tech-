@@ -200,6 +200,30 @@ const faqs = [
   },
 ];
 
+const homeTestimonials = [
+  {
+    name: 'Food Shood',
+    company: 'Food Shood Restaurant & Café',
+    image: '/client_food_shood.jpg',
+    text: 'Zone Digi Tech delivered exceptional branding, digital menu cards, social media management, and online ordering system for Food Shood. Our footfall and online orders grew massively!',
+    rating: 5,
+  },
+  {
+    name: 'Mr. Mudassir Ahmed Hashmi',
+    company: 'Netligent Tech',
+    image: '/client_mudassir.png',
+    text: 'Zone Digi Tech transformed our enterprise platform with exceptional speed and precision. Their UI/UX vision and technical execution set a whole new standard for our business.',
+    rating: 5,
+  },
+  {
+    name: 'Vadaas Shop',
+    company: 'Owner, Vadaas Shop',
+    image: '/client_vadaas.png',
+    text: 'Their team created a stunning digital presence and social media strategy for our shop. Our customer reach and online inquiries increased dramatically!',
+    rating: 5,
+  },
+];
+
 const marqueeItems = [
   'Video Production', 'Photography', 'Web Development', 'UI/UX Design', 'Graphic Designing', 'Social Media Management', 'Search Engine Optimization (SEO)', 'Digital Marketing', 'Branding', 'E-Commerce Development', 'Business Growth Consulting', 'Website Maintenance & Support', 'Technical Support  ',
 ];
@@ -696,6 +720,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── TESTIMONIALS SECTION ── */}
+      <section className="py-20 bg-stone-50 dark:bg-stone-900/40 border-t border-stone-200 dark:border-stone-800 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-14 animate-on-scroll">
+            <div className="tag mx-auto mb-4">Client Feedback</div>
+            <h2 className="section-title text-stone-900 dark:text-white mb-3">
+              What Our Clients<br />
+              <span className="gradient-text">Say About Us</span>
+            </h2>
+            <p className="section-subtitle max-w-lg mx-auto">
+              Real feedback from Indian startups, businesses, and brands we have partnered with.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {homeTestimonials.map((t, i) => (
+              <div
+                key={i}
+                className="animate-on-scroll p-6 rounded-3xl bg-white dark:bg-stone-900/80 border-2 border-stone-200 dark:border-stone-800 hover:border-saffron-400 dark:hover:border-saffron-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(t.rating)].map((_, j) => (
+                      <Star key={j} size={16} className="text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
+                </div>
+                <div className="flex items-center gap-3.5 pt-4 border-t border-stone-200 dark:border-stone-800">
+                  <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover shadow-sm border border-stone-200 dark:border-stone-700" />
+                  <div>
+                    <p className="font-bold text-stone-900 dark:text-white text-sm">{t.name}</p>
+                    <p className="text-saffron-600 dark:text-saffron-400 text-xs font-semibold">{t.company}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="py-24 bg-white dark:bg-stone-900/20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -717,12 +781,12 @@ export default function Home() {
                 <span className="flex items-center gap-2">Get Free Consultation <ArrowRight size={16} /></span>
               </button>
               <a
-                href="https://wa.me/917974942457"
+                href="https://wa.me/917974942457?text=Hi%20Zone%20Digi%20Tech!%20I%20have%20an%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-white hover:text-emerald-600 transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white hover:border-emerald-500 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5"
               >
-                <MessageCircle size={16} className="transition-colors duration-300 group-hover:text-emerald-600" /> WhatsApp Us
+                <MessageCircle size={16} className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" /> WhatsApp Us
               </a>
             </div>
             <p className="mt-6 text-stone-400 dark:text-stone-500 text-xs">

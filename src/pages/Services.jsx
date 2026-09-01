@@ -817,9 +817,9 @@ export default function Services() {
               href="https://wa.me/917974942457?text=Hi%20Zone%20Digi%20Tech!%20I%20need%20a%20custom%20service%20package."
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-md"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white hover:border-emerald-500 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5"
             >
-              <MessageCircle size={16} /> Chat on WhatsApp
+              <MessageCircle size={16} className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" /> Chat on WhatsApp
             </a>
           </div>
         </div>

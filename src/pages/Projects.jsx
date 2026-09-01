@@ -68,7 +68,7 @@ const projects = [
     category: 'E-Commerce',
     client: 'iService India',
     desc: 'Multi-category online repair & service booking e-commerce portal with real-time tracking, Razorpay payment, and customer dashboard.',
-    image: 'https://images.pexels.com/photos/2148342/pexels-photo-2148342.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/iservice_portal.jpg',
     tags: ['E-Commerce', 'Service Booking', 'Razorpay', 'Live Tracking'],
     result: '240% increase in online bookings',
     link: 'https://www.iserviceindia.in/',
@@ -200,6 +200,13 @@ const projects = [
 
 const testimonials = [
   {
+    name: 'Food Shood',
+    company: 'Food Shood Restaurant & Café',
+    image: '/client_food_shood.jpg',
+    text: 'Zone Digi Tech delivered exceptional branding, digital menu cards, social media management, and online ordering system for Food Shood. Our footfall and online orders grew massively!',
+    rating: 5,
+  },
+  {
     name: 'Mr. Mudassir Ahmed Hashmi',
     company: 'Netligent Tech',
     image: '/client_mudassir.png',
@@ -325,6 +332,7 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
+                      onError={(e) => { e.currentTarget.src = '/iservice_portal.jpg'; }}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
@@ -443,7 +451,7 @@ export default function Projects() {
               <span className="gradient-text">Say About Us</span>
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div
                 key={i}
