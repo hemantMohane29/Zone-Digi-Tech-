@@ -63,6 +63,7 @@ export default function Contact() {
 
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -92,10 +93,36 @@ export default function Contact() {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
+    setSubmitError('');
     setLoading(true);
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('access_key', '8f0a7cca-5fbb-451d-9a9b-7d71dbc243cb');
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('phone', form.phone);
+      formData.append('service', form.service);
+      formData.append('message', form.message);
+      formData.append('subject', `New Inquiry: ${form.service} — ${form.name}`);
+      formData.append('from_name', 'Zone Digi Tech Website');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -245,17 +272,31 @@ export default function Contact() {
                       <CheckCircle size={30} className="text-saffron-600 dark:text-saffron-400" />
                     </div>
                     <h3 className="font-display font-bold text-2xl text-stone-900 dark:text-white mb-3">
-                      Message Sent!
+                      Message Sent! 🎉
                     </h3>
                     <p className="text-stone-500 dark:text-stone-400 mb-6 leading-relaxed">
-                      Thank you for reaching out. We've received your message and will get back to you within 2–4 business hours.
+                      Thank you, <strong className="text-stone-800 dark:text-white">{form.name}</strong>! Your project inquiry has been delivered directly to <strong className="text-saffron-500 font-semibold">infozonedigitech@gmail.com</strong>. We'll get back to you within 2–4 business hours.
                     </p>
-                    <button
-                      onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', service: '', message: '' }); }}
-                      className="btn-primary text-sm px-6 py-2.5 inline-flex"
-                    >
-                      <span>Send Another Message</span>
-                    </button>
+                    <div className="flex flex-wrap items-center justify-center gap-3">
+                      <button
+                        onClick={() => {
+                          const subject = encodeURIComponent(`Project Inquiry: ${form.service} - ${form.name}`);
+                          const body = encodeURIComponent(
+                            `Hi Zone Digi Tech,\n\nHere are my project details:\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\n\nProject Overview:\n${form.message}\n\nThanks!`
+                          );
+                          window.open(`mailto:infozonedigitech@gmail.com?subject=${subject}&body=${body}`, '_blank');
+                        }}
+                        className="btn-primary text-sm px-6 py-2.5 inline-flex items-center gap-2"
+                      >
+                        <Mail size={16} /> <span>Open Mail Client</span>
+                      </button>
+                      <button
+                        onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', service: '', message: '' }); }}
+                        className="px-6 py-2.5 rounded-full text-sm font-semibold text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                      >
+                        <span>Send Another Message</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -263,6 +304,14 @@ export default function Contact() {
                   onSubmit={handleSubmit}
                   className="bg-white dark:bg-stone-900/60 rounded-3xl border border-stone-100 dark:border-stone-800 p-6 md:p-8 space-y-5"
                 >
+                  {/* Web3Forms hidden field */}
+                  <input type="hidden" name="access_key" value="8f0a7cca-5fbb-451d-9a9b-7d71dbc243cb" />
+                  {/* Show API error if any */}
+                  {submitError && (
+                    <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-sm">
+                      <span>⚠️</span> {submitError}
+                    </div>
+                  )}
                   <div>
                     <h2 className="font-display font-bold text-2xl text-stone-900 dark:text-white mb-1">Send Us a Message</h2>
                     <p className="text-stone-500 dark:text-stone-400 text-sm">Tell us about your project and we'll get back to you with a custom proposal.</p>
