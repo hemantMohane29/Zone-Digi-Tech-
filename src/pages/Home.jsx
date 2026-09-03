@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Zap, Palette, Globe, ShoppingCart, Share2, Search, Video, Camera, Image as ImageIcon, Monitor, CheckCircle, Clock, TrendingUp, HeartHandshake, DollarSign, Layers, ChevronDown as ChevronDownIcon, MessageCircle, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Palette, Globe, ShoppingCart, Share2, Search, Video, Camera, Image as ImageIcon, Monitor, CheckCircle, Clock, TrendingUp, HeartHandshake, DollarSign, Layers, ChevronDown as ChevronDownIcon, MessageCircle, Play, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
 

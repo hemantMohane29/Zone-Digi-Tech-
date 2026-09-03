@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, ExternalLink, MessageCircle, Globe, Sparkles, Filter } from 'lucide-react';
+import { ArrowRight, ExternalLink, MessageCircle, Globe, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
 

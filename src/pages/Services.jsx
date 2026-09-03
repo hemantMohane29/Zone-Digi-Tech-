@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Video, Share2, Globe, Palette, Image as ImageIcon, Search, TrendingUp,
-  ArrowRight, CheckCircle2, MessageCircle, Sparkles, Check, ChevronRight, Layers, LayoutGrid, List
+  ArrowRight, CheckCircle2, MessageCircle, Sparkles, Check, ChevronRight, LayoutGrid, List
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 
