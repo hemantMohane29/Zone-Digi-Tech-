@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, ArrowRight, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Instagram, Twitter, Linkedin, Youtube, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = ['Video Editing', 'Photo Editing', 'Photo Shoot', 'Video Shoot', 'Social Media', 'UI/UX Design'];
@@ -46,18 +46,22 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               {[
-                { icon: Instagram, label: 'Instagram' },
-                { icon: Twitter, label: 'Twitter' },
-                { icon: Linkedin, label: 'LinkedIn' },
-                { icon: Youtube, label: 'YouTube' },
-              ].map(({ icon: Icon, label }) => (
-                <button
+                { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@ZoneDigiTech' },
+                { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/zone.digitech/' },
+                { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61593844419367' },
+                { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/zone-digi-tech/about/' },
+                { icon: Twitter, label: 'Twitter', href: 'https://x.com/zonedigitechx' },
+              ].map(({ icon: Icon, label, href }) => (
+                <a
                   key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-8 h-8 rounded-lg flex items-center justify-center bg-stone-800 hover:bg-saffron-600 text-stone-400 hover:text-white transition-all duration-200"
                 >
                   <Icon size={15} />
-                </button>
+                </a>
               ))}
             </div>
           </div>

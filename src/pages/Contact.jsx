@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   Mail, Phone, MapPin, MessageCircle, Clock, Send, CheckCircle,
-  Instagram, Twitter, Linkedin, Youtube
+  Instagram, Twitter, Linkedin, Youtube, Facebook
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useTheme } from '../context/ThemeContext';
@@ -49,11 +49,13 @@ const contactDetails = [
 ];
 
 const socials = [
-  { icon: Instagram, label: 'Instagram', href: '#', color: '#E1306C' },
-  { icon: Twitter, label: 'Twitter', href: '#', color: '#1DA1F2' },
-  { icon: Linkedin, label: 'LinkedIn', href: '#', color: '#0A66C2' },
-  { icon: Youtube, label: 'YouTube', href: '#', color: '#FF0000' },
+  { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@ZoneDigiTech', color: '#FF0000' },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/zone.digitech/', color: '#E1306C' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61593844419367', color: '#1877F2' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/zone-digi-tech/about/', color: '#0A66C2' },
+  { icon: Twitter, label: 'Twitter', href: 'https://x.com/zonedigitechx', color: '#1DA1F2' },
 ];
+
 
 export default function Contact() {
   useScrollAnimation();
@@ -220,7 +222,7 @@ export default function Contact() {
               {/* Social */}
               <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
                 <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h4>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-5 gap-2">
                   {socials.map(({ icon: Icon, label, href, color }) => (
                     <a
                       key={label}
@@ -459,6 +461,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

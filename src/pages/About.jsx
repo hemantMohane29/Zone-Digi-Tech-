@@ -9,19 +9,19 @@ const founder = {
   image: '/Hemant.png',
   objectPos: 'center 15%',
   desc: 'Visionary leader driving strategy, innovation, and creative direction at Zone Digi Tech.',
-  linkedin: 'https://linkedin.com/in/hemant-mohane',
-  email: 'mailto:hemant@zonedigitech.com',
+  linkedin: 'https://www.linkedin.com/in/hemant-mohane-35440a330/',
+  email: 'mailto:hemantmohane29@gmail.com',
 };
 
 const teamMembers = [
   {
-    name: 'Rahul Pawole',
+    name: 'Rahul Powale',
     role: 'Digital Marketing Lead',
     image: '/Rahul.jpeg',
     objectPos: 'center 15%',
     desc: 'Growth strategist driving digital marketing, SEO, and performance campaigns.',
-    linkedin: 'https://linkedin.com/in/rahul-pawole',
-    email: 'mailto:rahul@zonedigitech.com',
+    linkedin: 'https://www.linkedin.com/in/rahul-powale-b34312326/',
+    email: 'mailto:rahulpowale0666@gmail.com',
   },
   {
     name: 'Bhojraj Mahajan',
@@ -29,8 +29,8 @@ const teamMembers = [
     image: '/bunty.png',
     objectPos: 'center 20%',
     desc: 'Architecting robust, scalable web applications and high-performance digital solutions.',
-    linkedin: 'https://linkedin.com/in/bhojraj-mahajan',
-    email: 'mailto:bhojraj@zonedigitech.com',
+    linkedin: 'https://www.linkedin.com/in/bhojraj-mahajan-80481a329/',
+    email: 'mailto:bhojrajmahajan924913@gmail.com',
   },
   {
     name: 'Vikram Kumar',
@@ -38,8 +38,8 @@ const teamMembers = [
     image: '/vikram.PNG',
     objectPos: 'center 15%',
     desc: 'Streamlining operational execution, workflow management, and team productivity.',
-    linkedin: 'https://linkedin.com/in/vikram-kumar',
-    email: 'mailto:vikram@zonedigitech.com',
+    linkedin: 'https://www.linkedin.com/in/vikram-kumar-7686702a0/',
+    email: 'mailto:Kumarvikram00087@gmail.com',
   },
   {
     name: 'Avdhesh Pal',
@@ -47,8 +47,8 @@ const teamMembers = [
     image: '/Avdhesh.png',
     objectPos: 'center 27%',
     desc: 'Managing financial planning, budgeting, reporting, and operational fiscal health.',
-    linkedin: 'https://linkedin.com/in/avdhesh-pal',
-    email: 'mailto:avdhesh@zonedigitech.com',
+    linkedin: 'https://www.linkedin.com/in/avadhesh-pal-263b4a3a5/',
+    email: 'mailto:avadheskumar213@gmail.com',
   },
 ];
 

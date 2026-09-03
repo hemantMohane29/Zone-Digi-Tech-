@@ -36,36 +36,7 @@ const services = [
   { icon: TrendingUp, title: 'Business Growth Consulting', desc: 'Custom frameworks and strategic consulting to scale your business revenue.', color: '#f59e0b' },
 ];
 
-const projects = [
-  {
-    title: 'Arya Naturals',
-    category: 'E-Commerce',
-    desc: 'Organic products brand with full e-commerce platform and inventory management.',
-    image: 'https://images.pexels.com/photos/3735218/pexels-photo-3735218.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['React', 'Supabase', 'Stripe'],
-  },
-  {
-    title: 'TechNova SaaS',
-    category: 'Web App',
-    desc: 'B2B SaaS dashboard for startup analytics with real-time data visualization.',
-    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['UI/UX', 'Dashboard', 'React'],
-  },
-  {
-    title: 'Meera Jewels',
-    category: 'Branding',
-    desc: 'Complete brand identity and e-commerce for a heritage Indian jewellery brand.',
-    image: 'https://images.pexels.com/photos/1485894/pexels-photo-1485894.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['Branding', 'E-Commerce', 'SEO'],
-  },
-  {
-    title: 'GreenGrow Farms',
-    category: 'Marketing',
-    desc: 'Digital marketing and social media campaign for an agri-tech startup.',
-    image: 'https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['Social Media', 'SEO', 'Video'],
-  },
-];
+
 
 const faqs = [
   {
@@ -549,57 +520,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROJECTS ── */}
-      <section className="py-24 bg-white dark:bg-stone-900/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <div className="tag mb-5">Our Work</div>
-              <h2 className="section-title text-stone-900 dark:text-white">
-                Featured<br />
-                <span className="gradient-text">Projects</span>
-              </h2>
-            </div>
-            <button onClick={() => handleNav('projects')} className="btn-outline flex items-center gap-2 self-start md:self-auto">
-              View All Projects <ArrowRight size={16} />
-            </button>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {projects.map((p, i) => (
-              <div
-                key={i}
-                className="animate-on-scroll group rounded-2xl overflow-hidden bg-stone-50 dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              >
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button onClick={() => handleNav('projects')} className="px-4 py-2 rounded-full text-white text-xs font-semibold border border-white/50 backdrop-blur-sm hover:bg-white/20 transition-colors">
-                      View Case Study
-                    </button>
-                  </div>
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm"
-                      style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.8), rgba(249,184,74,0.8))' }}>
-                      {p.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-display font-bold text-stone-900 dark:text-white mb-1.5 text-sm">{p.title}</h3>
-                  <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {p.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded-full text-xs bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── FAQ ── */}
       <section className="py-24 bg-stone-50 dark:bg-[#0a0a0f]">
