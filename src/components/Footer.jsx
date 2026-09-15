@@ -44,7 +44,7 @@ export default function Footer() {
             <p className="text-stone-400 text-sm leading-relaxed mb-6">
               A premium creative digital agency helping Indian startups and businesses build powerful digital presences.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               {[
                 { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@ZoneDigiTech' },
                 { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/zone.digitech/' },
@@ -58,9 +58,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center bg-stone-800 hover:bg-saffron-600 text-stone-400 hover:text-white transition-all duration-200"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center bg-stone-800 hover:bg-saffron-600 text-stone-400 hover:text-white transition-all duration-200 hover:-translate-y-0.5"
                 >
-                  <Icon size={15} />
+                  <Icon size={17} />
                 </a>
               ))}
             </div>
@@ -68,7 +68,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Services</h4>
+          <h3 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Services</h3>
             <ul className="space-y-2.5">
               {services.map((s) => (
                 <li key={s}>
@@ -86,7 +86,7 @@ export default function Footer() {
 
           {/* Quick Links & Policies */}
           <div>
-            <h4 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Navigation & Legal</h4>
+            <h3 className="font-display font-semibold text-white mb-5 text-sm">Navigation &amp; Legal</h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -104,36 +104,37 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Contact Us</h4>
+            <h3 className="font-display font-semibold text-white mb-5 text-sm uppercase tracking-widest">Contact Us</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+              <li className="flex items-center gap-3">
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <Mail size={13} className="text-saffron-400" />
                 </div>
                 <a href="mailto:infozonedigitech@gmail.com" className="text-stone-400 text-sm hover:text-saffron-400 transition-colors">infozonedigitech@gmail.com</a>
               </li>
-              <li className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+              <li className="flex items-center gap-3">
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <Phone size={13} className="text-saffron-400" />
                 </div>
                 <a href="tel:+917974942457" className="text-stone-400 text-sm hover:text-saffron-400 transition-colors">+91 7974942457</a>
               </li>
-              <li className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+              <li className="flex items-center gap-3">
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <MapPin size={13} className="text-saffron-400" />
                 </div>
-                <span className="text-stone-400 text-sm">Karond, Bhopal<br />Madhya Pradesh, India</span>
+                <span className="text-stone-400 text-sm">Karond, Bhopal, MP, India</span>
               </li>
             </ul>
 
             <Link
               to="/contact"
-              className="mt-5 w-full btn-primary justify-center text-sm py-2.5 inline-flex items-center"
+              className="mt-5 btn-primary text-sm py-2.5 inline-flex items-center gap-2"
             >
               <span>Start a Project</span>
+              <ArrowRight size={14} className="relative z-10" />
             </Link>
           </div>
         </div>

@@ -347,15 +347,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll cue */}
+        {/* Scroll cue — anchored to hero content, not floating in whitespace */}
         <button
           type="button"
           onClick={() => window.scrollBy({ top: 500, behavior: 'smooth' })}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors cursor-pointer focus:outline-none z-20 group"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors cursor-pointer focus:outline-none z-20 group"
           aria-label="Scroll down"
         >
-          <span className="text-xs font-medium tracking-widest uppercase group-hover:translate-y-0.5 transition-transform">Scroll</span>
-          <ChevronDown size={16} className="animate-bounce" />
+          <span className="text-[10px] font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity">Scroll</span>
+          <ChevronDown size={14} className="animate-bounce" />
         </button>
       </section>
 
@@ -435,7 +435,7 @@ export default function Home() {
                 { title: 'Our Vision', desc: 'Become India\'s most trusted creative technology partner.' },
               ].map((item) => (
                 <div key={item.title} className="p-4 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
-                  <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-1">{item.title}</h4>
+                  <h3 className="font-bold text-stone-900 dark:text-white text-sm mb-1">{item.title}</h3>
                   <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">{item.desc}</p>
                 </div>
               ))}
@@ -505,9 +505,9 @@ export default function Home() {
                 </div>
                 <h3 className="font-display font-bold text-stone-900 dark:text-white text-sm mb-1.5">{service.title}</h3>
                 <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3 min-h-[3rem]">{service.desc}</p>
-                <button onClick={() => handleNav('services')} className="mt-auto text-xs font-semibold flex items-center gap-1 transition-colors duration-200 group-hover:gap-2 self-start"
+                <button onClick={() => handleNav('services')} className="btn-service mt-auto self-start group-hover:gap-2.5"
                   style={{ color: service.color }}>
-                  Learn More <ArrowRight size={11} />
+                  Learn More <ArrowRight size={13} />
                 </button>
               </div>
             ))}
@@ -536,8 +536,8 @@ export default function Home() {
 
           {/* Search & Category Filter Controls */}
           <div className="mb-8 space-y-4">
-            {/* Search Input */}
-            <div className="relative max-w-md mx-auto">
+            {/* Search Input — full width to align with FAQ accordion below */}
+            <div className="relative w-full">
               <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
               <input
                 type="text"

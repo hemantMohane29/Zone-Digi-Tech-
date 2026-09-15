@@ -293,7 +293,7 @@ export default function Projects() {
       {/* ── HYPER-PROFESSIONAL FILTERS BAR ── */}
       <div className="bg-stone-50 dark:bg-[#0a0a0f] border-y border-stone-200 dark:border-stone-800 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-2.5">
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-3.5">
             {categoryFilters.map((cat) => {
               const isSelected = activeCategoryId === cat.id;
               return (
@@ -338,14 +338,14 @@ export default function Projects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
 
                     {/* Hover Overlay Actions */}
-                    <div className="absolute inset-0 bg-stone-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 p-4">
+                    <div className="absolute inset-0 bg-stone-950/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 p-4">
                       {project.link.startsWith('http') && (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="px-4 py-2 rounded-full text-white text-xs font-bold bg-saffron-500 hover:bg-saffron-600 shadow-lg transition-all flex items-center gap-1.5 hover:scale-105"
+                          className="px-5 py-2.5 rounded-full text-white text-xs font-bold bg-saffron-500 hover:bg-saffron-600 shadow-xl transition-all flex items-center gap-1.5 hover:scale-105"
                         >
                           <Globe size={14} /> Visit Live Website <ExternalLink size={12} />
                         </a>
@@ -355,7 +355,7 @@ export default function Projects() {
                           e.stopPropagation();
                           handleNav('contact');
                         }}
-                        className="px-4 py-2 rounded-full text-white text-xs font-bold border border-white/40 backdrop-blur-md hover:bg-white/20 transition-all flex items-center gap-1.5"
+                        className="px-5 py-2.5 rounded-full text-white text-xs font-bold bg-white/20 border border-white/60 hover:bg-white/30 transition-all flex items-center gap-1.5"
                       >
                         <MessageCircle size={13} /> Inquire Similar Project
                       </button>
@@ -386,33 +386,22 @@ export default function Projects() {
 
                   {/* Card Content */}
                   <div className="p-6">
-                    <div className="flex items-start justify-between gap-2 mb-1.5">
-                      <h3
+                    <div className="flex items-start gap-2 mb-1.5">
+                      <h2
                         onClick={() => handleProjectClick(project.link)}
                         className="font-display font-bold text-lg md:text-xl text-stone-900 dark:text-white cursor-pointer hover:text-saffron-500 transition-colors"
                       >
                         {project.title}
-                      </h3>
-                      {project.link.startsWith('http') && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-500 hover:text-saffron-500 dark:hover:text-saffron-400 transition-colors shrink-0"
-                          title="Open Live Site"
-                        >
-                          <ExternalLink size={15} />
-                        </a>
-                      )}
+                      </h2>
                     </div>
-                    <p className="text-xs font-bold text-saffron-600 dark:text-saffron-400 mb-2.5 uppercase tracking-wider">{project.client}</p>
-                    <p className="text-stone-600 dark:text-stone-300 text-xs md:text-sm leading-relaxed mb-4">{project.desc}</p>
+                    <p className="text-xs font-bold text-saffron-600 dark:text-saffron-400 mb-2.5">{project.client}</p>
+                    <p className="text-stone-600 dark:text-stone-300 text-xs md:text-sm leading-relaxed mb-4 line-clamp-2">{project.desc}</p>
 
                     <div className="flex flex-wrap gap-1.5 mb-2">
-                      {project.tags.map((tag) => (
+                      {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-stone-100 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-stone-700/60"
+                          className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-stone-100 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-stone-700/60"
                         >
                           {tag}
                         </span>
@@ -428,7 +417,7 @@ export default function Projects() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-2.5 px-4 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 hover:bg-stone-900 hover:text-white dark:hover:bg-white dark:hover:text-stone-900 text-stone-800 dark:text-stone-200 transition-all duration-200 flex items-center justify-center gap-1.5 border border-stone-200 dark:border-stone-700"
+                      className="btn-outline w-full py-2.5 px-4 text-xs font-bold flex items-center justify-center gap-1.5"
                     >
                       <span>View Live Site</span>
                       <ExternalLink size={13} />
@@ -455,9 +444,9 @@ export default function Projects() {
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className="p-6 rounded-3xl bg-stone-50 dark:bg-stone-900/60 border-2 border-stone-200 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+                className="p-6 rounded-3xl bg-stone-50 dark:bg-stone-900/60 border-2 border-stone-200 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
               >
-                <div>
+                <div className="flex-1">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(t.rating)].map((_, j) => (
                       <svg key={j} className="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
@@ -467,7 +456,7 @@ export default function Projects() {
                   </div>
                   <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
                 </div>
-                <div className="flex items-center gap-3.5 pt-4 border-t border-stone-200 dark:border-stone-800">
+                <div className="flex items-center gap-3.5 pt-4 border-t border-stone-200 dark:border-stone-800 mt-auto">
                   <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover shadow-sm" />
                   <div>
                     <p className="font-bold text-stone-900 dark:text-white text-sm">{t.name}</p>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   Mail, Phone, MapPin, MessageCircle, Clock, Send, CheckCircle,
-  Instagram, Twitter, Linkedin, Youtube, Facebook
+  Instagram, Twitter, Linkedin, Youtube, Facebook, ChevronRight
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useTheme } from '../context/ThemeContext';
@@ -186,11 +186,12 @@ export default function Contact() {
                     style={{ background: `${item.color}18` }}>
                     <item.icon size={20} style={{ color: item.color }} />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-0.5">{item.label}</p>
                     <p className="font-bold text-stone-900 dark:text-white text-sm">{item.value}</p>
                     <p className="text-stone-400 text-xs mt-0.5">{item.sub}</p>
                   </div>
+                  <ChevronRight size={18} className="text-stone-300 dark:text-stone-700 group-hover:text-saffron-500 dark:group-hover:text-saffron-400 transition-colors flex-shrink-0 mt-1" />
                 </a>
               ))}
 
@@ -198,7 +199,7 @@ export default function Contact() {
               <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
                 <div className="flex items-center gap-2 mb-3">
                   <Clock size={16} className="text-saffron-600 dark:text-saffron-400" />
-                  <h4 className="font-bold text-stone-900 dark:text-white text-sm">Business Hours</h4>
+                  <h2 className="font-bold text-stone-900 dark:text-white text-sm">Business Hours</h2>
                 </div>
                 <div className="space-y-1.5 text-sm">
                   <div className="flex justify-between">
@@ -221,7 +222,7 @@ export default function Contact() {
 
               {/* Social */}
               <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
-                <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h4>
+                <h3 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h3>
                 <div className="grid grid-cols-5 gap-2">
                   {socials.map(({ icon: Icon, label, href, color }) => (
                     <a
@@ -448,9 +449,9 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-2xl md:text-3xl text-stone-900 dark:text-white mb-3">
+                    <h3 className="font-display font-bold text-2xl md:text-3xl text-stone-900 dark:text-white mb-3">
                       One Stop Digital Solution
-                    </h4>
+                    </h3>
                     <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed max-w-xl">
                       From web development and UI/UX design to social media and SEO, we deliver cohesive digital solutions tailored for your business growth.
                     </p>

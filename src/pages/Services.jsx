@@ -456,37 +456,37 @@ export default function Services() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-saffron-500 animate-pulse" />
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-stone-700 dark:text-stone-300">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-stone-700 dark:text-stone-300">
                 Explore Service Packages
               </span>
             </div>
             <div className="flex items-center gap-2 self-start sm:self-auto">
               <button
                 onClick={() => setViewMode('single')}
-                className={`inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full transition-all duration-200 ${
+                className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 ${
                   viewMode === 'single'
                     ? 'bg-saffron-500 text-white shadow-md'
                     : 'bg-stone-200/80 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-stone-700'
                 }`}
               >
-                <LayoutGrid size={13} /> Focused View
+                <LayoutGrid size={14} /> Focused View
               </button>
               <button
                 onClick={() => setViewMode('all')}
-                className={`inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full transition-all duration-200 ${
+                className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 ${
                   viewMode === 'all'
                     ? 'bg-saffron-500 text-white shadow-md'
                     : 'bg-stone-200/80 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-stone-700'
                 }`}
               >
-                <List size={13} /> View All Plans
+                <List size={14} /> View All Plans
               </button>
             </div>
           </div>
 
           {/* Clean Scrollbar-Free Category Pill Tabs */}
           <div
-            className="flex items-center gap-2 overflow-x-auto scrollbar-hide py-1.5 -mx-4 px-4 sm:mx-0 sm:px-0"
+            className="flex items-center gap-3 overflow-x-auto scrollbar-hide py-1.5 -mx-4 px-4 sm:mx-0 sm:px-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {serviceCategories.map((cat) => {
@@ -621,8 +621,8 @@ export default function Services() {
 
                       {/* Features List - Scrollable with max-height to ensure uniform compact card height */}
                       <div className="mb-5">
-                        <span className="text-[10px] font-extrabold text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2.5">
-                          Features & Details:
+                        <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 block mb-2.5">
+                          Features &amp; Details:
                         </span>
                         <div className="space-y-2.5 max-h-[220px] overflow-y-auto pr-1 scrollbar-hide">
                           {plan.features.map((feat, fIdx) => (
@@ -647,29 +647,27 @@ export default function Services() {
                     </div>
 
                     {/* Actions - ALWAYS PINNED AT BOTTOM */}
-                    <div className="space-y-2 pt-3 border-t border-stone-200 dark:border-stone-800">
+                    <div className="pt-4 border-t border-stone-200 dark:border-stone-800 space-y-3">
+                      {/* #10 fix: popular plan uses standard btn-primary, not a one-off teal gradient */}
                       <button
                         onClick={() => handleSelectPlan(activeCategory.title, plan)}
-                        className={`w-full py-3 px-4 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md ${
+                        className={`w-full py-3 px-4 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                           plan.popular
-                            ? 'text-white hover:shadow-2xl hover:scale-[1.01]'
-                            : 'bg-stone-900 dark:bg-white text-white dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-100'
+                            ? 'btn-primary hover:shadow-xl hover:scale-[1.01]'
+                            : 'bg-stone-900 dark:bg-white text-white dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-100 shadow-md'
                         }`}
-                        style={{
-                          background: plan.popular
-                            ? `linear-gradient(135deg, ${activeCategory.color}, #f59e0b)`
-                            : undefined
-                        }}
                       >
                         <span>Choose {plan.name}</span>
-                        <ArrowRight size={15} />
+                        <ArrowRight size={15} className="relative z-10" />
                       </button>
 
+                      {/* #6 fix: unified emerald border style matches CTA section WhatsApp button */}
+                      {/* #7 fix: space-y-3 above gives breathing room between primary & secondary action */}
                       <button
                         onClick={() => handleWhatsAppInquiry(activeCategory.title, plan)}
-                        className="w-full py-2 px-4 rounded-xl text-xs font-bold text-stone-700 dark:text-stone-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center justify-center gap-2 border border-stone-200 dark:border-stone-800"
+                        className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors flex items-center justify-center gap-2 border-2 border-emerald-500 dark:border-emerald-600"
                       >
-                        <MessageCircle size={14} className="text-emerald-500" />
+                        <MessageCircle size={14} />
                         <span>Inquire on WhatsApp</span>
                       </button>
                     </div>

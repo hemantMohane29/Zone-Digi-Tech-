@@ -95,6 +95,14 @@ export default function About() {
               <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
                 We are Zone Digi Tech, A creative digital studio born in the heart of Bhopal. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
               </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button onClick={() => handleNav('contact')} className="btn-primary px-7 py-3.5 text-sm font-semibold">
+                  <span className="flex items-center gap-2">Get Started <ArrowRight size={15} /></span>
+                </button>
+                <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold">
+                  View Our Work
+                </button>
+              </div>
             </div>
 
             <div>
@@ -119,7 +127,7 @@ export default function About() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-white dark:bg-stone-900 rounded-2xl p-5 shadow-xl border border-stone-100 dark:border-stone-800 hidden md:block">
+            <div className="absolute -bottom-6 -right-6 bg-white dark:bg-stone-900 rounded-2xl p-5 shadow-2xl shadow-black/20 dark:shadow-black/60 border border-stone-200 dark:border-stone-700 hidden md:block ring-1 ring-stone-100 dark:ring-stone-800">
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: '5+', label: 'Projects' },
@@ -145,15 +153,15 @@ export default function About() {
             <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-6">
               Starting from a small co-working space in Karond, Bhopal, we've grown into a full-service creative studio with a team of 5+ passionate professionals serving clients across India.
             </p>
-            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="p-4 rounded-2xl border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40">
                 <Target size={20} className="text-saffron-600 dark:text-saffron-400 mb-2" />
-                <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-1">Our Mission</h4>
+                <h3 className="font-bold text-stone-900 dark:text-white text-sm mb-1">Our Mission</h3>
                 <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">Empower every Indian business with premium digital presence.</p>
               </div>
               <div className="p-4 rounded-2xl border border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40">
                 <Eye size={20} className="text-saffron-600 dark:text-saffron-400 mb-2" />
-                <h4 className="font-bold text-stone-900 dark:text-white text-sm mb-1">Our Vision</h4>
+                <h3 className="font-bold text-stone-900 dark:text-white text-sm mb-1">Our Vision</h3>
                 <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">To be India's most trusted digital partner for small and medium businesses.</p>
               </div>
             </div>
@@ -203,7 +211,7 @@ export default function About() {
           </div>
           <div className="relative">
             <div className="absolute left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-saffron-400 to-transparent" />
-            <div className="space-y-10">
+            <div className="space-y-6">
               {milestones.map((m, i) => (
                 <div key={i} className="animate-on-scroll flex gap-8 items-start">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 border-2 border-saffron-400 bg-white dark:bg-stone-900"
