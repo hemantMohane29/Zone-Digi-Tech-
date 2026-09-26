@@ -159,7 +159,7 @@ export default function Contact() {
               <img
                 src="/contact_page_avatar.png"
                 alt="Zone Digi Tech Support"
-                className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] h-auto object-contain"
+                className="w-full max-w-xs sm:max-w-sm lg:max-w-md xl:max-w-lg h-auto object-contain"
               />
             </div>
           </div>
@@ -223,7 +223,7 @@ export default function Contact() {
               {/* Social */}
               <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
                 <h3 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h3>
-                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <div className="grid grid-cols-5 gap-2">
                   {socials.map(({ icon: Icon, label, href, color }) => (
                     <a
                       key={label}
@@ -235,7 +235,7 @@ export default function Contact() {
                       style={{ background: `${color}12` }}
                     >
                       <Icon size={18} style={{ color }} />
-                      <span className="text-xs sm:text-[10px] text-stone-500 dark:text-stone-400">{label}</span>
+                      <span className="text-[10px] text-stone-500 dark:text-stone-400">{label}</span>
                     </a>
                   ))}
                 </div>
@@ -260,7 +260,7 @@ export default function Contact() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                   </span>
-                  <span className="text-xs sm:text-[10px] font-semibold text-emerald-100 uppercase tracking-wider">Online</span>
+                  <span className="text-[10px] font-semibold text-emerald-100 uppercase tracking-wider">Online</span>
                 </div>
               </a>
             </div>

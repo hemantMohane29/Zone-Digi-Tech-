@@ -80,24 +80,24 @@ export default function About() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
-      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <section className="relative py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
-        <div className="absolute top-10 right-0 w-96 h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
+        <div className="absolute top-10 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <div className="tag mb-5">Our Story</div>
-              <h1 className="section-title text-stone-900 dark:text-white mb-6 text-3xl sm:text-4xl md:text-5xl">
+              <h1 className="section-title text-stone-900 dark:text-white mb-6">
                 Built With Passion,<br />
                 <span className="gradient-text">Driven by Purpose</span>
               </h1>
               <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
                 We are Zone Digi Tech, A creative digital studio born in the heart of Bhopal. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <button onClick={() => handleNav('contact')} className="btn-primary px-7 py-3.5 text-sm font-semibold">
-                  <span className="flex items-center gap-2">Get Started <ArrowRight size={15} /></span>
+                  <span className="flex items-center justify-center gap-2">Get Started <ArrowRight size={15} /></span>
                 </button>
                 <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold">
                   View Our Work
@@ -117,8 +117,8 @@ export default function About() {
       </section>
 
       {/* ── STORY ── */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-stone-900/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <section className="py-16 bg-white dark:bg-stone-900/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-on-scroll-left relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] max-h-[420px] group border border-stone-200/50 dark:border-stone-800/50">
               <img
@@ -127,12 +127,31 @@ export default function About() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
+
+            {/* Mobile Stats - Show below image on mobile */}
+            <div className="md:hidden mt-6 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-lg border border-stone-200 dark:border-stone-700">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { value: '5+', label: 'Projects' },
+                  { value: '4+', label: 'Clients' },
+                  { value: '5', label: 'Team' },
+                  { value: '1.5 Yrs', label: 'Experience' },
+                ].map((s) => (
+                  <div key={s.label} className="text-center">
+                    <div className="font-display font-bold text-lg text-stone-900 dark:text-white gradient-text">{s.value}</div>
+                    <div className="text-stone-400 text-xs">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Stats - Hidden on mobile, positioned absolutely on desktop */}
             <div className="absolute -bottom-6 -right-6 bg-white dark:bg-stone-900 rounded-2xl p-5 shadow-2xl shadow-black/20 dark:shadow-black/60 border border-stone-200 dark:border-stone-700 hidden md:block ring-1 ring-stone-100 dark:ring-stone-800">
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: '5+', label: 'Projects' },
                   { value: '4+', label: 'Clients' },
-                  { value: '10', label: 'Team' },
+                  { value: '5', label: 'Team' },
                   { value: '1.5 Yrs', label: 'Experience' },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
@@ -210,15 +229,15 @@ export default function About() {
             </h2>
           </div>
           <div className="relative">
-            <div className="absolute left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-saffron-400 to-transparent" />
+            <div className="absolute left-4 sm:left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-saffron-400 to-transparent" />
             <div className="space-y-6">
               {milestones.map((m, i) => (
-                <div key={i} className="animate-on-scroll flex gap-8 items-start">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 border-2 border-saffron-400 bg-white dark:bg-stone-900"
+                <div key={i} className="animate-on-scroll flex gap-4 sm:gap-8 items-start">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 border-2 border-saffron-400 bg-white dark:bg-stone-900"
                     style={{ boxShadow: '0 0 0 4px rgba(224,123,0,0.1)' }}>
                     <span className="font-display font-bold text-saffron-600 dark:text-saffron-400 text-xs">{m.year}</span>
                   </div>
-                  <div className="pt-3">
+                  <div className="pt-2 sm:pt-3">
                     <h3 className="font-display font-bold text-stone-900 dark:text-white mb-1">{m.title}</h3>
                     <p className="text-stone-500 dark:text-stone-400 text-sm">{m.desc}</p>
                   </div>
@@ -347,7 +366,7 @@ export default function About() {
 
 
       {/* ── CTA ── */}
-      <section className="py-16 sm:py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a00, #2d1a00)' }}>
+      <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a00, #2d1a00)' }}>
         <div className="absolute inset-0 indian-pattern opacity-10 pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="font-display text-4xl font-bold text-white mb-4">

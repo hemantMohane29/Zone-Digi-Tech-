@@ -250,14 +250,14 @@ export default function Home() {
         {/* Indian pattern overlay */}
         <div className="absolute inset-0 indian-pattern opacity-60 dark:opacity-20 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-16 items-center relative z-10">
           {/* Left */}
           <div>
             <div className="tag mb-6 inline-flex">
               <Sparkles size={11} />
               India's Premier Digital Creative Studio
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-stone-900 dark:text-white mb-6">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-stone-900 dark:text-white mb-6">
               We Build{' '}
               <span className="gradient-text">Digital</span>
               <br />
@@ -267,15 +267,40 @@ export default function Home() {
             <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-8 max-w-lg">
               From startups to enterprises. we design, develop, and launch digital products that look premium and perform exceptionally. Made in India, built for the world.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={() => handleNav('services')} className="btn-primary px-7 py-3.5 text-sm font-semibold">
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   Explore Services <ArrowRight size={16} />
                 </span>
               </button>
-              <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold flex items-center gap-2">
+              <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold flex items-center justify-center gap-2">
                 <Play size={15} /> View Projects
               </button>
+            </div>
+          </div>
+
+          {/* Mobile Hero Image - Shown only on mobile */}
+          <div className="lg:hidden mt-8">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 border border-stone-200 dark:border-stone-700">
+              <img
+                src="/Hero_selection.PNG"
+                alt="Zone Digi Tech Team"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-white/90 dark:bg-stone-900/90 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-stone-700/20">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-stone-900 dark:text-white font-bold text-sm">Zone Digi Tech</p>
+                      <p className="text-stone-600 dark:text-stone-400 text-xs">Digital Excellence Team</p>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-saffron-500 to-amber-500 flex items-center justify-center">
+                      <Sparkles size={16} className="text-white" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -390,8 +415,8 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT TEASER ── */}
-      <section className="py-16 sm:py-24 bg-stone-50 dark:bg-[#0a0a0f]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <section className="py-24 bg-stone-50 dark:bg-[#0a0a0f]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-on-scroll-left relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
@@ -403,7 +428,7 @@ export default function Home() {
             </div>
 
             {/* Floating badge */}
-            <div className="hidden sm:block absolute -bottom-4 -right-4 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-xl border border-stone-100 dark:border-stone-800">
+            <div className="absolute -bottom-4 -right-4 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-xl border border-stone-100 dark:border-stone-800">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center"
                   style={{ background: 'linear-gradient(135deg, #e07b00, #f9b84a)' }}>
@@ -462,7 +487,7 @@ export default function Home() {
               We don't just build websites. We craft digital experiences that convert visitors into customers and customers into brand advocates.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {whyUs.map((item, i) => (
               <div
                 key={i}
@@ -493,18 +518,18 @@ export default function Home() {
               From design to development to digital marketing — we offer a comprehensive suite of services to help your business thrive online.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {services.map((service, i) => (
               <div
                 key={i}
-                className="animate-on-scroll group p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col min-h-[220px]"
+                className="animate-on-scroll group p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col min-h-[220px]"
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110"
                   style={{ background: `${service.color}18` }}>
                   <service.icon size={18} style={{ color: service.color }} />
                 </div>
                 <h3 className="font-display font-bold text-stone-900 dark:text-white text-sm mb-1.5">{service.title}</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3 min-h-[3rem]">{service.desc}</p>
+                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3 flex-grow">{service.desc}</p>
                 <button onClick={() => handleNav('services')} className="btn-service mt-auto self-start group-hover:gap-2.5"
                   style={{ color: service.color }}>
                   Learn More <ArrowRight size={13} />

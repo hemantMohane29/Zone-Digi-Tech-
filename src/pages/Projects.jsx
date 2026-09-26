@@ -262,15 +262,15 @@ export default function Projects() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20 transition-colors duration-300">
       {/* ── HERO ── */}
-      <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <section className="relative py-16 lg:py-20 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-40 dark:opacity-10 pointer-events-none" />
-        <div className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
+        <div className="absolute top-10 right-10 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.25), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <div className="tag mb-5">Our Portfolio & Case Studies</div>
-              <h1 className="section-title text-stone-900 dark:text-white mb-5 text-3xl sm:text-4xl md:text-5xl">
+              <h1 className="section-title text-stone-900 dark:text-white mb-5">
                 Featured Projects &<br />
                 <span className="gradient-text">Live Work Showcase</span>
               </h1>

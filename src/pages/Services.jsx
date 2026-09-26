@@ -782,7 +782,7 @@ export default function Services() {
               From choosing your plan to project kickoff and final delivery — transparent every step of the way.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {process.map((step, i) => (
               <div key={i} className="text-center group p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/40 border border-stone-200 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700 transition-all">
                 <div
