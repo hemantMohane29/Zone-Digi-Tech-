@@ -17,10 +17,10 @@ const contactDetails = [
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'infozonedigitech@gmail.com',
+    value: 'supportzonedigitech@gmail.com',
     sub: 'We respond within 2 hours.',
     color: '#e07b00',
-    href: 'mailto:infozonedigitech@gmail.com',
+    href: 'mailto:supportzonedigitech@gmail.com',
   },
   {
     icon: Phone,
@@ -137,15 +137,15 @@ export default function Contact() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-14 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-8"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7 max-w-2xl animate-on-scroll">
               <div className="tag mb-5">Contact Us</div>
-              <h1 className="section-title text-stone-900 dark:text-white mb-5">
+              <h1 className="section-title text-stone-900 dark:text-white mb-5 text-3xl sm:text-4xl md:text-5xl">
                 Let's Build<br />
                 <span className="gradient-text">Something Great</span>
               </h1>
@@ -155,11 +155,11 @@ export default function Contact() {
             </div>
 
             {/* Top Right Support Team Image */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0">
               <img
                 src="/contact_page_avatar.png"
                 alt="Zone Digi Tech Support"
-                className="w-full max-w-[400px] h-auto object-contain"
+                className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] h-auto object-contain"
               />
             </div>
           </div>
@@ -170,8 +170,8 @@ export default function Contact() {
       <section className="pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10">
-            {/* Sidebar */}
-            <div className="lg:col-span-2 space-y-5">
+            {/* Sidebar — shown below form on mobile, left on desktop */}
+            <div className="lg:col-span-2 space-y-5 order-2 lg:order-1">
               {/* Contact Cards */}
               {contactDetails.map((item, i) => (
                 <a
@@ -223,7 +223,7 @@ export default function Contact() {
               {/* Social */}
               <div className="animate-on-scroll p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800">
                 <h3 className="font-bold text-stone-900 dark:text-white text-sm mb-3">Follow Us</h3>
-                <div className="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                   {socials.map(({ icon: Icon, label, href, color }) => (
                     <a
                       key={label}
@@ -235,7 +235,7 @@ export default function Contact() {
                       style={{ background: `${color}12` }}
                     >
                       <Icon size={18} style={{ color }} />
-                      <span className="text-[10px] text-stone-500 dark:text-stone-400">{label}</span>
+                      <span className="text-xs sm:text-[10px] text-stone-500 dark:text-stone-400">{label}</span>
                     </a>
                   ))}
                 </div>
@@ -260,13 +260,13 @@ export default function Contact() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                   </span>
-                  <span className="text-[10px] font-semibold text-emerald-100 uppercase tracking-wider">Online</span>
+                  <span className="text-xs sm:text-[10px] font-semibold text-emerald-100 uppercase tracking-wider">Online</span>
                 </div>
               </a>
             </div>
 
-            {/* Form */}
-            <div className="lg:col-span-3 flex flex-col gap-6">
+            {/* Form — shown first on mobile, right on desktop */}
+            <div className="lg:col-span-3 flex flex-col gap-6 order-1 lg:order-2">
               {submitted ? (
                 <div className="h-full flex items-center justify-center bg-white dark:bg-stone-900/60 rounded-3xl border border-stone-100 dark:border-stone-800 p-10 text-center">
                   <div>
@@ -278,7 +278,7 @@ export default function Contact() {
                       Message Sent! 🎉
                     </h3>
                     <p className="text-stone-500 dark:text-stone-400 mb-6 leading-relaxed">
-                      Thank you, <strong className="text-stone-800 dark:text-white">{form.name}</strong>! Your project inquiry has been delivered directly to <strong className="text-saffron-500 font-semibold">infozonedigitech@gmail.com</strong>. We'll get back to you within 2–4 business hours.
+                      Thank you, <strong className="text-stone-800 dark:text-white">{form.name}</strong>! Your project inquiry has been delivered directly to <strong className="text-saffron-500 font-semibold">supportzonedigitech@gmail.com</strong>. We'll get back to you within 2–4 business hours.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-3">
                       <button
@@ -287,7 +287,7 @@ export default function Contact() {
                           const body = encodeURIComponent(
                             `Hi Zone Digi Tech,\n\nHere are my project details:\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\n\nProject Overview:\n${form.message}\n\nThanks!`
                           );
-                          window.open(`mailto:infozonedigitech@gmail.com?subject=${subject}&body=${body}`, '_blank');
+                          window.open(`mailto:supportzonedigitech@gmail.com?subject=${subject}&body=${body}`, '_blank');
                         }}
                         className="btn-primary text-sm px-6 py-2.5 inline-flex items-center gap-2"
                       >
@@ -377,16 +377,34 @@ export default function Contact() {
                       <label className="block text-sm font-semibold text-stone-700 dark:text-stone-300 mb-1.5">
                         Service Required <span className="text-red-400">*</span>
                       </label>
-                      <select
-                        name="service"
-                        value={form.service}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 ${errors.service ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
-                          } ${!form.service ? 'text-stone-400' : ''}`}
-                      >
-                        <option value="" disabled>Select a service</option>
-                        {services.map(s => <option key={s} value={s}>{s}</option>)}
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="service"
+                          value={form.service}
+                          onChange={handleChange}
+                          className={`w-full appearance-none px-4 py-3 pr-10 rounded-xl border text-sm bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-white transition-all duration-200 outline-none focus:ring-2 focus:ring-saffron-400/40 focus:border-saffron-400 cursor-pointer ${errors.service ? 'border-red-400' : 'border-stone-200 dark:border-stone-700'
+                            } ${!form.service ? 'text-stone-400 dark:text-stone-500' : ''}`}
+                        >
+                          <option value="" disabled>Select a service</option>
+                          {services.map(s => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                        {/* Custom dropdown arrow — always visible on all devices */}
+                        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                          <svg
+                            className="w-4 h-4 text-stone-500 dark:text-stone-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                       {errors.service && <p className="text-red-400 text-xs mt-1">{errors.service}</p>}
                     </div>
                   </div>

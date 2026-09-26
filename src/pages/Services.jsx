@@ -420,17 +420,17 @@ export default function Services() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20 transition-colors duration-300">
       {/* ── HERO ── */}
-      <section className="relative py-14 lg:py-18 overflow-hidden">
+      <section className="relative py-12 sm:py-14 lg:py-18 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
         <div
           className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-10 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.25), transparent)' }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-7">
               <div className="tag mb-4">Service Selection & Transparent Plans</div>
-              <h1 className="section-title text-stone-900 dark:text-white mb-4">
+              <h1 className="section-title text-stone-900 dark:text-white mb-4 text-3xl sm:text-4xl md:text-5xl">
                 Choose Your Service,<br />
                 <span className="gradient-text">Select Your Ideal Plan</span>
               </h1>
@@ -453,14 +453,14 @@ export default function Services() {
       {/* ── CATEGORY NAVIGATION BAR (CLEAN & NON-STICKY) ── */}
       <section className="py-4 bg-stone-50 dark:bg-[#0a0a0f] border-y border-stone-200 dark:border-stone-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="w-2 h-2 rounded-full bg-saffron-500 animate-pulse" />
               <span className="text-xs font-extrabold uppercase tracking-widest text-stone-700 dark:text-stone-300">
                 Explore Service Packages
               </span>
             </div>
-            <div className="flex items-center gap-2 self-start sm:self-auto">
+            <div className="flex items-center gap-2 flex-wrap self-start sm:self-auto">
               <button
                 onClick={() => setViewMode('single')}
                 className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 ${
@@ -782,7 +782,7 @@ export default function Services() {
               From choosing your plan to project kickoff and final delivery — transparent every step of the way.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {process.map((step, i) => (
               <div key={i} className="text-center group p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/40 border border-stone-200 dark:border-stone-800 hover:border-saffron-300 dark:hover:border-saffron-700 transition-all">
                 <div

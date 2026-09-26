@@ -9,13 +9,14 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Policies from './pages/Policies';
-import Preloader from './components/Preloader';
 import PageSkeleton from './components/PageSkeleton';
+import NotFound from './pages/NotFound';
 
-function AppLayout({ loading, setLoading }) {
+function AppLayout() {
   const location = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
   const [pageTransitioning, setPageTransitioning] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
 
   // Helper to map pathname to key
   const getPageKey = (pathname) => {
@@ -32,16 +33,16 @@ function AppLayout({ loading, setLoading }) {
   // Handle title and meta updates when current active page changes
   useEffect(() => {
     const pageData = {
-      home: { title: 'Zone Digi Tech — One Stop Digital Solution', desc: 'A premium creative digital agency helping Indian startups and businesses build powerful digital presences.' },
-      about: { title: 'About Us — Zone Digi Tech', desc: 'Learn more about Zone Digi Tech, our mission, values, and the creative team behind our digital solutions.' },
-      services: { title: 'Services — Zone Digi Tech', desc: 'Explore our comprehensive digital services including UI/UX Design, Web Development, SEO, and Social Media.' },
-      projects: { title: 'Projects — Zone Digi Tech', desc: 'View our portfolio of featured projects across web design, e-commerce, branding, and digital marketing.' },
-      contact: { title: 'Contact Us — Zone Digi Tech', desc: 'Get in touch with Zone Digi Tech to discuss your next big digital project. We would love to hear from you.' },
-      policies: { title: 'Policies & Terms — Zone Digi Tech', desc: 'Review official policies, privacy guidelines, refund rules, and terms of service of Zone Digi Tech.' },
-      'privacy-policy': { title: 'Privacy Policy — Zone Digi Tech', desc: 'Learn how Zone Digi Tech collects, uses, and safeguards client and visitor personal data.' },
-      'terms-and-conditions': { title: 'Terms & Conditions — Zone Digi Tech', desc: 'Official terms, project scope, client responsibilities, and licensing agreements at Zone Digi Tech.' },
-      'refund-policy': { title: 'Cancellation & Refund Policy — Zone Digi Tech', desc: 'Cancellation criteria, refund terms, and support guidelines for Zone Digi Tech services.' },
-      'service-delivery-policy': { title: 'Service Delivery Policy — Zone Digi Tech', desc: 'Delivery procedures for on-location services, digital deliverables, and timelines at Zone Digi Tech.' },
+      home: { title: 'Zone Digi Tech - One Stop Digital Solution', desc: 'A premium creative digital agency helping Indian startups and businesses build powerful digital presences.' },
+      about: { title: 'About Us - Zone Digi Tech', desc: 'Learn more about Zone Digi Tech, our mission, values, and the creative team behind our digital solutions.' },
+      services: { title: 'Services - Zone Digi Tech', desc: 'Explore our comprehensive digital services including UI/UX Design, Web Development, SEO, and Social Media.' },
+      projects: { title: 'Projects - Zone Digi Tech', desc: 'View our portfolio of featured projects across web design, e-commerce, branding, and digital marketing.' },
+      contact: { title: 'Contact Us - Zone Digi Tech', desc: 'Get in touch with Zone Digi Tech to discuss your next big digital project. We would love to hear from you.' },
+      policies: { title: 'Policies & Terms - Zone Digi Tech', desc: 'Review official policies, privacy guidelines, refund rules, and terms of service of Zone Digi Tech.' },
+      'privacy-policy': { title: 'Privacy Policy - Zone Digi Tech', desc: 'Learn how Zone Digi Tech collects, uses, and safeguards client and visitor personal data.' },
+      'terms-and-conditions': { title: 'Terms & Conditions - Zone Digi Tech', desc: 'Official terms, project scope, client responsibilities, and licensing agreements at Zone Digi Tech.' },
+      'refund-policy': { title: 'Cancellation & Refund Policy - Zone Digi Tech', desc: 'Cancellation criteria, refund terms, and support guidelines for Zone Digi Tech services.' },
+      'service-delivery-policy': { title: 'Service Delivery Policy - Zone Digi Tech', desc: 'Delivery procedures for on-location services, digital deliverables, and timelines at Zone Digi Tech.' },
     };
 
     const currentPageData = pageData[currentPage] || pageData.home;
@@ -55,6 +56,16 @@ function AppLayout({ loading, setLoading }) {
     }
     metaTitle.setAttribute('content', currentPageData.title);
 
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', currentPageData.title);
+    }
+
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', currentPageData.title);
+    }
+
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -63,6 +74,14 @@ function AppLayout({ loading, setLoading }) {
     }
     metaDesc.setAttribute('content', currentPageData.desc);
   }, [currentPage]);
+
+  // Handle initial loading - show skeleton on first mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitialLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handle page transition when the location pathname changes
   useEffect(() => {
@@ -79,11 +98,9 @@ function AppLayout({ loading, setLoading }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-[#0a0a0f] transition-colors duration-300">
-      {loading && <Preloader onLoadingComplete={() => setLoading(false)} />}
-
       <Navbar currentPage={currentPage} />
       <main className="flex-1">
-        {pageTransitioning ? (
+        {initialLoading || pageTransitioning ? (
           <PageSkeleton page={getPageKey(location.pathname)} />
         ) : (
           <Outlet />
@@ -95,13 +112,11 @@ function AppLayout({ loading, setLoading }) {
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-
   return (
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout loading={loading} setLoading={setLoading} />}>
+          <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="about" element={<About />} />
@@ -113,8 +128,8 @@ export default function App() {
             <Route path="terms-and-conditions" element={<Policies />} />
             <Route path="refund-policy" element={<Policies />} />
             <Route path="service-delivery-policy" element={<Policies />} />
-            {/* Fallback to Home page if route is unmatched */}
-            <Route path="*" element={<Home />} />
+            {/* 404 — unmatched routes */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

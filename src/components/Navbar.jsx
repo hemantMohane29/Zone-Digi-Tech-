@@ -201,7 +201,9 @@ export default function Navbar({ currentPage }) {
 
           {/* Actions */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <LanguageSelector />
+            <div className="hidden md:block">
+              <LanguageSelector />
+            </div>
             <button
               onClick={toggleTheme}
               className="h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 shrink-0"
@@ -211,7 +213,7 @@ export default function Navbar({ currentPage }) {
             </button>
             <Link
               to="/contact"
-              className="btn-primary h-10 sm:h-11 md:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0 flex items-center justify-center gap-1.5"
+              className="hidden sm:flex btn-primary h-10 sm:h-11 md:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0 items-center justify-center gap-1.5"
             >
               <span>Get Started</span>
               <ArrowRight size={14} className="relative z-10" />
@@ -237,11 +239,20 @@ export default function Navbar({ currentPage }) {
           onClick={() => setMenuOpen(false)}
         />
         <div
-          className={`absolute top-0 right-0 h-full w-72 bg-white dark:bg-[#0d0d18] shadow-2xl transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-[280px] sm:w-72 bg-white dark:bg-[#0d0d18] shadow-2xl transition-transform duration-300 flex flex-col ${
             menuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="p-6 pt-20 flex flex-col gap-2">
+          <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-stone-100 dark:border-stone-800">
+            <span className="text-sm font-bold text-stone-900 dark:text-white">Menu</span>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="h-9 w-9 rounded-full flex items-center justify-center text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+            >
+              <X size={18} />
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = currentPage === getPageKey(link.path);
               return (
@@ -260,7 +271,7 @@ export default function Navbar({ currentPage }) {
                 </Link>
               );
             })}
-            <div className="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800">
+            <div className="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800 space-y-3">
               <Link
                 to="/contact"
                 onClick={() => setMenuOpen(false)}
@@ -268,9 +279,20 @@ export default function Navbar({ currentPage }) {
               >
                 <span>Get Started</span>
               </Link>
-            </div>
-            <div className="mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 flex justify-center">
-              <LanguageSelector />
+              <div className="flex items-center justify-between px-1">
+                <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="h-9 w-9 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-200"
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+              </div>
+              <div className="flex items-center justify-between px-1">
+                <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">Language</span>
+                <LanguageSelector />
+              </div>
             </div>
           </div>
         </div>

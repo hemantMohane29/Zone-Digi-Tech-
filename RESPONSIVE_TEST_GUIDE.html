@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zone Digi Tech - Responsive Test Tool</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7941d 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 25px;
+      background: #f8f9fa;
+      border-bottom: 2px solid #e9ecef;
+    }
+    
+    .device-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 15px 20px;
+      background: white;
+      border: 2px solid #dee2e6;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-weight: 600;
+      color: #495057;
+    }
+    
+    .device-btn:hover {
+      border-color: #ff6b35;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+    }
+    
+    .device-btn.active {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7941d 100%);
+      color: white;
+      border-color: #ff6b35;
+    }
+    
+    .device-info {
+      padding: 20px 25px;
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      margin: 0 25px 20px;
+      border-radius: 8px;
+    }
+    
+    .device-info h3 {
+      color: #1976d2;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    
+    .device-info p {
+      color: #424242;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .iframe-container {
+      padding: 25px;
+      background: #f8f9fa;
+    }
+    
+    .iframe-wrapper {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+    
+    .iframe-wrapper iframe {
+      display: block;
+      border: none;
+      width: 100%;
+      height: 800px;
+      background: white;
+    }
+    
+    .pages-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 25px;
+      background: white;
+      border-top: 2px solid #e9ecef;
+    }
+    
+    .page-btn {
+      padding: 10px 20px;
+      background: #f8f9fa;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: #495057;
+      transition: all 0.2s ease;
+    }
+    
+    .page-btn:hover {
+      background: #e9ecef;
+      border-color: #adb5bd;
+    }
+    
+    .page-btn.active {
+      background: #ff6b35;
+      color: white;
+      border-color: #ff6b35;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 25px;
+      background: white;
+    }
+    
+    .stat-card {
+      padding: 20px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .stat-card .label {
+      font-size: 12px;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    
+    .stat-card .value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ff6b35;
+    }
+    
+    .checklist {
+      padding: 25px;
+      background: white;
+    }
+    
+    .checklist h3 {
+      margin-bottom: 15px;
+      color: #212529;
+    }
+    
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    
+    .check-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 24px;
+      }
+      
+      .controls {
+        flex-direction: column;
+      }
+      
+      .device-btn {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎨 Zone Digi Tech - Responsive Test Tool</h1>
+      <p>Test your website across all device sizes instantly</p>
+    </div>
+    
+    <div class="controls">
+      <button class="device-btn active" onclick="setDevice('mobile')">
+        📱 Mobile<br><small>375×667px</small>
+      </button>
+      <button class="device-btn" onclick="setDevice('mobile-large')">
+        📱 Mobile L<br><small>428×926px</small>
+      </button>
+      <button class="device-btn" onclick="setDevice('tablet')">
+        📱 Tablet<br><small>768×1024px</small>
+      </button>
+      <button class="device-btn" onclick="setDevice('tablet-landscape')">
+        💻 Tablet L<br><small>1024×768px</small>
+      </button>
+      <button class="device-btn" onclick="setDevice('desktop')">
+        🖥️ Desktop<br><small>1440×900px</small>
+      </button>
+      <button class="device-btn" onclick="setDevice('desktop-large')">
+        🖥️ Desktop L<br><small>1920×1080px</small>
+      </button>
+    </div>
+    
+    <div class="device-info" id="device-info">
+      <h3>📱 Mobile Portrait - iPhone 12/13/14</h3>
+      <p><strong>Viewport:</strong> 375×667px | <strong>Test:</strong> Navigation menu, touch targets, text readability, image scaling</p>
+    </div>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="label">Current Device</div>
+        <div class="value" id="current-device">Mobile</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Viewport Width</div>
+        <div class="value" id="viewport-width">375px</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Viewport Height</div>
+        <div class="value" id="viewport-height">667px</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Current Page</div>
+        <div class="value" id="current-page">Home</div>
+      </div>
+    </div>
+    
+    <div class="pages-nav">
+      <button class="page-btn active" onclick="setPage('/', 'Home')">🏠 Home</button>
+      <button class="page-btn" onclick="setPage('/about', 'About')">👥 About</button>
+      <button class="page-btn" onclick="setPage('/services', 'Services')">⚙️ Services</button>
+      <button class="page-btn" onclick="setPage('/projects', 'Projects')">💼 Projects</button>
+      <button class="page-btn" onclick="setPage('/contact', 'Contact')">📧 Contact</button>
+      <button class="page-btn" onclick="setPage('/policies', 'Policies')">📋 Policies</button>
+    </div>
+    
+    <div class="iframe-container">
+      <div class="iframe-wrapper" id="iframe-wrapper">
+        <iframe id="preview-frame" src="http://localhost:5174/"></iframe>
+      </div>
+    </div>
+    
+    <div class="checklist">
+      <h3>✅ Responsive Testing Checklist</h3>
+      <div class="check-item">
+        <input type="checkbox" id="check1">
+        <label for="check1">Navigation menu works and is accessible on all devices</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check2">
+        <label for="check2">Text is readable without horizontal scrolling</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check3">
+        <label for="check3">Images scale properly and don't overflow</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check4">
+        <label for="check4">Buttons and links have adequate touch targets (44×44px minimum)</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check5">
+        <label for="check5">Forms are easy to fill out on mobile devices</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check6">
+        <label for="check6">Content layout adapts smoothly across breakpoints</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check7">
+        <label for="check7">Footer is fully functional on all devices</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="check8">
+        <label for="check8">Page load time is acceptable on all viewports</label>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const devices = {
+      'mobile': {
+        width: 375,
+        height: 667,
+        name: 'Mobile',
+        description: '📱 Mobile Portrait - iPhone 12/13/14',
+        details: 'Viewport: 375×667px | Test: Navigation menu, touch targets, text readability, image scaling'
+      },
+      'mobile-large': {
+        width: 428,
+        height: 926,
+        name: 'Mobile L',
+        description: '📱 Mobile Large - iPhone 14 Pro Max',
+        details: 'Viewport: 428×926px | Test: Larger mobile screens, extended content areas'
+      },
+      'tablet': {
+        width: 768,
+        height: 1024,
+        name: 'Tablet',
+        description: '📱 Tablet Portrait - iPad',
+        details: 'Viewport: 768×1024px | Test: Two-column layouts, larger images, expanded navigation'
+      },
+      'tablet-landscape': {
+        width: 1024,
+        height: 768,
+        name: 'Tablet L',
+        description: '💻 Tablet Landscape - iPad',
+        details: 'Viewport: 1024×768px | Test: Wide layouts, multi-column content, desktop-like features'
+      },
+      'desktop': {
+        width: 1440,
+        height: 900,
+        name: 'Desktop',
+        description: '🖥️ Desktop - Standard Laptop',
+        details: 'Viewport: 1440×900px | Test: Full desktop experience, hover effects, wide layouts'
+      },
+      'desktop-large': {
+        width: 1920,
+        height: 1080,
+        name: 'Desktop L',
+        description: '🖥️ Desktop Large - Full HD',
+        details: 'Viewport: 1920×1080px | Test: Maximum width layouts, content centering, ultra-wide displays'
+      }
+    };
+    
+    function setDevice(deviceKey) {
+      const device = devices[deviceKey];
+      const wrapper = document.getElementById('iframe-wrapper');
+      const info = document.getElementById('device-info');
+      
+      wrapper.style.width = device.width + 'px';
+      wrapper.style.maxWidth = '100%';
+      
+      info.innerHTML = `
+        <h3>${device.description}</h3>
+        <p><strong>${device.details}</strong></p>
+      `;
+      
+      document.getElementById('current-device').textContent = device.name;
+      document.getElementById('viewport-width').textContent = device.width + 'px';
+      document.getElementById('viewport-height').textContent = device.height + 'px';
+      
+      // Update active button
+      document.querySelectorAll('.device-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.closest('.device-btn').classList.add('active');
+    }
+    
+    function setPage(path, pageName) {
+      const iframe = document.getElementById('preview-frame');
+      iframe.src = 'http://localhost:5174' + path;
+      document.getElementById('current-page').textContent = pageName;
+      
+      // Update active button
+      document.querySelectorAll('.page-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

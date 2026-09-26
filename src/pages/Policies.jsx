@@ -472,11 +472,11 @@ export default function Policies() {
               </div>
               <div className="space-y-3 text-xs">
                 <a
-                  href="mailto:infozonedigitech@gmail.com"
+                  href="mailto:supportzonedigitech@gmail.com"
                   className="flex items-center gap-3 p-3 rounded-2xl bg-stone-50 dark:bg-stone-800/40 hover:bg-saffron-500/10 text-stone-700 dark:text-stone-300 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors"
                 >
                   <Mail size={16} className="text-saffron-500 flex-shrink-0" />
-                  <span className="font-medium truncate">infozonedigitech@gmail.com</span>
+                  <span className="font-medium truncate">supportzonedigitech@gmail.com</span>
                 </a>
                 <a
                   href="tel:+917974942457"

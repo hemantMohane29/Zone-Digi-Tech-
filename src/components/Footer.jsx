@@ -86,7 +86,7 @@ export default function Footer() {
 
           {/* Quick Links & Policies */}
           <div>
-            <h3 className="font-display font-semibold text-white mb-5 text-sm">Navigation &amp; Legal</h3>
+            <h3 className="font-display font-semibold text-white mb-5 text-sm">Navigation & Legal</h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -111,7 +111,7 @@ export default function Footer() {
                   style={{ background: 'rgba(224,123,0,0.15)' }}>
                   <Mail size={13} className="text-saffron-400" />
                 </div>
-                <a href="mailto:infozonedigitech@gmail.com" className="text-stone-400 text-sm hover:text-saffron-400 transition-colors">infozonedigitech@gmail.com</a>
+                <a href="mailto:supportzonedigitech@gmail.com" className="text-stone-400 text-sm hover:text-saffron-400 transition-colors">supportzonedigitech@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"

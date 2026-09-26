@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Palette, Globe, ShoppingCart, Share2, Search, Video, Camera, Image as ImageIcon, Monitor, CheckCircle, Clock, TrendingUp, HeartHandshake, DollarSign, Layers, ChevronDown as ChevronDownIcon, MessageCircle, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Palette, Globe, ShoppingCart, Share2, Search, Video, Camera, Image as ImageIcon, Monitor, CheckCircle, Clock, TrendingUp, HeartHandshake, DollarSign, Layers, MessageCircle, Play, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
 
@@ -250,14 +250,14 @@ export default function Home() {
         {/* Indian pattern overlay */}
         <div className="absolute inset-0 indian-pattern opacity-60 dark:opacity-20 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
           {/* Left */}
           <div>
             <div className="tag mb-6 inline-flex">
               <Sparkles size={11} />
               India's Premier Digital Creative Studio
             </div>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-stone-900 dark:text-white mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-stone-900 dark:text-white mb-6">
               We Build{' '}
               <span className="gradient-text">Digital</span>
               <br />
@@ -390,8 +390,8 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT TEASER ── */}
-      <section className="py-24 bg-stone-50 dark:bg-[#0a0a0f]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-16 sm:py-24 bg-stone-50 dark:bg-[#0a0a0f]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="animate-on-scroll-left relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
@@ -403,7 +403,7 @@ export default function Home() {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -bottom-4 -right-4 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-xl border border-stone-100 dark:border-stone-800">
+            <div className="hidden sm:block absolute -bottom-4 -right-4 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-xl border border-stone-100 dark:border-stone-800">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center"
                   style={{ background: 'linear-gradient(135deg, #e07b00, #f9b84a)' }}>
@@ -462,7 +462,7 @@ export default function Home() {
               We don't just build websites. We craft digital experiences that convert visitors into customers and customers into brand advocates.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             {whyUs.map((item, i) => (
               <div
                 key={i}
@@ -493,7 +493,7 @@ export default function Home() {
               From design to development to digital marketing — we offer a comprehensive suite of services to help your business thrive online.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {services.map((service, i) => (
               <div
                 key={i}
@@ -604,7 +604,7 @@ export default function Home() {
                       </span>
                       <span className="font-semibold text-stone-900 dark:text-white text-sm">{faq.q}</span>
                     </div>
-                    <ChevronDownIcon
+                    <ChevronDown
                       size={18}
                       className={`flex-shrink-0 text-saffron-600 dark:text-saffron-400 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''
                         }`}

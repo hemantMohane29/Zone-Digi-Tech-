@@ -80,15 +80,15 @@ export default function About() {
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
-      <section className="relative py-20 lg:py-24 overflow-hidden">
+      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
         <div className="absolute top-10 right-0 w-96 h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <div className="tag mb-5">Our Story</div>
-              <h1 className="section-title text-stone-900 dark:text-white mb-6">
+              <h1 className="section-title text-stone-900 dark:text-white mb-6 text-3xl sm:text-4xl md:text-5xl">
                 Built With Passion,<br />
                 <span className="gradient-text">Driven by Purpose</span>
               </h1>
@@ -117,8 +117,8 @@ export default function About() {
       </section>
 
       {/* ── STORY ── */}
-      <section className="py-16 bg-white dark:bg-stone-900/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-12 sm:py-16 bg-white dark:bg-stone-900/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="animate-on-scroll-left relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] max-h-[420px] group border border-stone-200/50 dark:border-stone-800/50">
               <img
@@ -132,7 +132,7 @@ export default function About() {
                 {[
                   { value: '5+', label: 'Projects' },
                   { value: '4+', label: 'Clients' },
-                  { value: '5', label: 'Team' },
+                  { value: '10', label: 'Team' },
                   { value: '1.5 Yrs', label: 'Experience' },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
@@ -347,7 +347,7 @@ export default function About() {
 
 
       {/* ── CTA ── */}
-      <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a00, #2d1a00)' }}>
+      <section className="py-16 sm:py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a00, #2d1a00)' }}>
         <div className="absolute inset-0 indian-pattern opacity-10 pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="font-display text-4xl font-bold text-white mb-4">
