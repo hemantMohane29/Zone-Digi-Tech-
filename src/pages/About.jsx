@@ -1,12 +1,19 @@
-import { useEffect } from 'react';
-import { ArrowRight, Target, Eye, Heart, Users, Globe, Coffee, Sparkles, Linkedin, Mail } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Target, Eye, Heart, Users, Globe, Coffee, Sparkles, Linkedin, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
+import aboutSelectionImg from '../assets/About_selection.png';
+import aboutSelection02Img from '../assets/About_selection02.png';
+import hemantImg from '../assets/team/Hemant.png';
+import rahulImg from '../assets/team/Rahul.jpeg';
+import buntyImg from '../assets/team/bunty.png';
+import vikramImg from '../assets/team/vikram.PNG';
+import avdheshImg from '../assets/team/Avdhesh.png';
 
 const founder = {
   name: 'Hemant Mohane',
   role: 'Founder & CEO',
-  image: '/Hemant.png',
+  image: hemantImg,
   objectPos: 'center 15%',
   desc: 'Visionary leader driving strategy, innovation, and creative direction at Zone Digi Tech.',
   linkedin: 'https://www.linkedin.com/in/hemant-mohane-35440a330/',
@@ -17,7 +24,7 @@ const teamMembers = [
   {
     name: 'Rahul Powale',
     role: 'Digital Marketing Lead',
-    image: '/Rahul.jpeg',
+    image: rahulImg,
     objectPos: 'center 15%',
     desc: 'Growth strategist driving digital marketing, SEO, and performance campaigns.',
     linkedin: 'https://www.linkedin.com/in/rahul-powale-b34312326/',
@@ -26,7 +33,7 @@ const teamMembers = [
   {
     name: 'Bhojraj Mahajan',
     role: 'Full Stack Developer',
-    image: '/bunty.png',
+    image: buntyImg,
     objectPos: 'center 20%',
     desc: 'Architecting robust, scalable web applications and high-performance digital solutions.',
     linkedin: 'https://www.linkedin.com/in/bhojraj-mahajan-80481a329/',
@@ -35,7 +42,7 @@ const teamMembers = [
   {
     name: 'Vikram Kumar',
     role: 'Operation Lead',
-    image: '/vikram.PNG',
+    image: vikramImg,
     objectPos: 'center 15%',
     desc: 'Streamlining operational execution, workflow management, and team productivity.',
     linkedin: 'https://www.linkedin.com/in/vikram-kumar-7686702a0/',
@@ -44,7 +51,7 @@ const teamMembers = [
   {
     name: 'Avdhesh Pal',
     role: 'Finance Manager',
-    image: '/Avdhesh.png',
+    image: avdheshImg,
     objectPos: 'center 27%',
     desc: 'Managing financial planning, budgeting, reporting, and operational fiscal health.',
     linkedin: 'https://www.linkedin.com/in/avadhesh-pal-263b4a3a5/',
@@ -70,6 +77,10 @@ const milestones = [
 export default function About() {
   useScrollAnimation();
   const navigate = useNavigate();
+  const [mobileTeamIndex, setMobileTeamIndex] = useState(0);
+  const [teamTouchStart, setTeamTouchStart] = useState(null);
+  const [teamTouchEnd, setTeamTouchEnd] = useState(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const handleNav = (page) => {
     navigate(page === 'home' ? '/' : `/${page}`);
@@ -77,12 +88,58 @@ export default function About() {
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
+  // Auto-slider effect for mobile team carousel
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setMobileTeamIndex((prev) => {
+        // Loop back to start when reaching the end
+        if (prev >= teamMembers.length - 1) {
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 4000); // 4 seconds per slide
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  // Pause auto-play when user interacts, resume after 10 seconds
+  const pauseAutoPlay = () => {
+    setIsAutoPlaying(false);
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 10000); // Resume after 10 seconds
+  };
+
+  const handleTeamTouchStart = (e) => {
+    pauseAutoPlay();
+    setTeamTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTeamTouchMove = (e) => setTeamTouchEnd(e.targetTouches[0].clientX);
+
+  const handleTeamTouchEnd = () => {
+    if (!teamTouchStart || !teamTouchEnd) return;
+    const distance = teamTouchStart - teamTouchEnd;
+    if (Math.abs(distance) > 40) {
+      if (distance > 0 && mobileTeamIndex < teamMembers.length - 1) {
+        setMobileTeamIndex((prev) => prev + 1);
+      } else if (distance < 0 && mobileTeamIndex > 0) {
+        setMobileTeamIndex((prev) => prev - 1);
+      }
+    }
+    setTeamTouchStart(null);
+    setTeamTouchEnd(null);
+  };
+
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20">
       {/* ── HERO ── */}
       <section className="relative py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-50 dark:opacity-10 pointer-events-none" />
-        <div className="absolute top-10 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
+        <div className="absolute top-10 right-0 w-96 h-96 rounded-full blur-3xl opacity-8 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.2), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -95,9 +152,9 @@ export default function About() {
               <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed max-w-2xl">
                 We are Zone Digi Tech, A creative digital studio born in the heart of Bhopal. We exist to help Indian businesses and global startups build digital presences that command attention, build trust, and drive growth.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="mt-8 flex flex-wrap gap-4">
                 <button onClick={() => handleNav('contact')} className="btn-primary px-7 py-3.5 text-sm font-semibold">
-                  <span className="flex items-center justify-center gap-2">Get Started <ArrowRight size={15} /></span>
+                  <span className="flex items-center gap-2">Get Started <ArrowRight size={15} /></span>
                 </button>
                 <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold">
                   View Our Work
@@ -107,8 +164,11 @@ export default function About() {
 
             <div>
               <img
-                src="/About_selection.png"
+                src={aboutSelectionImg}
                 alt="About Zone Digi Tech"
+                width="900"
+                height="420"
+                loading="eager"
                 className="w-full h-auto max-h-[420px] object-contain rounded-2xl mx-auto mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 hover:scale-[1.02]"
               />
             </div>
@@ -122,36 +182,20 @@ export default function About() {
           <div className="animate-on-scroll-left relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] max-h-[420px] group border border-stone-200/50 dark:border-stone-800/50">
               <img
-                src="/About_selection02.png"
+                src={aboutSelection02Img}
                 alt="Zone Digi Tech Team"
+                width="800"
+                height="600"
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-
-            {/* Mobile Stats - Show below image on mobile */}
-            <div className="md:hidden mt-6 bg-white dark:bg-stone-900 rounded-2xl p-4 shadow-lg border border-stone-200 dark:border-stone-700">
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { value: '5+', label: 'Projects' },
-                  { value: '4+', label: 'Clients' },
-                  { value: '5', label: 'Team' },
-                  { value: '1.5 Yrs', label: 'Experience' },
-                ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <div className="font-display font-bold text-lg text-stone-900 dark:text-white gradient-text">{s.value}</div>
-                    <div className="text-stone-400 text-xs">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Desktop Stats - Hidden on mobile, positioned absolutely on desktop */}
             <div className="absolute -bottom-6 -right-6 bg-white dark:bg-stone-900 rounded-2xl p-5 shadow-2xl shadow-black/20 dark:shadow-black/60 border border-stone-200 dark:border-stone-700 hidden md:block ring-1 ring-stone-100 dark:ring-stone-800">
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: '5+', label: 'Projects' },
                   { value: '4+', label: 'Clients' },
-                  { value: '5', label: 'Team' },
+                  { value: '10', label: 'Team' },
                   { value: '1.5 Yrs', label: 'Experience' },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
@@ -229,15 +273,15 @@ export default function About() {
             </h2>
           </div>
           <div className="relative">
-            <div className="absolute left-4 sm:left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-saffron-400 to-transparent" />
+            <div className="absolute left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-saffron-400 to-transparent" />
             <div className="space-y-6">
               {milestones.map((m, i) => (
-                <div key={i} className="animate-on-scroll flex gap-4 sm:gap-8 items-start">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 border-2 border-saffron-400 bg-white dark:bg-stone-900"
+                <div key={i} className="animate-on-scroll flex gap-8 items-start">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 border-2 border-saffron-400 bg-white dark:bg-stone-900"
                     style={{ boxShadow: '0 0 0 4px rgba(224,123,0,0.1)' }}>
                     <span className="font-display font-bold text-saffron-600 dark:text-saffron-400 text-xs">{m.year}</span>
                   </div>
-                  <div className="pt-2 sm:pt-3">
+                  <div className="pt-3">
                     <h3 className="font-display font-bold text-stone-900 dark:text-white mb-1">{m.title}</h3>
                     <p className="text-stone-500 dark:text-stone-400 text-sm">{m.desc}</p>
                   </div>
@@ -311,8 +355,8 @@ export default function About() {
             </div>
           </div>
 
-          {/* Core Team Members — 4 Column Grid Below */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* Core Team Members — Desktop: Normal 4 Column Grid */}
+          <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {teamMembers.map((member, i) => (
               <div
                 key={i}
@@ -360,6 +404,132 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Core Team Members — Mobile: Interactive Touch Slider */}
+          <div className="block md:hidden">
+            {/* Mobile Slider Controls & Counter */}
+            <div className="flex items-center justify-between mb-4 px-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-stone-900 dark:text-white">
+                  Team Member {mobileTeamIndex + 1} of {teamMembers.length}
+                </span>
+                <span className="text-xs text-stone-500 dark:text-stone-400">
+                  {isAutoPlaying ? '🔄 Auto' : '⏸ Paused'}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => {
+                    pauseAutoPlay();
+                    setMobileTeamIndex(prev => Math.max(0, prev - 1));
+                  }}
+                  disabled={mobileTeamIndex === 0}
+                  className={`w-8 h-8 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center transition-colors ${
+                    mobileTeamIndex === 0
+                      ? 'opacity-40 cursor-not-allowed bg-stone-100 dark:bg-stone-800 text-stone-400'
+                      : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 shadow-sm active:scale-95'
+                  }`}
+                  aria-label="Previous team member"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  onClick={() => {
+                    pauseAutoPlay();
+                    setMobileTeamIndex(prev => Math.min(teamMembers.length - 1, prev + 1));
+                  }}
+                  disabled={mobileTeamIndex === teamMembers.length - 1}
+                  className={`w-8 h-8 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center transition-colors ${
+                    mobileTeamIndex === teamMembers.length - 1
+                      ? 'opacity-40 cursor-not-allowed bg-stone-100 dark:bg-stone-800 text-stone-400'
+                      : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 shadow-sm active:scale-95'
+                  }`}
+                  aria-label="Next team member"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Swipe Container */}
+            <div
+              className="overflow-hidden"
+              onTouchStart={handleTeamTouchStart}
+              onTouchMove={handleTeamTouchMove}
+              onTouchEnd={handleTeamTouchEnd}
+            >
+              <div
+                className="flex transition-transform duration-300 ease-out"
+                style={{ transform: `translateX(-${mobileTeamIndex * 100}%)` }}
+              >
+                {teamMembers.map((member, i) => (
+                  <div key={i} className="w-full flex-shrink-0 px-2">
+                    <div className="text-center p-6 rounded-3xl bg-white dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-lg flex flex-col justify-between">
+                      <div>
+                        <div className="relative w-32 h-32 mx-auto mb-4">
+                          <div className="w-full h-full rounded-full overflow-hidden p-1 bg-gradient-to-tr from-saffron-500 to-amber-400 shadow-md">
+                            <img
+                              src={member.image}
+                              alt={member.name}
+                              style={{ objectPosition: member.objectPos || 'center top' }}
+                              className="w-full h-full object-cover rounded-full bg-white dark:bg-stone-900"
+                            />
+                          </div>
+                        </div>
+                        <h3 className="font-display font-bold text-stone-900 dark:text-white text-lg mb-1">
+                          {member.name}
+                        </h3>
+                        <p className="text-saffron-600 dark:text-saffron-400 text-xs font-semibold mb-2">
+                          {member.role}
+                        </p>
+                        <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-5">
+                          {member.desc}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-center gap-3 pt-4 border-t border-stone-100 dark:border-stone-800/80 w-full">
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full flex items-center justify-center bg-[#0a66c2]/10 dark:bg-[#0a66c2]/20 text-[#0a66c2] dark:text-[#38bdf8] shadow-sm active:scale-90"
+                          title="LinkedIn Profile"
+                        >
+                          <Linkedin size={18} />
+                        </a>
+                        <a
+                          href={member.email}
+                          className="w-10 h-10 rounded-full flex items-center justify-center bg-[#ea4335]/10 dark:bg-[#ea4335]/20 text-[#ea4335] dark:text-[#f87171] shadow-sm active:scale-90"
+                          title="Send Email"
+                        >
+                          <Mail size={18} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Dots Indicator */}
+            <div className="flex items-center justify-center gap-1.5 mt-5">
+              {teamMembers.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    pauseAutoPlay();
+                    setMobileTeamIndex(i);
+                  }}
+                  className={`transition-all duration-300 rounded-full ${
+                    i === mobileTeamIndex
+                      ? 'w-6 h-2 bg-gradient-to-r from-saffron-500 to-amber-400'
+                      : 'w-2 h-2 bg-stone-300 dark:bg-stone-600'
+                  }`}
+                  aria-label={`Go to team member slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

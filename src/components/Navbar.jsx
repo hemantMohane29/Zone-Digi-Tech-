@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Moon, Sun, ArrowRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
 
@@ -11,126 +11,6 @@ const navLinks = [
   { label: 'Contact', path: '/contact' },
 ];
 
-const languages = [
-  { code: 'en',    label: 'English',    short: 'EN' },
-  { code: 'hi',    label: 'हिंदी',       short: 'HI' },
-  { code: 'mr',    label: 'मराठी',       short: 'MR' },
-  { code: 'bn',    label: 'বাংলা',       short: 'BN' },
-  { code: 'te',    label: 'తెలుగు',      short: 'TE' },
-  { code: 'ta',    label: 'தமிழ்',       short: 'TA' },
-  { code: 'gu',    label: 'ગુજરાતી',     short: 'GU' },
-  { code: 'kn',    label: 'ಕನ್ನಡ',       short: 'KN' },
-  { code: 'pa',    label: 'ਪੰਜਾਬੀ',      short: 'PA' },
-  { code: 'ar',    label: 'العربية',     short: 'AR' },
-  { code: 'fr',    label: 'Français',   short: 'FR' },
-  { code: 'de',    label: 'Deutsch',    short: 'DE' },
-  { code: 'es',    label: 'Español',    short: 'ES' },
-  { code: 'pt',    label: 'Português',  short: 'PT' },
-  { code: 'zh-CN', label: '中文',         short: 'ZH' },
-  { code: 'ja',    label: '日本語',       short: 'JA' },
-  { code: 'ko',    label: '한국어',       short: 'KO' },
-  { code: 'ru',    label: 'Русский',    short: 'RU' },
-];
-
-function LanguageSelector() {
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(languages[0]);
-  const dropdownRef = useRef(null);
-
-  useEffect(() => {
-    if (!document.getElementById('google-translate-script')) {
-      window.googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement(
-          { pageLanguage: 'en', autoDisplay: false },
-          'google_translate_element'
-        );
-      };
-      const script = document.createElement('script');
-      script.id = 'google-translate-script';
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.onerror = () => console.warn('Google Translate failed to load.');
-      document.body.appendChild(script);
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleLanguageChange = (lang) => {
-    setSelected(lang);
-    setOpen(false);
-    const select = document.querySelector('.goog-te-combo');
-    if (select) {
-      select.value = lang.code;
-      select.dispatchEvent(new Event('change'));
-    }
-  };
-
-  return (
-    <div className="relative" ref={dropdownRef}>
-      {/* Hidden Google Translate mount point */}
-      <div id="google_translate_element" className="hidden" aria-hidden="true" />
-
-      {/* Trigger — compact pill matching CloudNexus style */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="h-8 px-3 rounded-full flex items-center gap-1 text-xs font-semibold tracking-wider border border-stone-300 dark:border-stone-600 text-stone-700 dark:text-stone-300 hover:border-stone-400 dark:hover:border-stone-400 hover:text-stone-900 dark:hover:text-white bg-transparent transition-all duration-200"
-        aria-label="Select language"
-        aria-expanded={open}
-        aria-haspopup="listbox"
-      >
-        {selected.short}
-        <ChevronDown size={11} className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
-      </button>
-
-      {/* Dropdown */}
-      <div
-        className={`absolute right-0 top-[calc(100%+8px)] z-50 w-48 bg-white dark:bg-[#111118] border border-stone-200 dark:border-stone-700/80 rounded-2xl shadow-2xl shadow-black/10 dark:shadow-black/50 overflow-hidden transition-all duration-200 origin-top-right ${
-          open ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'
-        }`}
-        role="listbox"
-      >
-        <div className="px-3 pt-3 pb-1">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-stone-400 dark:text-stone-500">
-            Language
-          </p>
-        </div>
-        <div className="pb-2 max-h-64 overflow-y-auto notranslate" style={{ scrollbarWidth: 'thin' }}>
-          {languages.map((lang) => {
-            const isActive = selected.code === lang.code;
-            return (
-              <button
-                key={lang.code}
-                onClick={() => handleLanguageChange(lang)}
-                role="option"
-                aria-selected={isActive}
-                className={`w-full text-left flex items-center justify-between px-3 py-2 mx-1 rounded-lg text-sm transition-all duration-150 ${
-                  isActive
-                    ? 'bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 font-semibold'
-                    : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/60'
-                }`}
-                style={{ width: 'calc(100% - 8px)' }}
-              >
-                <span>{lang.label}</span>
-                <span className={`text-[10px] font-bold tracking-wider ${isActive ? 'text-orange-500' : 'text-stone-400 dark:text-stone-500'}`}>
-                  {lang.short}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Navbar({ currentPage }) {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -141,6 +21,15 @@ export default function Navbar({ currentPage }) {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => document.body.style.overflow = 'unset';
+  }, [menuOpen]);
 
   const getPageKey = (path) => {
     if (path === '/') return 'home';
@@ -201,9 +90,6 @@ export default function Navbar({ currentPage }) {
 
           {/* Actions */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <div className="hidden md:block">
-              <LanguageSelector />
-            </div>
             <button
               onClick={toggleTheme}
               className="h-10 w-10 sm:h-11 sm:w-11 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 shrink-0"
@@ -213,7 +99,7 @@ export default function Navbar({ currentPage }) {
             </button>
             <Link
               to="/contact"
-              className="hidden sm:flex btn-primary h-10 sm:h-11 md:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0 items-center justify-center gap-1.5"
+              className="btn-primary h-10 sm:h-11 md:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0 flex items-center justify-center gap-1.5"
             >
               <span>Get Started</span>
               <ArrowRight size={14} className="relative z-10" />
@@ -239,20 +125,11 @@ export default function Navbar({ currentPage }) {
           onClick={() => setMenuOpen(false)}
         />
         <div
-          className={`absolute top-0 right-0 h-full w-[280px] sm:w-72 bg-white dark:bg-[#0d0d18] shadow-2xl transition-transform duration-300 flex flex-col ${
+          className={`absolute top-0 right-0 h-full w-72 bg-white dark:bg-[#0d0d18] shadow-2xl transition-transform duration-300 ${
             menuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-stone-100 dark:border-stone-800">
-            <span className="text-sm font-bold text-stone-900 dark:text-white">Menu</span>
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="h-9 w-9 rounded-full flex items-center justify-center text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-            >
-              <X size={18} />
-            </button>
-          </div>
-          <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-2">
+          <div className="p-6 pt-20 flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = currentPage === getPageKey(link.path);
               return (
@@ -271,7 +148,7 @@ export default function Navbar({ currentPage }) {
                 </Link>
               );
             })}
-            <div className="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800 space-y-3">
+            <div className="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800">
               <Link
                 to="/contact"
                 onClick={() => setMenuOpen(false)}
@@ -279,20 +156,6 @@ export default function Navbar({ currentPage }) {
               >
                 <span>Get Started</span>
               </Link>
-              <div className="flex items-center justify-between px-1">
-                <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">Theme</span>
-                <button
-                  onClick={toggleTheme}
-                  className="h-9 w-9 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-200"
-                  aria-label="Toggle theme"
-                >
-                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-                </button>
-              </div>
-              <div className="flex items-center justify-between px-1">
-                <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">Language</span>
-                <LanguageSelector />
-              </div>
             </div>
           </div>
         </div>

@@ -2,6 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronDown, Star, Users, Briefcase, Award, Palette, Globe, ShoppingCart, Share2, Search, Video, Camera, Image as ImageIcon, Monitor, CheckCircle, Clock, TrendingUp, HeartHandshake, DollarSign, Layers, MessageCircle, Play, Sparkles } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
+import TestimonialSlider from '../components/TestimonialSlider';
+
+// Import client & hero images via Vite so they get hashed into the build
+import clientFoodShood from '../assets/clients/client_food_shood.jpg';
+import clientMudassir from '../assets/clients/client_mudassir.png';
+import clientYousuf from '../assets/clients/client_yousuf.png';
+import clientVadaas from '../assets/clients/client_vadaas.png';
+import clientDharmendra from '../assets/clients/client_dharmendra.png';
+import heroSelectionImg from '../assets/Hero_selection.PNG';
 
 const stats = [
   { value: '5+', label: 'Projects Delivered', icon: Briefcase },
@@ -175,22 +184,36 @@ const homeTestimonials = [
   {
     name: 'Food Shood',
     company: 'Food Shood Restaurant & Café',
-    image: '/client_food_shood.jpg',
+    image: clientFoodShood,
     text: 'Zone Digi Tech delivered exceptional branding, digital menu cards, social media management, and online ordering system for Food Shood. Our footfall and online orders grew massively!',
     rating: 5,
   },
   {
     name: 'Mr. Mudassir Ahmed Hashmi',
     company: 'Netligent Tech',
-    image: '/client_mudassir.png',
+    image: clientMudassir,
     text: 'Zone Digi Tech transformed our enterprise platform with exceptional speed and precision. Their UI/UX vision and technical execution set a whole new standard for our business.',
+    rating: 5,
+  },
+  {
+    name: 'Yousuf Sir',
+    company: 'Netligent Tech',
+    image: clientYousuf,
+    text: 'Working with Zone Digi Tech was a seamless experience. They delivered high-converting digital solutions, modern design frameworks, and outstanding ongoing support.',
     rating: 5,
   },
   {
     name: 'Vadaas Shop',
     company: 'Owner, Vadaas Shop',
-    image: '/client_vadaas.png',
+    image: clientVadaas,
     text: 'Their team created a stunning digital presence and social media strategy for our shop. Our customer reach and online inquiries increased dramatically!',
+    rating: 5,
+  },
+  {
+    name: 'Dr. Dharmendra Pal',
+    company: 'Physiotherapy',
+    image: clientDharmendra,
+    text: 'Highly professional and dedicated team! They built our clinic booking portal and optimized our local search presence, doubling patient appointments month-on-month.',
     rating: 5,
   },
 ];
@@ -267,40 +290,15 @@ export default function Home() {
             <p className="text-stone-500 dark:text-stone-400 text-lg leading-relaxed mb-8 max-w-lg">
               From startups to enterprises. we design, develop, and launch digital products that look premium and perform exceptionally. Made in India, built for the world.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-wrap gap-4">
               <button onClick={() => handleNav('services')} className="btn-primary px-7 py-3.5 text-sm font-semibold">
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center gap-2">
                   Explore Services <ArrowRight size={16} />
                 </span>
               </button>
-              <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold flex items-center justify-center gap-2">
+              <button onClick={() => handleNav('projects')} className="btn-outline px-7 py-3.5 text-sm font-semibold flex items-center gap-2">
                 <Play size={15} /> View Projects
               </button>
-            </div>
-          </div>
-
-          {/* Mobile Hero Image - Shown only on mobile */}
-          <div className="lg:hidden mt-8">
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900 border border-stone-200 dark:border-stone-700">
-              <img
-                src="/Hero_selection.PNG"
-                alt="Zone Digi Tech Team"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="bg-white/90 dark:bg-stone-900/90 backdrop-blur-sm rounded-lg p-3 border border-white/20 dark:border-stone-700/20">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-stone-900 dark:text-white font-bold text-sm">Zone Digi Tech</p>
-                      <p className="text-stone-600 dark:text-stone-400 text-xs">Digital Excellence Team</p>
-                    </div>
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-saffron-500 to-amber-500 flex items-center justify-center">
-                      <Sparkles size={16} className="text-white" />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -310,8 +308,11 @@ export default function Home() {
               {/* Main card */}
               <div className="absolute inset-8 rounded-3xl glass dark:glass-dark shadow-2xl overflow-hidden border border-white/20 dark:border-white/5">
                 <img
-                  src="/Hero_selection.PNG"
+                  src={heroSelectionImg}
                   alt="Zone Digi Tech Team"
+                  width="600"
+                  height="600"
+                  loading="eager"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
@@ -422,6 +423,9 @@ export default function Home() {
               <img
                 src="/Home02.avif"
                 alt="Our team"
+                width="800"
+                height="600"
+                loading="lazy"
                 className="w-full aspect-[4/3] object-cover"
               />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.15), transparent)' }} />
@@ -522,14 +526,14 @@ export default function Home() {
             {services.map((service, i) => (
               <div
                 key={i}
-                className="animate-on-scroll group p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col min-h-[220px]"
+                className="animate-on-scroll group p-5 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-100 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col min-h-[220px]"
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110"
                   style={{ background: `${service.color}18` }}>
                   <service.icon size={18} style={{ color: service.color }} />
                 </div>
                 <h3 className="font-display font-bold text-stone-900 dark:text-white text-sm mb-1.5">{service.title}</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3 flex-grow">{service.desc}</p>
+                <p className="text-stone-500 dark:text-stone-400 text-xs leading-relaxed mb-3 min-h-[3rem]">{service.desc}</p>
                 <button onClick={() => handleNav('services')} className="btn-service mt-auto self-start group-hover:gap-2.5"
                   style={{ color: service.color }}>
                   Learn More <ArrowRight size={13} />
@@ -665,45 +669,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS SECTION ── */}
-      <section className="py-20 bg-stone-50 dark:bg-stone-900/40 border-t border-stone-200 dark:border-stone-800 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-14 animate-on-scroll">
-            <div className="tag mx-auto mb-4">Client Feedback</div>
-            <h2 className="section-title text-stone-900 dark:text-white mb-3">
-              What Our Clients<br />
-              <span className="gradient-text">Say About Us</span>
-            </h2>
-            <p className="section-subtitle max-w-lg mx-auto">
-              Real feedback from Indian startups, businesses, and brands we have partnered with.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {homeTestimonials.map((t, i) => (
-              <div
-                key={i}
-                className="animate-on-scroll p-6 rounded-3xl bg-white dark:bg-stone-900/80 border-2 border-stone-200 dark:border-stone-800 hover:border-saffron-400 dark:hover:border-saffron-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(t.rating)].map((_, j) => (
-                      <Star key={j} size={16} className="text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
-                </div>
-                <div className="flex items-center gap-3.5 pt-4 border-t border-stone-200 dark:border-stone-800">
-                  <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover shadow-sm border border-stone-200 dark:border-stone-700" />
-                  <div>
-                    <p className="font-bold text-stone-900 dark:text-white text-sm">{t.name}</p>
-                    <p className="text-saffron-600 dark:text-saffron-400 text-xs font-semibold">{t.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── TESTIMONIALS SLIDER ── */}
+      <TestimonialSlider testimonials={homeTestimonials} />
 
       {/* ── CTA ── */}
       <section className="py-24 bg-white dark:bg-stone-900/20 relative overflow-hidden">

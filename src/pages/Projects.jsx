@@ -1,7 +1,17 @@
-import { useEffect, useState } from 'react';
-import { ArrowRight, ExternalLink, MessageCircle, Globe, Sparkles } from 'lucide-react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { ArrowRight, ExternalLink, MessageCircle, Globe, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/UseScrollAnimation';
 import { useNavigate } from 'react-router-dom';
+import TestimonialSlider from '../components/TestimonialSlider';
+
+// Import client & project images via Vite so they get hashed into the build for production
+import clientFoodShood from '../assets/clients/client_food_shood.jpg';
+import clientMudassir from '../assets/clients/client_mudassir.png';
+import clientYousuf from '../assets/clients/client_yousuf.png';
+import clientVadaas from '../assets/clients/client_vadaas.png';
+import clientDharmendra from '../assets/clients/client_dharmendra.png';
+import projectSelectionImg from '../assets/Project_Selection.png';
+import iservicePortalImg from '../assets/iservice_portal.jpg';
 
 const categoryFilters = [
   { id: 'All', label: 'All Projects' },
@@ -68,7 +78,7 @@ const projects = [
     category: 'E-Commerce',
     client: 'iService India',
     desc: 'Multi-category online repair & service booking e-commerce portal with real-time tracking, Razorpay payment, and customer dashboard.',
-    image: '/iservice_portal.jpg',
+    image: iservicePortalImg,
     tags: ['E-Commerce', 'Service Booking', 'Razorpay', 'Live Tracking'],
     result: '240% increase in online bookings',
     link: 'https://www.iserviceindia.in/',
@@ -202,35 +212,35 @@ const testimonials = [
   {
     name: 'Food Shood',
     company: 'Food Shood Restaurant & Café',
-    image: '/client_food_shood.jpg',
+    image: clientFoodShood,
     text: 'Zone Digi Tech delivered exceptional branding, digital menu cards, social media management, and online ordering system for Food Shood. Our footfall and online orders grew massively!',
     rating: 5,
   },
   {
     name: 'Mr. Mudassir Ahmed Hashmi',
     company: 'Netligent Tech',
-    image: '/client_mudassir.png',
+    image: clientMudassir,
     text: 'Zone Digi Tech transformed our enterprise platform with exceptional speed and precision. Their UI/UX vision and technical execution set a whole new standard for our business.',
     rating: 5,
   },
   {
     name: 'Yousuf Sir',
     company: 'Netligent Tech',
-    image: '/client_yousuf.png',
+    image: clientYousuf,
     text: 'Working with Zone Digi Tech was a seamless experience. They delivered high-converting digital solutions, modern design frameworks, and outstanding ongoing support.',
     rating: 5,
   },
   {
     name: 'Vadaas Shop',
     company: 'Owner, Vadaas Shop',
-    image: '/client_vadaas.png',
+    image: clientVadaas,
     text: 'Their team created a stunning digital presence and social media strategy for our shop. Our customer reach and online inquiries increased dramatically!',
     rating: 5,
   },
   {
     name: 'Dr. Dharmendra Pal',
     company: 'Physiotherapy',
-    image: '/client_dharmendra.png',
+    image: clientDharmendra,
     text: 'Highly professional and dedicated team! They built our clinic booking portal and optimized our local search presence, doubling patient appointments month-on-month.',
     rating: 5,
   },
@@ -240,6 +250,9 @@ export default function Projects() {
   useScrollAnimation();
   const navigate = useNavigate();
   const [activeCategoryId, setActiveCategoryId] = useState('All');
+  const [mobileProjectIndex, setMobileProjectIndex] = useState(0);
+  const [projectTouchStart, setProjectTouchStart] = useState(null);
+  const [projectTouchEnd, setProjectTouchEnd] = useState(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -255,16 +268,38 @@ export default function Projects() {
     }
   };
 
+  const handleCategoryChange = (catId) => {
+    setActiveCategoryId(catId);
+    setMobileProjectIndex(0);
+  };
+
   const filtered = activeCategoryId === 'All'
     ? projects
     : projects.filter(p => p.category === activeCategoryId);
+
+  // Mobile slider swipe handlers
+  const handleProjectTouchStart = (e) => setProjectTouchStart(e.targetTouches[0].clientX);
+  const handleProjectTouchMove = (e) => setProjectTouchEnd(e.targetTouches[0].clientX);
+  const handleProjectTouchEnd = () => {
+    if (!projectTouchStart || !projectTouchEnd) return;
+    const distance = projectTouchStart - projectTouchEnd;
+    if (Math.abs(distance) > 40) {
+      if (distance > 0 && mobileProjectIndex < filtered.length - 1) {
+        setMobileProjectIndex((prev) => prev + 1);
+      } else if (distance < 0 && mobileProjectIndex > 0) {
+        setMobileProjectIndex((prev) => prev - 1);
+      }
+    }
+    setProjectTouchStart(null);
+    setProjectTouchEnd(null);
+  };
 
   return (
     <div className="bg-stone-50 dark:bg-[#0a0a0f] pt-20 transition-colors duration-300">
       {/* ── HERO ── */}
       <section className="relative py-16 lg:py-20 overflow-hidden">
         <div className="absolute inset-0 indian-pattern opacity-40 dark:opacity-10 pointer-events-none" />
-        <div className="absolute top-10 right-10 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
+        <div className="absolute top-10 right-10 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(224,123,0,0.25), transparent)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -281,8 +316,11 @@ export default function Projects() {
 
             <div>
               <img
-                src="/Project_Selection.png"
+                src={projectSelectionImg}
                 alt="Our Projects Showcase"
+                width="900"
+                height="420"
+                loading="eager"
                 className="w-full h-auto max-h-[420px] object-contain rounded-2xl mx-auto mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 hover:scale-[1.02]"
               />
             </div>
@@ -293,14 +331,14 @@ export default function Projects() {
       {/* ── HYPER-PROFESSIONAL FILTERS BAR ── */}
       <div className="bg-stone-50 dark:bg-[#0a0a0f] border-y border-stone-200 dark:border-stone-800 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-3.5">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-3.5">
             {categoryFilters.map((cat) => {
               const isSelected = activeCategoryId === cat.id;
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setActiveCategoryId(cat.id)}
-                  className={`px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 border ${
+                  onClick={() => handleCategoryChange(cat.id)}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 border ${
                     isSelected
                       ? 'bg-saffron-500 text-white border-saffron-500 shadow-lg shadow-saffron-500/20 scale-105'
                       : 'bg-white dark:bg-stone-900/90 text-stone-700 dark:text-stone-300 border-stone-200 dark:border-stone-800 hover:border-saffron-400/60 dark:hover:border-saffron-600/60 hover:text-saffron-600 dark:hover:text-saffron-400'
@@ -315,10 +353,12 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* ── PROJECTS GRID ── */}
-      <section className="py-12 pb-24">
+      {/* ── PROJECTS SECTION ── */}
+      <section className="py-10 md:py-12 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+          {/* ── DESKTOP VIEW: Normal Grid ── */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filtered.map((project, i) => (
               <div
                 key={i}
@@ -332,7 +372,7 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      onError={(e) => { e.currentTarget.src = '/iservice_portal.jpg'; }}
+                      onError={(e) => { e.currentTarget.src = iservicePortalImg; }}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
@@ -427,47 +467,170 @@ export default function Projects() {
               </div>
             ))}
           </div>
+
+          {/* ── MOBILE RESPONSIVE VIEW: Interactive Touch Slider ── */}
+          <div className="block md:hidden">
+            {filtered.length > 0 && (
+              <div>
+                {/* Mobile Slider Controls & Counter */}
+                <div className="flex items-center justify-between mb-4 px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-stone-900 dark:text-white">
+                      Project {mobileProjectIndex + 1} of {filtered.length}
+                    </span>
+                    <span className="text-[11px] text-stone-400">| Swipe to browse</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => setMobileProjectIndex(prev => Math.max(0, prev - 1))}
+                      disabled={mobileProjectIndex === 0}
+                      className={`w-8 h-8 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center transition-colors ${
+                        mobileProjectIndex === 0
+                          ? 'opacity-40 cursor-not-allowed bg-stone-100 dark:bg-stone-800 text-stone-400'
+                          : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 shadow-sm active:scale-95'
+                      }`}
+                      aria-label="Previous project"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <button
+                      onClick={() => setMobileProjectIndex(prev => Math.min(filtered.length - 1, prev + 1))}
+                      disabled={mobileProjectIndex === filtered.length - 1}
+                      className={`w-8 h-8 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center transition-colors ${
+                        mobileProjectIndex === filtered.length - 1
+                          ? 'opacity-40 cursor-not-allowed bg-stone-100 dark:bg-stone-800 text-stone-400'
+                          : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 shadow-sm active:scale-95'
+                      }`}
+                      aria-label="Next project"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Mobile Slider Card with Touch Gestures */}
+                <div
+                  className="overflow-hidden"
+                  onTouchStart={handleProjectTouchStart}
+                  onTouchMove={handleProjectTouchMove}
+                  onTouchEnd={handleProjectTouchEnd}
+                >
+                  <div
+                    className="flex transition-transform duration-300 ease-out"
+                    style={{ transform: `translateX(-${mobileProjectIndex * 100}%)` }}
+                  >
+                    {filtered.map((project, i) => (
+                      <div key={i} className="w-full flex-shrink-0 px-1">
+                        <div
+                          className={`rounded-3xl overflow-hidden bg-white dark:bg-stone-900/90 border-2 border-stone-200 dark:border-stone-800 shadow-lg flex flex-col justify-between ${
+                            project.featured ? 'ring-2 ring-saffron-400/40 dark:ring-saffron-600/40' : ''
+                          }`}
+                        >
+                          {/* Image Container with Overlay */}
+                          <div className="relative overflow-hidden aspect-video">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              onError={(e) => { e.currentTarget.src = iservicePortalImg; }}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
+
+                            {/* Badges */}
+                            <div className="absolute top-3 left-3 flex gap-2">
+                              <span
+                                className="px-3 py-1 rounded-full text-xs font-bold text-white shadow-md backdrop-blur-sm"
+                                style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.9), rgba(249,184,74,0.9))' }}
+                              >
+                                {project.category}
+                              </span>
+                              {project.featured && (
+                                <span className="px-2.5 py-1 rounded-full text-xs font-extrabold bg-white text-stone-900 shadow-md flex items-center gap-1">
+                                  <Sparkles size={11} className="text-saffron-600" /> Featured
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Result Pill */}
+                            <div className="absolute bottom-3 left-3 right-3">
+                              <div className="glass rounded-xl px-3 py-1.5 border border-white/20 backdrop-blur-md">
+                                <p className="text-white text-xs font-bold tracking-wide">{project.result}</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Card Content */}
+                          <div className="p-5">
+                            <h2
+                              onClick={() => handleProjectClick(project.link)}
+                              className="font-display font-bold text-lg text-stone-900 dark:text-white cursor-pointer hover:text-saffron-500 transition-colors mb-1"
+                            >
+                              {project.title}
+                            </h2>
+                            <p className="text-xs font-bold text-saffron-600 dark:text-saffron-400 mb-2">{project.client}</p>
+                            <p className="text-stone-600 dark:text-stone-300 text-xs leading-relaxed mb-3 line-clamp-3">{project.desc}</p>
+
+                            <div className="flex flex-wrap gap-1.5 mb-4">
+                              {project.tags.slice(0, 3).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="px-2 py-0.5 rounded-lg text-[11px] font-semibold bg-stone-100 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-stone-700/60"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* Mobile Direct Action Buttons */}
+                            <div className="flex flex-col gap-2 pt-2 border-t border-stone-200 dark:border-stone-800">
+                              {project.link.startsWith('http') && (
+                                <a
+                                  href={project.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full py-2.5 px-4 rounded-xl text-white text-xs font-bold bg-saffron-500 active:bg-saffron-600 shadow-md flex items-center justify-center gap-1.5 transition-colors"
+                                >
+                                  <Globe size={14} /> Visit Live Website <ExternalLink size={12} />
+                                </a>
+                              )}
+                              <button
+                                onClick={() => handleNav('contact')}
+                                className="w-full py-2 px-4 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200 border border-stone-200 dark:border-stone-700 flex items-center justify-center gap-1.5 active:bg-stone-200"
+                              >
+                                <MessageCircle size={13} /> Inquire Similar Project
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile Dots Indicator */}
+                <div className="flex items-center justify-center gap-1.5 mt-5">
+                  {filtered.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setMobileProjectIndex(i)}
+                      className={`transition-all duration-300 rounded-full ${
+                        i === mobileProjectIndex
+                          ? 'w-6 h-2 bg-gradient-to-r from-saffron-500 to-amber-400'
+                          : 'w-2 h-2 bg-stone-300 dark:bg-stone-600'
+                      }`}
+                      aria-label={`Go to project slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section className="py-20 bg-white dark:bg-stone-900/20 border-t border-stone-200 dark:border-stone-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="tag mx-auto mb-4">Client Feedback</div>
-            <h2 className="section-title text-stone-900 dark:text-white mb-3">
-              What Our Clients<br />
-              <span className="gradient-text">Say About Us</span>
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-3xl bg-stone-50 dark:bg-stone-900/60 border-2 border-stone-200 dark:border-stone-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
-              >
-                <div className="flex-1">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(t.rating)].map((_, j) => (
-                      <svg key={j} className="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
-                </div>
-                <div className="flex items-center gap-3.5 pt-4 border-t border-stone-200 dark:border-stone-800 mt-auto">
-                  <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover shadow-sm" />
-                  <div>
-                    <p className="font-bold text-stone-900 dark:text-white text-sm">{t.name}</p>
-                    <p className="text-saffron-600 dark:text-saffron-400 text-xs font-semibold">{t.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── TESTIMONIALS SLIDER ── */}
+      <TestimonialSlider testimonials={testimonials} />
 
       {/* ── CTA ── */}
       <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(224,123,0,0.08), rgba(250,204,21,0.05))' }}>
